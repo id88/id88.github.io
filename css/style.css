@@ -43,7 +43,7 @@ html {
 .container {
   width: 750px;
 }
-@media (max-width: 780px) {
+@media (max-width: 767px) {
   .container {
     width: 90%;
   }
