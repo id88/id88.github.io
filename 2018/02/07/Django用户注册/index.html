@@ -1,0 +1,710 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Django用户注册 | 月尚の博客</title>
+    <meta name="author" content="月尚">
+    
+    <meta name="description" content="先补充些知识
+HttpRequest对象当客户端向服务器发送请求时，Django会创建一个包含请求数据的 HttpRequest 对象，并以参数 request 传给视图函数，即参数 request 所引用的对象是HttpRequest对象。HttpRequest对象有很多参数，下面列出几项：
+
+p">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Django用户注册"/>
+    <meta property="og:site_name" content="月尚の技术小屋"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="月尚の技术小屋" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">月尚の技术小屋</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://osgop7j13.bkt.clouddn.com/github/image/toux.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">月尚</p>
+                        <p class="desc">Web前端/Linux/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Python学习笔记/">
+                    Python学习笔记 <span class="right">19 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Python学习笔记/Django/">
+                    Django <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Python学习笔记/Python基础/">
+                    Python基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux学习笔记/">
+                    Linux学习笔记 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/PHP学习笔记/">
+                    PHP学习笔记 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/PHP学习笔记/PHP基础/">
+                    PHP基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术花絮/">
+                    技术花絮 <span class="right">12 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术花絮/计算机编码/">
+                    计算机编码 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/闲言碎语/">
+                    闲言碎语 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/玩转服务器/">
+                    玩转服务器 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Python学习笔记/">Python学习笔记</a><a class="breadcrumb" href="/categories/Python学习笔记/Django/">Django</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Django用户注册</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2018-02-07T09:05:20.026Z"><a href="/2018/02/07/Django用户注册/">2018-02-07</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/python/" class="chip pink lighten-1">python</a>
+        
+            <a href="/tags/django/" class="chip pink lighten-1">django</a>
+        
+            <a href="/tags/web/" class="chip pink lighten-1">web</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#HttpRequest对象"><span class="section table-of-contents-text">HttpRequest对象</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#HttpResponse-对象"><span class="section table-of-contents-text">HttpResponse 对象</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#用户注册"><span class="section table-of-contents-text">用户注册</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#简单的注册"><span class="section table-of-contents-text">简单的注册</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>先补充些知识</p>
+<h3 id="HttpRequest对象"><a href="#HttpRequest对象" class="headerlink" title="HttpRequest对象"></a>HttpRequest对象</h3><p>当客户端向服务器发送请求时，Django会创建一个包含请求数据的 HttpRequest 对象，并以参数 request 传给视图函数，即参数 request 所引用的对象是HttpRequest对象。HttpRequest对象有很多参数，下面列出几项：</p>
+<ul>
+<li>path:  返回一个字符串，表示请求页面的路径（不包括域名），例如“/blog/admin/”。</li>
+</ul>
+<ul>
+<li>GET:  返回类字典对象，包括所有的 HTTP GET 参数。</li>
+</ul>
+<ul>
+<li><p>POST:  返回类字典对象，包含所有HTTP POST参数的类字典对象。<br>服务器收到空的POST请求的情况也是有可能发生的。也就是说，表单form通过HTTP POST方法提交请求，但是表单中可以没有数据。因此，不能使用语句if request.POST来判断是否使用HTTP POST方法；应该使用if request.method == “POST” (参见method属性)。<br>注意: POST不包括file-upload信息。参见FILES属性。</p>
+</li>
+<li><p>FILES:   返回类字典对象，包含所有上传文件的类字典对象。FILES中的每个Key都是<code>&lt;input type=&quot;file&quot; name=&quot;&quot; /&gt;</code>标签中name属性的值。FILES中的每个value 同时也是一个标准Python字典对象，包含下面三个Keys:</p>
+<ul>
+<li>filename: 上传文件名,用Python字符串表示</li>
+<li>content-type: 上传文件的Content type</li>
+<li><p>content: 上传文件的原始内容</p>
+<p>注意：只有在请求方法是POST，并且请求页面中<code>&lt;form&gt;</code>有<code>enctype=&quot;multipart/form-data&quot;</code>属性时FILES才拥有数据。否则，FILES 是一个空字典。</p>
+</li>
+</ul>
+</li>
+<li><p>REQUEST:  返回类字典对象，为了方便，该属性是POST和GET属性的集合体，但是有特殊性，先查找POST属性，然后再查找GET属性。<br>例如，如果GET = {“name”: “john”} 和POST = {“age”: ‘34’}，则 REQUEST[“name”] 的值是”john”，REQUEST[“age”]的值是”34”<br>强烈建议使用GET and POST，因为这两个属性更加显式化，写出的代码也更易理解。</p>
+</li>
+</ul>
+<ul>
+<li><p>COOKIES:  返回字典，包含所有cookies的键值对。Keys和values都是字符串。</p>
+</li>
+<li><p>META:  返回字典，包含所有所有可能的 HTTP 头。</p>
+</li>
+<li><p>user:   返回 django.contrib.auth.models.User 对象，代表当前登录的用户。如果访问用户当前没有登录，user 将被初始化为 django.contrib.auth.models.AnonymousUser 的实例。可以通过user的is_authenticated() 方法来辨别用户是否登录：</p>
+<p>  if request.user.is_authenticated():</p>
+<pre><code># Do something for logged-in users.
+</code></pre><p>  else:</p>
+<pre><code># Do something for anonymous users.
+</code></pre><p>  只有激活Django中的AuthenticationMiddleware时该属性才可用</p>
+</li>
+<li><p>session:  返回可读写的类字典对象，也是唯一可读写的属性，代表当前会话的字典对象。只有激活Django中的session支持时该属性才可用。 </p>
+</li>
+</ul>
+<h3 id="HttpResponse-对象"><a href="#HttpResponse-对象" class="headerlink" title="HttpResponse 对象"></a>HttpResponse 对象</h3><p>对应着 HttpResquest 对象，HttpResponse 是视图向客户端返回的对象。典型的用法就是将页面的内容作为字符串传递给 HttpResponse 函数。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from django.http import HttpResponse</div><div class="line">&gt;&gt;&gt; response = HttpResponse(&quot;Here&apos;s the text of the Web page.&quot;)</div><div class="line">&gt;&gt;&gt; response = HttpResponse(&quot;Text only, please.&quot;, mimetype=&quot;text/plain&quot;)</div></pre></td></tr></table></figure></p>
+<p>如果想要随时添加内容，可以像操作文件一样来操作 HttpResponse 对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; response = HttpResponse()</div><div class="line">&gt;&gt;&gt; response.write(&quot;&lt;p&gt;Here&apos;s the text of the Web page.&lt;/p&gt;&quot;)</div><div class="line">&gt;&gt;&gt; response.write(&quot;&lt;p&gt;Here&apos;s another paragraph.&lt;/p&gt;&quot;)</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="用户注册"><a href="#用户注册" class="headerlink" title="用户注册"></a>用户注册</h2><h3 id="简单的注册"><a href="#简单的注册" class="headerlink" title="简单的注册"></a>简单的注册</h3><p>编辑<code>./account/forms/py</code> 增加一个注册用户的表单类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">from django import forms</div><div class="line"># 导入Djagno默认的用户模型User类</div><div class="line">from django.contrib.auth.models import User</div><div class="line"></div><div class="line">......</div><div class="line"></div><div class="line"># 一般情况下，如果提交表单后，不会对数据库进行修改，则继承 Form 类。</div><div class="line"># 如果要将表单类中的数据写入到数据表或者某些记录的值，就要让表单继承 ModelForm 类</div><div class="line"></div><div class="line"># 注册用户的表单类</div><div class="line">class RegistrationForm(forms.ModelForm):</div><div class="line">    password = forms.CharField(label=&quot;password&quot;, widget=forms.PasswordInput)</div><div class="line">    password2 = forms.CharField(label=&quot;Confirm password&quot;, widget=forms.PasswordInput)</div><div class="line"></div><div class="line">    # 声明表单类所应用的数据模型，也就是将来表单的内容会写入到哪个数据库中的哪些记录里面。</div><div class="line">    class Meta:</div><div class="line">        model = User</div><div class="line">        fields = (&quot;username&quot;, &quot;email&quot;)</div><div class="line"></div><div class="line">    def clean_password2(self):</div><div class="line">        cd = self.cleaned_data</div><div class="line">        if cd[&apos;password&apos;] != cd[&apos;password2&apos;]:</div><div class="line">            raise forms.ValidationError(&quot;passwords do match.&quot;)</div><div class="line"></div><div class="line">        return cd[&apos;password2&apos;]</div></pre></td></tr></table></figure></p>
+<p>编辑<code>./account/views.py</code>增加一个注册用户的视图函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">from .forms import LoginForm, RegistrationForm</div><div class="line"></div><div class="line">......</div><div class="line"></div><div class="line">def register(request):</div><div class="line">    if request.method == &quot;POST&quot;:</div><div class="line">        user_form = RegistrationForm(request.POST)</div><div class="line">        if user_form.is_valid():</div><div class="line">			# ModelForm 类或他的子类都具有 save()方法，作用是将数据保存到数据库中，并生成该数据对象。</div><div class="line">            # 若有参数为 commit=Fasle 则数据不保存到数据库，仅生成数据对象。</div><div class="line">            new_user = user_form.save(commit=False)</div><div class="line">			# 设置数据对象的密码（已经过验校），</div><div class="line">            # 得益于前面commit=Fasle的设置，否则数据写到数据库中再设置密码就要重新写入了</div><div class="line">            new_user.set_password(user_form.clean_data[&apos;password&apos;])</div><div class="line">            new_user.save()</div><div class="line">            return HttpResponse(&quot;successfully&quot;)</div><div class="line">        </div><div class="line">        else:</div><div class="line">            return HttpResponse(&quot;sorry, you can not register.&quot;)</div><div class="line">        </div><div class="line">    else:</div><div class="line">        user_form = RegistrationForm()</div><div class="line">        return render(request, &quot;account/register.html&quot;, &#123;&quot;form&quot;: user_form&#125;)</div></pre></td></tr></table></figure></p>
+<p>接下来就是编写登录界面的模板了。<br>在<code>./template/account</code>中建立一个名为<code>register.html</code>的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &quot;base.html&quot; %&#125;</div><div class="line">&#123;% load staticfiles %&#125;</div><div class="line">&#123;% block title %&#125;register user&#123;% endblock %&#125;</div><div class="line"></div><div class="line">&#123;% block content %&#125;</div><div class="line">&lt;div&gt;</div><div class="line">    &lt;h1&gt;Register&lt;/h1&gt;</div><div class="line">    &lt;p&gt;If you are a user, &lt;strong&gt;&lt;a href=&quot;&#123;% url &apos;account:user_login&apos; %&#125;&quot;&gt;Login&lt;/a&gt;&lt;/strong&gt;,please&lt;/p&gt;</div><div class="line">    &lt;p&gt;or register&lt;/p&gt;</div><div class="line">    &lt;form action=&quot;.&quot; method=&quot;post&quot;&gt;</div><div class="line">        &#123;% csrf_token %&#125;</div><div class="line">        &lt;div&gt;</div><div class="line">            &lt;label for=&quot;&#123;&#123; form.username.id_for_label &#125;&#125;&quot;&gt;Username&lt;/label&gt;</div><div class="line">            &lt;div&gt;&#123;&#123; form.username &#125;&#125;&lt;/div&gt;</div><div class="line"></div><div class="line">            &lt;label for=&quot;&#123;&#123; form.email.id_for_babel &#125;&#125;&quot;&gt;Email&lt;/label&gt;</div><div class="line">            &lt;div&gt;&#123;&#123; form.email &#125;&#125;&lt;/div&gt;</div><div class="line"></div><div class="line">            &lt;label for=&quot;&#123;&#123; form.password.id_for_label &#125;&#125;&quot;&gt;Password&lt;/label&gt;</div><div class="line">            &lt;div&gt;&#123;&#123; form.password &#125;&#125;&lt;/div&gt;</div><div class="line"></div><div class="line">            &lt;label for=&quot;&#123;&#123; form.password.id_for_label &#125;&#125;&quot;&gt;Confirm Password&lt;/label&gt;</div><div class="line">            &lt;div&gt;&#123;&#123; form.password2 &#125;&#125;&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<p>最后在<code>./account/urls.py</code>中配置URL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(r&apos;^register/$&apos;, views.register, name=&quot;user_register&quot;),</div></pre></td></tr></table></figure></p>
+<p>访问 <a href="http://127.0.0.1:8000/account/register/" target="_blank" rel="external">http://127.0.0.1:8000/account/register/</a> 就可以看到注册界面了，虽然比较丑，因为我没有用任何style。。。</p>
+<p>注册个 testuser<br>密码 test1234<br>test@qq.com</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/02/09/增加注册的内容/" rel="next" title="增加注册的内容">
+    上一篇：增加注册的内容
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2018/02/07/小生不才/" rel="next" title="小生不才">
+    下一篇：小生不才
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/id88/" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://" target="_blank">九院跆协</a>
+                
+                    <a class="social-link" href="https://aquilao.github.io/Blog/" target="_blank">Aquilao的博客</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2017-2018　youif.cn　All rights reserved.　　 　　本博客由 Hexo 强力驱动 | 主题 raytaylorism　　
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

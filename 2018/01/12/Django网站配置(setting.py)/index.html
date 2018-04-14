@@ -1,0 +1,676 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Django网站配置(setting.py) | 月尚の博客</title>
+    <meta name="author" content="月尚">
+    
+    <meta name="description" content="参考：
+
+Django 安全配置(setting.py)详解
+解析Django的模板路径设置templates（settings.py）
+
+
+
+LANGUAGE_CODE是设置网页的语言，在其中的106行（版本不同，位置可能不同）默认是英文en-us，可以把它改成中文zh_hans但要注意的是要在开">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Django网站配置(setting.py)"/>
+    <meta property="og:site_name" content="月尚の技术小屋"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="月尚の技术小屋" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">月尚の技术小屋</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://osgop7j13.bkt.clouddn.com/github/image/toux.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">月尚</p>
+                        <p class="desc">Web前端/Linux/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Python学习笔记/">
+                    Python学习笔记 <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Python学习笔记/Django/">
+                    Django <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Python学习笔记/Python基础/">
+                    Python基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术花絮/">
+                    技术花絮 <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术花絮/计算机编码/">
+                    计算机编码 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/PHP学习笔记/">
+                    PHP学习笔记 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/PHP学习笔记/PHP基础/">
+                    PHP基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux学习笔记/">
+                    Linux学习笔记 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/玩转服务器/">
+                    玩转服务器 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Python学习笔记/">Python学习笔记</a><a class="breadcrumb" href="/categories/Python学习笔记/Django/">Django</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Django网站配置(setting.py)</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2018-01-12T14:18:59.037Z"><a href="/2018/01/12/Django网站配置(setting.py)/">2018-01-12</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/python/" class="chip pink lighten-1">python</a>
+        
+            <a href="/tags/django/" class="chip pink lighten-1">django</a>
+        
+            <a href="/tags/web/" class="chip pink lighten-1">web</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#对创建好的应用进行注册声明"><span class="section table-of-contents-text">对创建好的应用进行注册声明</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#编写数据类型类"><span class="section table-of-contents-text">编写数据类型类</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#创建数据库"><span class="section table-of-contents-text">创建数据库</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#创建超级管理员"><span class="section table-of-contents-text">创建超级管理员</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>参考：</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000003756582" target="_blank" rel="external">Django 安全配置(setting.py)详解</a></li>
+<li><a href="http://blog.csdn.net/komtao520/article/details/52447608" target="_blank" rel="external">解析Django的模板路径设置templates（settings.py）</a></li>
+</ul>
+<hr>
+<ul>
+<li><code>LANGUAGE_CODE</code>是设置网页的语言，在其中的106行（版本不同，位置可能不同）默认是英文<code>en-us</code>，可以把它改成中文<code>zh_hans</code><br>但要注意的是要在开头写上” conding:utf-8 “。</li>
+</ul>
+<hr>
+<h2 id="对创建好的应用进行注册声明"><a href="#对创建好的应用进行注册声明" class="headerlink" title="对创建好的应用进行注册声明"></a>对创建好的应用进行注册声明</h2><p>创建好一个应用后需要值啊配置文件<code>./mysite/settings.py</code>中进行注册声明。<br>在<code>INSTALLED_APPS</code>配置项中，将创建的应用添加进去（后面记得添加逗号）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> Application definition</div><div class="line">  </div><div class="line"> INSTALLED_APPS = [</div><div class="line">     'django.contrib.admin',</div><div class="line">     'django.contrib.auth',</div><div class="line">     'django.contrib.contenttypes',</div><div class="line">     'django.contrib.sessions',</div><div class="line">     'django.contrib.messages',</div><div class="line">     'django.contrib.staticfiles',</div><div class="line">     'blog',  #自己创建的应用</div><div class="line"> ]</div></pre></td></tr></table></figure></p>
+<h2 id="编写数据类型类"><a href="#编写数据类型类" class="headerlink" title="编写数据类型类"></a>编写数据类型类</h2><p><em>设计数据库和表结构是做网站的基础。在Django中，不需要通过SQL语句直接对数据库进行操作，而是通过Python创建数据模型，之后在由Django完成数据库操作。</em><br>一般情况下，利用Django开发网站系统，要先编写数据模型，就是在<code>./blog/models.py</code>中写一个类，这个类与数据库中的数据表具有对应关系。这个类的本质是继承了<code>django.db.models.Model</code>的类。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> timezone</div><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlogArticles</span><span class="params">(models.Model)</span>:</span></div><div class="line">	<span class="comment">#规定字段title的属性为CharField(),并以max_length=50的形式说明字段的最大数量</span></div><div class="line">	<span class="comment"># 书的标题　字符串类型　　最大长度50</span></div><div class="line">    title = models.CharField(max_length=<span class="number">50</span>)</div><div class="line"></div><div class="line">	<span class="comment">#类User是BlogArticles对应对象，related_name="blog_posts"的作用是允许通过类User反向查找到BlogArticles</span></div><div class="line">	<span class="comment"># 作者 一对多设计　多方持有一方的外键</span></div><div class="line">	<span class="comment"># 千万不能少了写 on_delete=models.CASCADE 这是个坑</span></div><div class="line">    author = models.ForeignKey(User, related_name=<span class="string">"blog_posts"</span>,on_delete=models.CASCADE)</div><div class="line"></div><div class="line">	<span class="comment"># 内容 文本类型</span></div><div class="line">    body = models.TextField()</div><div class="line"></div><div class="line">	<span class="comment"># 发布时间 时间类型</span></div><div class="line">    publish = models.DateTimeField(default=timezone.now)</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        ordering = (<span class="string">"-publish"</span>,)<span class="comment">#注意逗号</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.title</div></pre></td></tr></table></figure></p>
+<p>在<code>/mysite/manage.py</code>位置执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py makemigrations</div></pre></td></tr></table></figure></p>
+<p><img src="http://osgop7j13.bkt.clouddn.com/image/create%20blog.PNG" alt="enter description here" title="create blog"><br>执行的结果提示在<code>blog/migrations</code>目录中创建了一个 BlogArticles 模型。<br>不妨打开该目录下的<code>0001_initial.py</code>看看，这个是执行 python manage.py makemigrations 后生成的，可以使用下面的方法来看看它的本质。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py sqlmigrate blog 0001</div></pre></td></tr></table></figure></p>
+<p>可以看出，这个文件是一些SQL语句，功能是创建一个名为<code>blog_blogarticles</code>的数据表。这个表由 blog 和 blogarticles 两部分组成，是在 model.py 中创建的数据模型类的名称，中间用单下划线链接。</p>
+<p>【注】：<br><strong>*migrate</strong>： vi.  迁徙；转移；迁徙<br><strong>migrations</strong> : n.  移民；移往；移动*</p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py migrate</div></pre></td></tr></table></figure>
+<p>本项目是用的是 SQLite 数据库， 在 mysite 项目目录下有个叫 db.sqlite3 的数据库文件。<br>参考：</p>
+<ul>
+<li><a href="http://www.linuxidc.com/Linux/2016-05/131573.htm" target="_blank" rel="external">Ubuntu 16.04 安装可视化数据库浏览器 SQLite Browser 3.8</a></li>
+<li><a href="http://blog.csdn.net/spy20008/article/details/78569942" target="_blank" rel="external">ubuntu 安装 Sqlite 和 可视化工具 SqliteBroswer</a></li>
+</ul>
+<h2 id="创建超级管理员"><a href="#创建超级管理员" class="headerlink" title="创建超级管理员"></a>创建超级管理员</h2><p>在 manage.py 文件所在的目录下，执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py createsuperuser</div></pre></td></tr></table></figure></p>
+<p>根据提示输入超级管理员的名字、邮箱和密码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver</div></pre></td></tr></table></figure></p>
+<p>如果一切正常，根据提示信息在浏览器地址栏中输入<code>http://127.0.0.1:8000/</code> 或 <code>http://localhost:8000/</code>会出现登录界面。<br>可以用刚才创建的超级管理员的用户名和密码进入系统。</p>
+<p>##发布博客文章<br><strong>编辑<code>./blog/admin.py</code>文件</strong><br>输入如下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"></div><div class="line"><span class="comment">#将BlogArticles类引入到但前环境中</span></div><div class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> BlogArticles</div><div class="line"></div><div class="line"><span class="comment">#将BlogArticles类注册到admin中</span></div><div class="line">admin.site.register(BlogArticles)</div></pre></td></tr></table></figure></p>
+<p>再次用 python manage.py runserver 运行服务，进入系统可以看到新注册的 BLOG。<br><img src="http://osgop7j13.bkt.clouddn.com/image/blog01.PNG" alt="新注册的 BLOG" title="blog01"><br>单击右侧的“Add”按钮可以添加新的文章。</p>
+<p>在<code>./blog/models.py</code>中使用了 django.utils.timezone，为此需要安装一个模块 pytz，用它来提供时区数值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip3 install pytz</div></pre></td></tr></table></figure></p>
+<p>安装好后，重启服务。</p>
+<p>为了让文章列表页的信息更加丰富，需要在<code>./blog/admin.py</code>中再添加些东西。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> BlogArticles</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlogArticlesAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></div><div class="line">	list_display = (<span class="string">"title"</span>, <span class="string">"author"</span>, <span class="string">"publish"</span>)</div><div class="line">	list_filter = (<span class="string">"publish"</span>, <span class="string">"author"</span>)</div><div class="line">	search_fields = (<span class="string">"title"</span>, <span class="string">"body"</span>)</div><div class="line">	raw_id_fields = (<span class="string">"author"</span>,)</div><div class="line">	date_hierarchy = <span class="string">"publish"</span></div><div class="line">	ordering = [<span class="string">"publish"</span>, <span class="string">"author"</span>]</div><div class="line"></div><div class="line">admin.site.register(BlogArticles, BlogArticlesAdmin)</div></pre></td></tr></table></figure></p>
+<p><img src="http://osgop7j13.bkt.clouddn.com/image/blog02.PNG" alt="enter description here" title="blog02"></p>
+
+                
+
+
+<p class="pink-link-context">
+    <a href="/2018/01/11/用python发邮件/" rel="next" title="用python发邮件">
+    下一篇：用python发邮件
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/id88/" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://" target="_blank">九院跆协</a>
+                
+                    <a class="social-link" href="https://aquilao.github.io/Blog/" target="_blank">Aquilao的博客</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2017　youif.cn　All rights reserved.　　　　　　 　　本博客由 Hexo 强力驱动 | 主题 raytaylorism　　
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

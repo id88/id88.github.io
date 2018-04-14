@@ -1,0 +1,729 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Vim快捷键 | 月尚の博客</title>
+    <meta name="author" content="月尚">
+    
+    <meta name="description" content="这篇不是教程，而是自己写的笔记。
+虽然网上有很多讲解vim快捷键的教程，但我还是想自己写一篇作为笔记，这里没有把所有的快捷键都列出来，也没有对快捷键进行分类，因为快捷键太多了，我一开始只是记了几个常用的，后来慢慢使用vim 就越积累越多，边用边学边记。而不是先把所有的快捷键都记下来。以后用的熟练了，再总结吧。
+比较完整规范的vim快捷键教程可以参考">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Vim快捷键"/>
+    <meta property="og:site_name" content="月尚の技术小屋"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="月尚の技术小屋" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">月尚の技术小屋</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-book "></i>
+                            
+                            读书
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="http://osgop7j13.bkt.clouddn.com/github/image/toux.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">月尚</p>
+                        <p class="desc">Web前端/Linux/技术宅</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-book "></i>
+                    
+                    读书
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Python学习笔记/">
+                    Python学习笔记 <span class="right">19 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Python学习笔记/Django/">
+                    Django <span class="right">10 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Python学习笔记/Python基础/">
+                    Python基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux学习笔记/">
+                    Linux学习笔记 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/PHP学习笔记/">
+                    PHP学习笔记 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/PHP学习笔记/PHP基础/">
+                    PHP基础 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/技术花絮/">
+                    技术花絮 <span class="right">12 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/技术花絮/计算机编码/">
+                    计算机编码 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/闲言碎语/">
+                    闲言碎语 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/玩转服务器/">
+                    玩转服务器 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术花絮/">技术花絮</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Vim快捷键</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2018-01-04T13:28:26.873Z"><a href="/2018/01/04/Vim快捷键/">2018-01-04</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/编辑器/" class="chip pink lighten-1">编辑器</a>
+        
+            <a href="/tags/Vim/" class="chip pink lighten-1">Vim</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Vim-的各种模式"><span class="section table-of-contents-text">Vim 的各种模式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#移动光标"><span class="section table-of-contents-text">移动光标</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#移动行"><span class="section table-of-contents-text">移动行</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#翻页"><span class="section table-of-contents-text">翻页</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#整页翻页"><span class="section table-of-contents-text">整页翻页</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#翻半页"><span class="section table-of-contents-text">翻半页</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#滚一行"><span class="section table-of-contents-text">滚一行</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#删除"><span class="section table-of-contents-text">删除</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#删除整行"><span class="section table-of-contents-text">删除整行</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#插入行"><span class="section table-of-contents-text">插入行</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#合并行"><span class="section table-of-contents-text">合并行</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#复制"><span class="section table-of-contents-text">复制</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#撤销和重做"><span class="section table-of-contents-text">撤销和重做</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#替换和查找"><span class="section table-of-contents-text">替换和查找</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#保存和退出"><span class="section table-of-contents-text">保存和退出</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#新建文件和改名"><span class="section table-of-contents-text">新建文件和改名</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#文件之间切换"><span class="section table-of-contents-text">文件之间切换</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#文件操作"><span class="section table-of-contents-text">文件操作</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#显示文件目录"><span class="section table-of-contents-text">显示文件目录</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#大小写转换"><span class="section table-of-contents-text">大小写转换</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#查看编码"><span class="section table-of-contents-text">查看编码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Vim的分屏功能"><span class="section table-of-contents-text">Vim的分屏功能</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#多行编辑"><span class="section table-of-contents-text">多行编辑</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p><strong>这篇不是教程，而是自己写的笔记。</strong></p>
+<p><em>虽然网上有很多讲解vim快捷键的教程，但我还是想自己写一篇作为笔记，这里没有把所有的快捷键都列出来，也没有对快捷键进行分类，因为快捷键太多了，我一开始只是记了几个常用的，后来慢慢使用vim 就越积累越多，边用边学边记。而不是先把所有的快捷键都记下来。<br>以后用的熟练了，再总结吧。</em></p>
+<p>比较完整规范的vim快捷键教程可以<a href="http://www.cnblogs.com/lijia0511/p/5644566.html" target="_blank" rel="external">参考</a></p>
+<a id="more"></a>
+<h3 id="Vim-的各种模式"><a href="#Vim-的各种模式" class="headerlink" title="Vim 的各种模式"></a>Vim 的各种模式</h3><p><code>Ctrl+[</code><br><code>Ctrl+c</code><br>等价与<code>Esc</code> 退出编辑模式进入普通模式（命令模式）</p>
+<p><code>Ctrl+o</code>暂时退出编辑模式，执行一次普通模式后返回编辑模式</p>
+<p>插入模式：<code>i</code>在光标前面进行编辑<br>编辑模式：<code>a</code>在光标后面进行编辑<br>可视模式：<code>v</code>光标经过的地方将会被选中，可以进行x（剪切）p（粘贴）操作</p>
+<p>也可以在 vimrc 文件中自定义键盘映射<br><code>inoremap jk &lt;esc&gt;</code><br>这样连续按<code>j</code> <code>k</code>就等价于按<code>Esc</code>这个按键了</p>
+<h3 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h3><p><code>h</code>、<code>j</code>、<code>k</code>、<code>l</code>分别控制光标<code>左</code>、<code>下</code>、<code>上</code>、<code>右</code>移动<br>可以配合数字使用，比如：<br>20j 就是向下移动20行，<br>5h 就是向左移动5个字符</p>
+<p><code>&lt;space&gt;</code>光标向右移动一个字符<br><code>n&lt;space&gt;</code>光标向右移动n个字符</p>
+<p><code>&lt;Enter&gt;</code>光标移动到下行行首<br><code>n&lt;Enter&gt;</code>光标向下移动n行行首</p>
+<p><code>nG</code>  移动光标至文章的第n行行首<br>或者，冒号+行号+回车，比如跳到15行就是：<code>:</code> <code>15</code> <code>&lt;Enter&gt;</code></p>
+<p><code>0</code> 光标跳到行首（可能是空字符）<br><code>^</code> 光标跳到行首<br><code>$</code> 光标跳到行尾<br><code>n$</code> 光标跳到下面n行的行尾</p>
+<p><code>gg</code> 移动文件头第一个字符上（可能是空字符）<br><code>G</code> 移动到文件尾最后一个字符（可能是空字符）</p>
+<p><code>Ctrl+g</code>  列出光标所在行的行号</p>
+<p><code>w</code> 光标跳到下一个单词或标点符号开头<br><code>e</code>光标跳到下一个单词或标点符号尾部<br><code>ge</code> 光标跳到上一个单词或标点符号尾部<br><code>b</code> 移动到上一个单词或标点符号的开头<br>    2b 向后移动2个单词<br><code>B</code> 移动到上一个单词的开头，忽略标点符号</p>
+<p><code>H</code>光标移动到这个屏幕上方那一行的第一个字符<br><code>M</code>光标移动到这个屏幕中间那一行的第一个字符<br><code>L</code>光标移动到这个屏幕下方那一行的第一个字符</p>
+<p><code>zz</code>让光标所在的行居屏幕中央<br><code>zt</code> 让光标所在的行居屏幕最上一行 t=top<br><code>zb</code> 让光标所在的行居屏幕最下一行 b=bottom</p>
+<p><em>特殊的移动</em><br><code>)</code>  移至下一个句子（sentence）首。<br><code>(</code> 移至上一个句子（sentence）首。<br><code>}</code>  移至下一个段落（paragraph）首。<br><code>{</code>  移至上一个段落（paragraph）首。<br>sentence 是以<code>.</code> <code>!</code> <code>?</code>为区格。<br>paragraph 是以空白行为区格。</p>
+<p><code>%</code>  这是匹配{}，[]，() 用的，例如光标现在在<code>{</code> 上<br>   只要按<code>%</code>，光标就会跳到相匹配的<code>}</code> 上。</p>
+<h4 id="移动行"><a href="#移动行" class="headerlink" title="移动行"></a>移动行</h4><p>: 起始行,结束行 move 目标行</p>
+<p>例如，把第3行移动到第7行的位置<br><code>:3 move 7</code><br>把第5行到第7行移动到第12行的位置<br><code>:5,7 move 12</code></p>
+<p>或者 dd 然后在合适的地方 p 或 P</p>
+<p><em>最好还是做个键盘映射吧</em><br><code>nnoremap &lt;C-S-Up&gt; dd&lt;Up&gt;P</code><br><code>nnoremap &lt;C-S-Down&gt; ddp</code><br>这样就可以像SublimeText 里一样使用Ctrl + Shift + 上下键 来移动光标所在的行了</p>
+<h3 id="翻页"><a href="#翻页" class="headerlink" title="翻页"></a>翻页</h3><h4 id="整页翻页"><a href="#整页翻页" class="headerlink" title="整页翻页"></a>整页翻页</h4><p><code>ctrl-f</code><br><code>ctrl-b</code><br>f = forword，b = backward</p>
+<h4 id="翻半页"><a href="#翻半页" class="headerlink" title="翻半页"></a>翻半页</h4><p><code>ctrl-d</code><br><code>ctlr-u</code><br>d = down，u = up</p>
+<h4 id="滚一行"><a href="#滚一行" class="headerlink" title="滚一行"></a>滚一行</h4><p><code>ctrl-e</code><br><code>ctrl-y</code></p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p><code>x</code> 向后删除一个字符 (相当于<code>del</code>键)<br><code>nx</code> 向后删除n个字符</p>
+<p><code>X</code> 向前删除一个字符(相当于<code>backspace</code>键)<br><code>nX</code> 向前删除n个字符</p>
+<p><code>d0</code>删除光标所在处，到该行的最前一个字符<br><code>d$</code>删除光标所在处，到该行的最后一个字符<br><code>D</code> 删除当前字符至行尾。D=d$</p>
+<h4 id="删除整行"><a href="#删除整行" class="headerlink" title="删除整行"></a>删除整行</h4><p><code>dd</code>删除光标所在行<br><code>ndd</code>删除光标所在的向下n行</p>
+<p><code>dgg</code> 删除当前行之前所有行（包括当前行）<br><code>dnG</code>删除光标所在行到第n行的所有数据（包括当前行）<br><code>dG</code>删除光标所在到最后一行的所有数据（包括当前行）</p>
+<p><code>:1,$d</code> 删除所有行<br><code>:8,$d</code> 删除第8行及以后所有的行<br><code>:2,10d</code> 删除2-10行</p>
+<h3 id="插入行"><a href="#插入行" class="headerlink" title="插入行"></a>插入行</h3><p><code>o</code> 在目前光标所在的下一行处插入新的一行<br><code>O</code>在目前光标所在处的上一行插入新的一行</p>
+<h3 id="合并行"><a href="#合并行" class="headerlink" title="合并行"></a>合并行</h3><p><code>J</code>  可用作删除两行之间的空行，实际上是合并两行。</p>
+<p><code>:3,6j</code> 将3-6行合并成一行</p>
+<p><code>ggvGJ</code> 将所有行合并成一行<br>gg 用于跳到行首，v 转换成 visual 模式，G 跳到最后一行，J 合并行</p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><p><code>yy</code>复制光标所在的那一行<br><code>nyy</code>复制光标所在的向下n列</p>
+<p><code>ynG</code> 复制光标所在行到第n行的所有数据<br><code>yG</code> 复制光标所在行到最后一行的所有数据</p>
+<p><code>y0</code> 复制光标所在的那个字符到该行行首的所有数据<br><code>y$</code> 复制光标所在的那个字符到该行行尾的所有数据</p>
+<p><code>p</code> 将已复制或用dd删除的数据粘贴在光标的下一行<br><code>P</code> 粘贴在光标的上一行<br><code>np</code> 这里n代表一个数字，将剪切板上的内容复制n遍</p>
+<h3 id="撤销和重做"><a href="#撤销和重做" class="headerlink" title="撤销和重做"></a>撤销和重做</h3><p><code>u</code> 撤销前一个操作<br><code>.</code> 重复前一个操作<br><code>Ctrl+r</code> 重做上一个操作（恢复使用u撤销的内容）</p>
+<h3 id="替换和查找"><a href="#替换和查找" class="headerlink" title="替换和查找"></a>替换和查找</h3><p><code>/word</code>向光标向下寻找一个名称为word的字符串<br><code>?word</code>向光标向上寻找一个名称为word的字符串<br><code>:n1,n2s/word1/word2/g</code>n1与n2为数字，在第n1与n2行之间查找word1 这个字符串，并将该字符串替换为word2<br><code>:1,$s/word1/word2/g</code>从第一行到最后一行查找word1字符串，并将该字符串替换为word2<br><code>:1,$s/word1/word2/gc</code>从第一行到最后一行查找word1字符串，并将该字符串替换为word2 ，且在替换前提示用户确认是否进行替换</p>
+<h3 id="保存和退出"><a href="#保存和退出" class="headerlink" title="保存和退出"></a>保存和退出</h3><p><code>:w</code> 保存编辑的内容<br><code>:w!</code>强制写入该文件，但跟对该文件的权限有关<br><code>:q</code> 离开<br><code>:q!</code> 不保存修改强制离开<br><code>:wq</code> 保存后离开<br><code>:x</code> 保存后离开<br><code>ZZ</code> 若文件没有更动，则不保存离开，若文件已经被更改过，则保存后离开</p>
+<h3 id="新建文件和改名"><a href="#新建文件和改名" class="headerlink" title="新建文件和改名"></a>新建文件和改名</h3><p><code>:w fileName</code> 将编辑的数据保存成另一个文件（类似另存）并命名为fileName<br><code>:f newFileName</code>修改当前文件名称为newFileName<br><code>:new 文件名.后缀</code>新建文件，新建后，记得使用<code>:w</code>保存，否则直接关闭不会产生文件</p>
+<h3 id="文件之间切换"><a href="#文件之间切换" class="headerlink" title="文件之间切换"></a>文件之间切换</h3><p><code>Ctrl+ww</code><br>也可以用<code>:ls</code>查看已经打开的文件列表和编号<br>然后使用<code>:e 编号</code>切换到需要编辑的文件</p>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p><code>:E</code> <strong>查看目录</strong><br>然后按<code>j</code>,<code>k</code>上下移动，按<code>Enter</code>进入到目录中<br><code>–</code>  到上级目录<br><code>D</code>  删除文件<br><code>R</code>  改文件名<br><code>s</code>  对文件排序<br><code>x</code>  执行文件<br><code>:cd 目录路径</code>  修改当前操作目录<br><code>:pwd</code>  查看当前路径位置</p>
+<h3 id="显示文件目录"><a href="#显示文件目录" class="headerlink" title="显示文件目录"></a>显示文件目录</h3><p><code>:He</code>在下边分屏浏览目录<br><code>:He!</code>在上边</p>
+<p><code>:Ve</code>在左边分屏浏览目录<br><code>:Ve!</code>在右边</p>
+<p><code>Ctrl+w+c</code>关闭当前窗口（关闭分屏)<br><code>Ctrl+w+q</code>关闭当前窗口，若这是最后一个窗口则退出Vim</p>
+<h3 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h3><p>vim中大小写转化的命令主要是围绕着“gu”和“gU”两个命令展开的。<br>语法格式为：<em>[开始位置]</em> gu/Gu <em>[结束位置]</em><br>其中：<br><code>gu</code> 把选定范围全部小写<br><code>gU</code> 把选定范围全部大写</p>
+<p>1、整篇文章大小写转换</p>
+<p><code>ggguG</code> 整篇文章转换为小写（ 或 <code>1GguG</code>）<br><code>gggUG</code>  整篇文章转换为大写（或 <code>1GgUG</code>）</p>
+<blockquote>
+<p>解释一下：ggguG分作三段gg gu G<br>gg=文件头<br>gu=把选定范围全部小写<br>gU=把选定范围全部大写<br>G=文件尾<br>1G=文件第一行（nG为文件第n行）</p>
+</blockquote>
+<p>2、转换几行的大小写</p>
+<p><code>g~~</code>  切换光标所在行字母的大小写</p>
+<p><code>gUU</code> 光标所在的行全部变成大写<br><code>guU</code> 光标所在的行全部变成小写</p>
+<p><code>ngUU</code> 从光标所在行往下n行都变成大写<br><code>nguU</code> 从光标所在行往下n行都变成小写</p>
+<p><code>ngUG</code> 从第n行到光标所在的行都变为大写<br><code>nguG</code> 从第n行到光标所在的行都变为小写</p>
+<p><code>gU0</code> 从光标所在位置到行首都变为大写<br><code>gU$</code>从光标所在位置到行尾都变为大写<br><em>（若要变成小写将其中的<code>gU</code>改为<code>gu</code>即可）</em><br><code>gUG</code>从光标所在位置到文章最后一个字符，都变为大写<br><code>gU1G</code>从光标所在位置到文章第一个字符，都变为大写</p>
+<p>3、只转化某几个单词的大小写</p>
+<p><code>~</code> 切换光标所在的字母大小写</p>
+<p><code>n~</code> 将光标位置开始的n个字母改变大小写（此处n为一个数字）</p>
+<p><code>gUw</code> 或 <code>gUw</code> 将光标所在单词的后面几个字母改成大写<br><code>guw</code>或 <code>gue</code>  将光标下的单词的后面几个字母改成小写<br>例如：Example hello world<br>当光标在字母“a”位置时，转换的是“ample”这个几个字母</p>
+<p> 若转换光标后面5个单词的大小写，命令如下：<br>转为小写：gu5w 或 gu5e<br>转为大写：gU5w 或 gU5e</p>
+<h3 id="查看编码"><a href="#查看编码" class="headerlink" title="查看编码"></a>查看编码</h3><p><code>ga</code>查看光标处字符的ascii码<br><code>g8</code>查看光标处字符的utf-8编码</p>
+<h3 id="Vim的分屏功能"><a href="#Vim的分屏功能" class="headerlink" title="Vim的分屏功能"></a><a href="https://coolshell.cn/articles/1679.html" target="_blank" rel="external">Vim的分屏功能</a></h3><h3 id="多行编辑"><a href="#多行编辑" class="headerlink" title="多行编辑"></a>多行编辑</h3><p>可以考虑用列编辑模式.<br> Ctrl-v  进入列编辑模式 (win下Gvim使用Ctrl-Q)<br> （j or k  选择要编辑的范围）<br> I or A 进入编辑模式，输入要编辑的内容<br> ESC 结束</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/01/08/python符号/" rel="next" title="python符号">
+    上一篇：python符号
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/09/10/分区与格式化数据盘/" rel="next" title="分区与格式化数据盘">
+    下一篇：分区与格式化数据盘
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer indigo darken-1">
+    
+    <div class="footer-container container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="http://weibo.com/" target="_blank">
+                        <i class="fa fa-2x fa-weibo"></i>
+                    </a>
+                
+                    <a class="social-link" href="https://github.com/id88/" target="_blank">
+                        <i class="fa fa-2x fa-github"></i>
+                    </a>
+                
+                
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://" target="_blank">九院跆协</a>
+                
+                    <a class="social-link" href="https://aquilao.github.io/Blog/" target="_blank">Aquilao的博客</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright pink-link-context">
+        <div class="container">
+            © 2017-2018　youif.cn　All rights reserved.　　 　　本博客由 Hexo 强力驱动 | 主题 raytaylorism　　
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
