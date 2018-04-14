@@ -7,15 +7,16 @@
 
     
 
-    <title>计算机编码（一） | 月尚の博客</title>
+    <title>计算机编码（四） | 月尚の博客</title>
     
     
-    <meta name="description" content="学习计算机的难免会遇到一些关于编码的问题。我该用什么编码？这些编码之间有什么不同？这些编码之间有什么联系？本文就笔者在学习的过程中谈谈我对计算机编码的一些认识，当然这些关于编码的认识大多是来源于博主在网络上收集整理得来的。">
+    <meta name="description" content="网页编码就是那点事本文出自：潜行者m的博客
+编码一直是让新手头疼的问题，特别是 GBK、GB2312、UTF-8 这三个比较常见的网页编码的区别，更是让许多新手晕头转向，怎么解释也解释不清楚。但是编码又是那么重要，特别在网页这一块。如果你打出来的不是乱码，而网页中出现了乱码，绝大部分原因就出在了编码">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="计算机编码（一）"/>
+    <meta property="og:title" content="计算机编码（四）"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -233,12 +234,12 @@
             <div class="article-title">
                 
     
-        <h1>计算机编码（一）</h1>
+        <h1>计算机编码（四）</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2017-08-23T16:00:00.000Z"><a href="/2017/08/24/计算机编码（一）/">2017-08-24</a></time>
+            <time class="pink-link-context" datetime="2017-08-23T16:00:00.000Z"><a href="/2017/08/24/计算机编码（四）/">2017-08-24</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -256,60 +257,54 @@
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#文件编码与字符编码"><span class="section table-of-contents-text">文件编码与字符编码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#编码与解码过程"><span class="section table-of-contents-text">编码与解码过程</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#什么是编码"><span class="section table-of-contents-text">什么是编码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#常见编码介绍"><span class="section table-of-contents-text">常见编码介绍</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#ansi编码"><span class="section table-of-contents-text">ansi编码</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#GB2312与GBK"><span class="section table-of-contents-text">GB2312与GBK</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#UNICODE与UTF-8"><span class="section table-of-contents-text">UNICODE与UTF-8</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#猜编码"><span class="section table-of-contents-text">猜编码</span></a></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#网页编码就是那点事"><span class="section table-of-contents-text">网页编码就是那点事</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#ANSI、GBK、GB2312、UTF-8、GB18030和-UNICODE"><span class="section table-of-contents-text">ANSI、GBK、GB2312、UTF-8、GB18030和-UNICODE</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#关于文件-BOM-头的问题"><span class="section table-of-contents-text">关于文件-BOM-头的问题</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#如何查看和修改某文档的编码"><span class="section table-of-contents-text">如何查看和修改某文档的编码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#IE6-的加载-CSS-文件-BUG"><span class="section table-of-contents-text">IE6-的加载-CSS-文件-BUG</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <p>学习计算机的难免会遇到一些关于编码的问题。我该用什么编码？这些编码之间有什么不同？这些编码之间有什么联系？<br>本文就笔者在学习的过程中谈谈我对计算机编码的一些认识，当然这些关于编码的认识大多是来源于博主在网络上收集整理得来的。</p>
-<a id="more"></a>
-<h2 id="文件编码与字符编码"><a href="#文件编码与字符编码" class="headerlink" title="文件编码与字符编码"></a>文件编码与字符编码</h2><p>首先明确一点，<strong>文件不存在什么编码</strong>(归根结底文件都是二进制文件，用ue打开可以看到都是一个个的16进制数)，<strong>只有文件中的字符才可以说编码</strong>。</p>
-<h2 id="编码与解码过程"><a href="#编码与解码过程" class="headerlink" title="编码与解码过程"></a>编码与解码过程</h2><p>字符通过某种编码组织起来存到文件里面，计算机通过这种编码解析解析文件，根据解析出来的文字绘制图片显示到显示设备中，这样我们就看到了文字。</p>
-<h2 id="什么是编码"><a href="#什么是编码" class="headerlink" title="什么是编码"></a>什么是编码</h2><p>事实上计算机只认识 0 和 1，然而我们却可以通过计算机来显示文本，这就是靠编码实现的。编码其实就是约定的一个协议，比如 ASCII 编码约定了大写字母 A 对应十进制数 65，那么在读取一个字符串的时候，看到 65，计算机就知道这是大写字母 A 的意思。</p>
-<p>由于计算机是美国人发明的，所以这个 ASCII 编码设计时只采用 1 个字节存储（事实上只用了 7 位，1 个字节有 8 位），包含了大小写英文字母、数字和一些符号。但是计算机在全世界普及之后，ASCII 编码就成了一个瓶颈，因为 1 个字节是完全不足以容纳各国语言的。</p>
-<p>大家都知道英文只用 26 个字母就可以组成不同的单词，而汉字光常用字就有好几千个，至少需要 2 个字节才足以存放，所以后来中国制订了 GB2312 编码，用于对汉字进行编码。</p>
-<p>然后日本为自己的文字制订了 Shift_JIS 编码，韩国为自己的文字制订了 Euc-kr 编码，一时之间，各国都制订了自己的标准。不难想象，不同的标准放在一起，就难免出现冲突。这也正是为什么最初的计算机总是容易看到乱码的现象。</p>
-<p>为了解决这个问题，Unicode 编码应运而生。Unicode 组织的想法最初也很简单：创建一个足够大的编码，将所有国家的编码都加进来，进行统一标准。</p>
-<p>没错，这样问题就解决了。但新的问题也出现了：如果你写的文本只包含英文和数字，那么用 Unicode 编码就显得特别浪费存储空间（用 ASCII 编码只占用一半的存储空间）。所以本着能省一点是一点的精神，Unicode 还创造出了多种实现方式。</p>
-<p>比如常用的 UTF-8 编码就是 Unicode 的一种实现方式，它是可变长编码。简单地说，就是当你的文本是 ASCII 编码的字符时，它用 1 个字节存放；而当你的文本是其它 Unicode 字符的情况，它将按一定算法转换，每个字符使用 1~3 个字节存放。这样便实现了有效节省空间的目的。</p>
-<h2 id="常见编码介绍"><a href="#常见编码介绍" class="headerlink" title="常见编码介绍"></a>常见编码介绍</h2><h4 id="ansi编码"><a href="#ansi编码" class="headerlink" title="ansi编码"></a>ansi编码</h4><p>最初的计算机是又8个晶体管，通过晶体管的开合与排列可以表示数种状态，所以一个字节就定义为8bit，而一个bit只能有0，1开关的表示，2的8次方是256，所以最初的计算机只能表示256种状态。</p>
-<p>人们定义了前32个为状态字符比如翻页，换行，发出（嘟）的声音等，后来人们为了用计算机存储文字，又把空格，英文字母，数字等加进了进来，总共使用了127个，这时候大家把这个存储方案叫做ANSI的ASCII编码<a href="http://www.dreamdu.com/xhtml/ascii/" target="_blank" rel="noopener">American Standard Code for Information Interchange，美国信息互换标准代码</a>，这个表存储英文已经没有 问题了，但是127个里并不包含其它欧洲国际的文字，人们又继续扩展ASCII表的内容，加入了一些字符，与一些画表格的符号，直接扩展到255个。</p>
-<h3 id="GB2312与GBK"><a href="#GB2312与GBK" class="headerlink" title="GB2312与GBK"></a>GB2312与GBK</h3><p>国人发现只使用ASCII表根本无法表示汉字！怎么办？没有什么能难道我们！于是我们发明了GB2312编码，此编码完全忽略了ASCII表中 127位后面的内容，127位前面的内容保留，如果两个字节同时大于127(7F)就认为这两个字节表示一个汉字，同时像标点、字母也都重新使用两个字节 定义了一遍，这就是我们经常说的 全角，这种方案可以表示6000种文字。</p>
-<p>但是中国的文字太复杂6000个字也不够用，人们开始扩展GB2312，规定只要一个字节大于127，这个字节和后面的字节组合起来就代表一个汉字，这种编码成为GBK，于是又增加了20000多个汉字！</p>
-<p>现在明白meta的编码信息里为什么有GB2312与GBK了吧？：）</p>
-<pre><code>&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=GB2312&quot; /&gt;
-&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=GBK&quot; /&gt;
-</code></pre><p>这样很多国家都开始定义自己的编码了，日本，韩国等。甚至连中国的台湾省都定义了一种编码 BIG5。所以在当时一个程序要想适应多国语言简直要把人郁闷死。</p>
-<p>如果搞过windows编程的人应该知道，win里面有多字节字符集MBCS（multi-byte character set）的说法，而且MBCS包含两种字符类型，单字节字符SBCS（single-byte characters set）和双字节字符（double-byte characters set）DBCS。我们的GBK与GB2312都是DBCS。所以我们在编程时经常遇到一个中文字符等于两个英文字符的事情。BIG5与日本韩国的编码也 都属于DBCS。</p>
-<p>这下清楚了吧，根本没什么ansi文件或gb2312文件，文件打开时会根据操作系统的编码方式（就是安装在操作系统中的编码解析方式）来尝试打开文件，如果安装了中文编码，就把ansi文件当作中文打开，如果日文编码，就当作日文打开。</p>
-<h3 id="UNICODE与UTF-8"><a href="#UNICODE与UTF-8" class="headerlink" title="UNICODE与UTF-8"></a>UNICODE与UTF-8</h3><p>ISO最后提出了UNICODE(Universal Multiple-Octet Coded Character Set，简称 UCS)编码来解决所有的问题。</p>
-<p>UNICODE编码方式规定使用两个字节(16位)表示表示一个字符，算算2的16次方是多少？原来ANSI规定的都扩充为2字节，并且把所有已知的语言都编码进UNICODE。UNICODE可以表示65536个字符。</p>
-<p>这下多国语言程序开始高兴了，使用UNICODE全部搞定！于是微软重现编辑windows内核，完全使用UNICODE编码，搞过win编程的人应该都知道，以A或W结尾的函数，还有灵巧的_T宏吧？</p>
-<p>虽然UNICODE有很多优点，但是缺点也不少，我先总结我知道的两点：</p>
-<p>1，狂占空间，以前一个字节可以表示，现在却要用两个字节了，网络上有80%属于英文字符，这下网络几乎要扩大一倍！</p>
-<p>所以又有人研究出来了UTF-8(Unicode Translation Format - 8)编码，UNICODE转换格式，对于常用字符使用单字节，汉字等使用双字节。8代表每次在网络上传输8位，如果是UTF-16就是每次传输16位。搞 过网络编程的朋友应该知道，字节序（就是字节的排放顺序）分为两种，主机字节序与网络字节序，就是大头（俗称）在前，小头在前的问题，在网络上面传输的流 的字节序很可能是不一致的，于是需要使用一种方法通知接收端，传输流的字节序。有人发明了一种简单的方法，在每个流的开始加上FFEF或EFFF，分别主 机与网络字节序，我们可以使用记事本保存一个UNICODE文件，再使用ue打开看看（HEX方式打开）。所以有时候网页传到网上，在网页最开始的地方会 出现一个字符，这个有时候很令人费解。</p>
-<p>用记事本新建立两个文件存为UNICODE与UNICODE big endian模式，输入梦之都，保存再用ue打开。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UNICODE</span><br><span class="line"></span><br><span class="line">FF FE A6 68 4B 4E FD 90</span><br><span class="line"></span><br><span class="line">UNICODE big endian</span><br><span class="line"></span><br><span class="line">FE FF 68 A6 4E 4B 90 FD (观察，没两个字节和上面的对比)</span><br></pre></td></tr></table></figure>
-<p>2，UNICODE与GBK等两字节编码完全不兼容，无法找到一种简单的方式转换(只能使用查找表的方式)</p>
-<p>这点我们可以使用记事本新建立两个文件一个ansi的文件，另一个utf8的文件，分别写入“梦之都” ，保存。使用ue的hex模式打开我们会看到。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UNICODE</span><br><span class="line"></span><br><span class="line">FF FE A6 68 4B 4E FD 90</span><br><span class="line"></span><br><span class="line">ansi</span><br><span class="line"></span><br><span class="line">C3 CE D6 AE B6 BC</span><br></pre></td></tr></table></figure>
-<h3 id="猜编码"><a href="#猜编码" class="headerlink" title="猜编码"></a>猜编码</h3><p>在windows系统中打开文件时，是使用了猜的方式选择解析文件内容编码系统，如果文件开头使用了FEFF或FFFE，win系统认为unicode编码，否则为ANSI编码，如果是ANSI编码继续分析，如果一个字节大于127，就证明这个字节与后面的字节组成了一个汉字。</p>
-<p>所以windows中文系统下，如果ansi文件，那么就会用gb2312方式转换，如果是日文系统，就会使用日文方式转变，但是绝对不能说ansi文件里面有中文字符就是gb2312！一个gb2312占用两个字节。而utf8 win系统在前面加了几个字节以示区别。</p>
-<p>通过这种方式分析时会产生一个很著名的问题，如果用记事本输入“联通”保存，再打开，发现“联通”两个字没了！为什么没有了，大家可以自己分析一下。有人说这就是联通竞争不过移动的原因。</p>
-<p>本文内容摘自：</p>
-<ul>
-<li><a href="http://bbs.fishc.com/thread-66084-1-2.html" target="_blank" rel="noopener">http://bbs.fishc.com/thread-66084-1-2.html</a></li>
-<li><a href="http://blog.163.com/longsu2010@yeah/blog/static/173612348201173115733728/" target="_blank" rel="noopener">http://blog.163.com/longsu2010@yeah/blog/static/173612348201173115733728/</a></li>
-</ul>
+                <h2 id="网页编码就是那点事"><a href="#网页编码就是那点事" class="headerlink" title="网页编码就是那点事"></a>网页编码就是那点事</h2><p>本文出自：<a href="http://www.qianxingzhem.com/post-1499.html" target="_blank" rel="noopener">潜行者m</a>的博客</p>
+<p>编码一直是让新手头疼的问题，特别是 GBK、GB2312、UTF-8 这三个比较常见的网页编码的区别，更是让许多新手晕头转向，怎么解释也解释不清楚。但是编码又是那么重要，特别在网页这一块。如果你打出来的不是乱码，而网页中出现了乱码，绝大部分原因就出在了编码上了。此外除了乱码之外，还会出现一些其他问题（例如：IE6 的 CSS 加载问题）等等。潜行者m 写出本文的目的，就是要彻底解释清楚这个编码问题！如果你遇到了类似的问题，那就要仔细的看看这篇文章。</p>
+<h3 id="ANSI、GBK、GB2312、UTF-8、GB18030和-UNICODE"><a href="#ANSI、GBK、GB2312、UTF-8、GB18030和-UNICODE" class="headerlink" title="ANSI、GBK、GB2312、UTF-8、GB18030和-UNICODE"></a>ANSI、GBK、GB2312、UTF-8、GB18030和-UNICODE</h3><p>这几个编码关键词是比较常见的，虽然我把我们放在了一起说，但并不意味这这几个东西是平级的关系。本部分的内容，引用自网络略有修改，不知原文出处，故无法署名。</p>
+<p>很久很久以前，有一群人，他们决定用8个可以开合的晶体管来组合成不同的状态，以表示世界上的万物，他们把这称为”字节”。再后来，他们又做了一些可以处理这些字节的机器，机器开动了，可以用字节来组合出很多状态，状态开始变来变去，他们就把这机器称为”计算机”。</p>
+<p>开始计算机只在美国用。八位的字节一共可以组合出256(2的8次方)种不同的状态。他们把其中的编号从0开始的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就要做一些约定的动作。遇上 00×10, 终端就换行，遇上0×07, 终端就向人们嘟嘟叫，例好遇上0x1b, 打印机就打印反白的字，或者终端就用彩色显示字母。他们看到这样很好，于是就把这些0×20以下的字节状态称为”控制码”。</p>
+<p>他们又把所有的空格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号，这样计算机就可以用不同字节来存储英语的文字 了。大家看到这样，都感觉很好，于是大家都把这个方案叫做<code>ANSI</code>的<code>Ascii</code>编码（American Standard Code for Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的ASCII方案来保存英文文字。</p>
+<p>后来计算机发展越来越广泛，世界各国为了可以在计算机保存他们的文字，他们决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用下到的横线、竖线、交叉等形状，一直把序号编到了 最后一个状态255。从128到255这一页的字符集被称”扩展字符集”。但是原有的编号方法，已经再也放不下更多的编码。</p>
+<p>等中国人们得到计算机时，已经没有可以利用的字节状态来表示汉字，况且有6000多个常用汉字需要保存呢。于是国人就自主研发，把那些127号之后的奇异符号们直接取消掉。规定：一个小于127的字符的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节（他称之为高字节）从0xA1用到 0xF7，后面一个字节（低字节）从0xA1到0xFE，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的字母、日文的假名们都编进去了，连在 ASCII 里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。</p>
+<p>中国人民看到这样很不错，于是就把这种汉字方案叫做 “<strong>GB2312</strong>”。GB2312 是对 ASCII 的中文扩展。</p>
+<p>但是中国的汉字太多了，后来还是不够用，于是干脆不再要求低字节一定是127号之后的内码，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是 扩展字符集里的内容。结果扩展之后的编码方案被称为 GBK 标准，GBK 包括了 GB2312 的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，GBK 扩成了 GB18030。从此之后，中华民族的文化就可以在计算机时代中传承了。</p>
+<p>因为当时各个国家都像中国这样搞出一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码。当时的中国人想让电脑显示汉字，就必须装上一个”汉字系统”，专门用来处理汉字的显示、输入的问题，装错了字符系统，显示就会乱了套。这怎么办？就在这时，一个叫 ISO （国际标谁化组织）的国际组织决定着手解决这个问题。他们采用的方法很简单：废了所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号的编码！他们打算叫它”Universal Multiple-Octet Coded Character Set”，简称 UCS, 俗称 “UNICODE”。</p>
+<p>UNICODE 开始制订时，计算机的存储器容量极大地发展了，空间再也不成为问题了。于是 ISO 就直接规定必须用两个字节，也就是16位来统一表示所有的字符，对于 ascii 里的那些”半角”字符，UNICODE 包持其原编码不变，只是将其长度由原来的8位扩展为16位，而其他文化和语言的字符则全部重新统一编码。由于”半角”英文符号只需要用到低8位，所以其高 8位永远是0，因此这种大气的方案在保存英文文本时会多浪费一倍的空间。</p>
+<p>但是，UNICODE 在制订时没有考虑与任何一种现有的编码方案保持兼容，这使得 GBK 与UNICODE 在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从UNICODE编码和另一种编码进行转换，这种转换必须通过查表来进行。UNICODE 是用两个字节来表示为一个字符，他总共可以组合出65535不同的字符，这大概已经可以覆盖世界上所有文化的符号。</p>
+<p>UNICODE 来到时，一起到来的还有计算机网络的兴起，UNICODE 如何在网络上传输也是一个必须考虑的问题，于是面向传输的众多 UTF（UCS Transfer Format）标准出现了，顾名思义，UTF8 就是每次8个位传输数据，而 UTF16 就是每次16个位，只不过为了传输时的可靠性，从UNICODE到 UTF时并不是直接的对应，而是要过一些算法和规则来转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">UTF-8</span><br><span class="line"></span><br><span class="line">0000 – 007F</span><br><span class="line"></span><br><span class="line">0xxxxxxx</span><br><span class="line"></span><br><span class="line">0080 – 07FF</span><br><span class="line"></span><br><span class="line">110xxxxx 10xxxxxx</span><br><span class="line"></span><br><span class="line">0800 – FFFF</span><br><span class="line"></span><br><span class="line">1110xxxx 10xxxxxx 10xxxxxx</span><br></pre></td></tr></table></figure>
+<p>看完这些，相信你对于这几个编码关系等，了解的比较清楚了吧。我再来简单的总结一下：</p>
+<p>中国人民通过对 ASCII 编码的中文扩充改造，产生了 GB2312 编码，可以表示6000多个常用汉字。<br>汉字实在是太多了，包括繁体和各种字符，于是产生了 GBK 编码，它包括了 GB2312 中的编码，同时扩充了很多。<br>中国是个多民族国家，各个民族几乎都有自己独立的语言系统，为了表示那些字符，继续把 GBK 编码扩充为 GB18030 编码。<br>每个国家都像中国一样，把自己的语言编码，于是出现了各种各样的编码，如果你不安装相应的编码，就无法解释相应编码想表达的内容。<br>终于，有个叫 <strong>ISO</strong> 的组织看不下去了。他们一起创造了一种编码 UNICODE ，这种编码非常大，大到可以容纳世界上任何一个文字和标志。所以只要电脑上有 UNICODE 这种编码系统，无论是全球哪种文字，只需要保存文件的时候，保存成 UNICODE 编码就可以被其他电脑正常解释。<br>UNICODE 在网络传输中，出现了两个标准 UTF-8 和 UTF-16，分别每次传输 8个位和 16个位。<br>于是就会有人产生疑问，UTF-8 既然能保存那么多文字、符号，为什么国内还有这么多使用 GBK 等编码的人？因为 UTF-8 等编码体积比较大，占电脑空间比较多，如果面向的使用人群绝大部分都是中国人，用 GBK 等编码也可以。但是目前的电脑来看，硬盘都是白菜价，电脑性能也已经足够无视这点性能的消耗了。所以推荐所有的网页使用统一编码：<strong>UTF-8</strong>。</p>
+<p>关于记事本无法单独保存“联通”的问题</p>
+<p>当你新建一个 文本文档 之后，在里面输入 “联通” 两个字，然后保存。当你再次打开的时候，原来输入的 “联通” 会变成两个乱码。<br><img src="https://www.youif.cn/2017/08/24/%E7%BC%96%E7%A0%81%E5%9B%9B/images/char1.png" alt="enter description here" title="char1"></p>
+<p>这个问题就是因为 GB2312 编码与 UTF8 编码产生了编码冲撞造成的。从网上引来一段从UNICODE到UTF8的转换规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">UTF-8</span><br><span class="line"></span><br><span class="line">0000 – 007F</span><br><span class="line"></span><br><span class="line">0xxxxxxx</span><br><span class="line"></span><br><span class="line">0080 – 07FF</span><br><span class="line"></span><br><span class="line">110xxxxx 10xxxxxx</span><br><span class="line"></span><br><span class="line">0800 – FFFF</span><br><span class="line"></span><br><span class="line">1110xxxx 10xxxxxx 10xxxxxx</span><br></pre></td></tr></table></figure>
+<p>例如”汉”字的Unicode编码是<code>6C49</code>。6C49在<code>0800-FFFF</code>之间，所以要用3字节模板：<code>1110xxxx</code> <code>10xxxxxx</code> <code>10xxxxxx</code>。将6C49写成二进制是：<code>0110 1100 0100 1001</code>，将这个比特流按三字节模板的分段方法分为<code>0110</code> <code>110001</code> <code>001001</code>，依次代替模板中的<code>x</code>，得到：<code>1110-0110 10-110001 10-001001</code>，即<code>E6 B1 89</code>，这就是其UTF8的编码。</p>
+<p>而当你新建一个文本文件时，记事本的编码默认是ANSI, 如果你在ANSI的编码输入汉字，那么他实际就是GB系列的编码方式，在这种编码下，”联通”的内码是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c1 1100 0001</span><br><span class="line"></span><br><span class="line">aa 1010 1010</span><br><span class="line"></span><br><span class="line">cd 1100 1101</span><br><span class="line"></span><br><span class="line">a8 1010 1000</span><br></pre></td></tr></table></figure>
+<p>注意到了吗？第一二个字节、第三四个字节的起始部分的都是”110″和”10″，正好与UTF8规则里的两字节模板是一致的，于是再次打开记事本 时，记事本就误认为这是一个UTF8编码的文件，让我们把第一个字节的110和第二个字节的10去掉，我们就得到了”00001 101010″，再把各位对齐，补上前导的0，就得到了”0000 0000 0110 1010″，不好意思，这是UNICODE的006A，也就是小写的字母”j”，而之后的两字节用UTF8解码之后是0368，这个字符什么也不是。这就 是只有”联通”两个字的文件没有办法在记事本里正常显示的原因。</p>
+<p>由这个问题，可以发散出很多问题。比较常见的一个问题就是：我已经把文件保存成了 XX 编码，为什么每次打开，还是原来的 YY 编码？！原因就在于此，你虽然保存成了 XX 编码，但是系统识别的时候，却误识别为了 YY 编码，所以还是显示为 YY 编码。为了避免这个问题，微软公司弄出了一个叫 <strong>BOM</strong> 头的东西。</p>
+<h3 id="关于文件-BOM-头的问题"><a href="#关于文件-BOM-头的问题" class="headerlink" title="关于文件-BOM-头的问题"></a>关于文件-BOM-头的问题</h3><p>当使用类似 WINDOWS 自带的记事本等软件，在保存一个以UTF-8编码的文件时，会在文件开始的地方插入三个不可见的字符（0xEF 0xBB 0xBF，即BOM）。它是一串隐藏的字符，用于让记事本等编辑器识别这个文件是否以UTF-8编码。这样就可以避免这个问题了。对于一般的文件，这样并不会产生什么麻烦。</p>
+<p>这样做，也有弊处，尤其体现在网页中。PHP并不会忽略BOM，所以在读取、包含或者引用这些文件时，会把BOM作为该文件开头正文 的一部分。根据嵌入式语言的特点，这串字符将被直接执行（显示）出来。由此造成即使页面的 top padding 设置为0，也无法让整个网页紧贴浏览器顶部，因为在html一开头有这3个字符。如果你在网页中，发现了由未知的空白等，很有可能就是由于文件有 BOM 头造成的。遇到这种问题，把文件保存的时候，不要带有 BOM 头！</p>
+<h3 id="如何查看和修改某文档的编码"><a href="#如何查看和修改某文档的编码" class="headerlink" title="如何查看和修改某文档的编码"></a>如何查看和修改某文档的编码</h3><p>1，<strong>直接使用记事本查看和修改</strong>。我们可以用记事本打开文件，然后点击左上角的 “文件” =》“另存为”，这时候就会弹出一个保存的窗口。在下面选择好编码之后，点击保存就可以了。<br><img src="https://www.youif.cn/2017/08/24/%E7%BC%96%E7%A0%81%E5%9B%9B/images/char2.png" alt="enter description here" title="char2"></p>
+<p>但是这种方式的选择余地非常小，通常用来快速查看文件是什么编码。我更推荐使用下面的方法。</p>
+<p>2，<strong>使用其他文本编辑器（例如：notepad ++）来查看修改</strong>。几乎所有的成熟的文本编辑器（例如：Dreamweaver、Emeditor等），都可以快速查看或修改文件编码。这一点尤其体现在 notepad++ 上面。</p>
+<p>打开一个文件之后，会在右下角显示当前文件的编码。</p>
+<p>点击上面菜单栏中的 “encoding” 即可把当前文档转换成其他编码</p>
+<h3 id="IE6-的加载-CSS-文件-BUG"><a href="#IE6-的加载-CSS-文件-BUG" class="headerlink" title="IE6-的加载-CSS-文件-BUG"></a>IE6-的加载-CSS-文件-BUG</h3><p>当 HTML 文件的编码 与想要加载 CSS 的文件不一致的时候，IE6 将无法读取 CSS 文件，即 HTML 文件没有样式。就本人的观察，这个问题从未在其他浏览器中出现过，只在 IE6 中出现过。只需要把 CSS 文件，保存成 HTML 文件的编码即可。</p>
 
                 
-
-
 <p class="pink-link-context">
-    <a href="/2017/08/24/计算机编码（二）/" rel="next" title="计算机编码（二）">
-    下一篇：计算机编码（二）
+    <a href="/2017/08/24/计算机编码（六）/" rel="next" title="计算机编码（六）">
+    上一篇：计算机编码（六）
   </a>
 </p>
+
+
 
 
             </div>

@@ -7,13 +7,19 @@
 
     
 
-    <title>编码 | 月尚の博客</title>
+    <title>计算机编码（五） | 月尚の博客</title>
     
+    
+    <meta name="description" content="编码ANSI、GB2312、UNICODE与UTF-8区别本文出自天缘博客
+本文简要总结这几种编码的区别，具体用法就不说了，主要关注它们之间的区别。
+下面是内容为：“1234567890\r\nABCDEFGHIJ\r\n伟大的国际”内容在不同编码下的十六进制图：
+
+一、ANSIANSI同ISO88">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="计算机编码（五）"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -207,54 +213,100 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术花絮/">技术花絮</a><a class="breadcrumb" href="/categories/技术花絮/计算机编码/">计算机编码</a>
+
 
         
-            <a class="breadcrumb" href="/tags/编码/">编码</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>计算机编码（五）</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2017-08-23T16:00:00.000Z"><a href="/2017/08/24/计算机编码（五）/">2017-08-24</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/08/24/计算机编码（一）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-08-23T16:00:00.000Z">2017-08-24</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                计算机编码（一）
-            </a>
+            <a href="/tags/编码/" class="chip pink lighten-1">编码</a>
         
-            <a href="/2017/08/24/计算机编码（二）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-08-23T16:00:00.000Z">2017-08-24</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                计算机编码（二）
-            </a>
-        
-            <a href="/2017/08/24/计算机编码（五）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-08-23T16:00:00.000Z">2017-08-24</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                计算机编码（五）
-            </a>
-        
-            <a href="/2017/08/24/计算机编码（六）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-08-23T16:00:00.000Z">2017-08-24</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                计算机编码（六）
-            </a>
-        
-            <a href="/2017/08/24/计算机编码（四）/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-08-23T16:00:00.000Z">2017-08-24</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                计算机编码（四）
-            </a>
+            <a href="/tags/计算机编码/" class="chip pink lighten-1">计算机编码</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#编码ANSI、GB2312、UNICODE与UTF-8区别"><span class="section table-of-contents-text">编码ANSI、GB2312、UNICODE与UTF-8区别</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、ANSI"><span class="section table-of-contents-text">一、ANSI</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、GB2312-GBK"><span class="section table-of-contents-text">二、GB2312-GBK</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#三、UTF-8"><span class="section table-of-contents-text">三、UTF-8</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#三、UNICODE"><span class="section table-of-contents-text">三、UNICODE</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h1 id="编码ANSI、GB2312、UNICODE与UTF-8区别"><a href="#编码ANSI、GB2312、UNICODE与UTF-8区别" class="headerlink" title="编码ANSI、GB2312、UNICODE与UTF-8区别"></a>编码ANSI、GB2312、UNICODE与UTF-8区别</h1><p>本文出自<a href="http://www.metsky.com/archives/730.html" target="_blank" rel="noopener">天缘博客</a></p>
+<p>本文简要总结这几种编码的区别，具体用法就不说了，主要关注它们之间的区别。</p>
+<p>下面是内容为：“<code>1234567890\r\nABCDEFGHIJ\r\n伟大的国际</code>”内容在不同编码下的十六进制图：</p>
+<p><img src="http://www.metsky.com/upload/2014/09/201409091844374779.jpg" alt=""></p>
+<h2 id="一、ANSI"><a href="#一、ANSI" class="headerlink" title="一、ANSI"></a>一、ANSI</h2><p>ANSI同ISO8859-1一样，属于单字节编码，最多表示范围<code>0x00-0xFF</code>，255个字符，中文使用了双字节编码。上图中ANSI下中文“伟大的国际”，对应就是<code>CEB0 B4F3 B5C4 B9FA BCCA</code>。</p>
+<p>在简体中文操作系统中，ANSI编码对应就是GB2312编码，日文操作系统下，ANSI就是JIS编码，不能将不同语言内容存储在同一个ANSI编码文本中，因为ANSI编码限制无法区分编码所对应的语言类型。</p>
+<p>unicode是国际通用编码，所以，可以搜索出来。</p>
+<h2 id="二、GB2312-GBK"><a href="#二、GB2312-GBK" class="headerlink" title="二、GB2312-GBK"></a>二、GB2312-GBK</h2><p>GB2312/GBK，汉字国标编码，属于双字节编码，其中英文字母部分和iso8859-1一致，GBK编码能同时表示简体字和繁体字，GB2312只能表示简体字，GBK则兼容GB2312编码。</p>
+<h2 id="三、UTF-8"><a href="#三、UTF-8" class="headerlink" title="三、UTF-8"></a>三、UTF-8</h2><p>UTF-8本来设计主要用于网络传输，优点是单字节字节编码所以不用考虑字节序问题，但是目前也被应用在本地文档存储格式上， 上面图中“伟大的国际”占用15个字节位，每个汉字占用3字节编码。UTF属于不定长编码，每字符长度从1-6字节不等。</p>
+<p>上图中EF BB BF就是指UTF-8，FE FF就是指UTF-16，更多标志参考文末说明。</p>
+<h2 id="三、UNICODE"><a href="#三、UNICODE" class="headerlink" title="三、UNICODE"></a>三、UNICODE</h2><p>UNICODE是国际通用编码标准，定义了所有可用来表示字符的数值集合（code point），而我们常说的UNICODE编码则是指UTF-16 LE，UTF-16是Windows上默认的Unicode编码方式，常用的Word文档、标准化软件等都是使用Unicode编码，所以，操作系统、浏览器等默认也都支持UNICODE编码文档。上图中的UNICODE是定长双字节编码，UNICODE编码中除了英文部分，其它语种编码跟其它编码格式都不兼容。</p>
+<p>此外，还有Unicode big endian（大端）的说法，Unicode与Unicode big endian的区别就是在编码时小头优先与大头优先的区别。默认是小端存储，这属于编程方面的知识，普通用户无需关注，使用默认的UNICODE即可。</p>
+<p>其它，还有ISO8859-1（Latin-1）等很多种编码格式，因为使用并不主流，不再介绍，有兴趣可搜索维基百科。</p>
+<p>文件头编码标志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EF BB BF　　　 UTF-8</span><br><span class="line">FE FF　　　　　UTF-16/UCS-2, little endian</span><br><span class="line">FF FE　　　　　UTF-16/UCS-2, big endian</span><br><span class="line">FF FE 00 00　　UTF-32/UCS-4, little endian.</span><br><span class="line">00 00 FE FF　　UTF-32/UCS-4, big-endian.</span><br></pre></td></tr></table></figure>
+<p>UCS是ISO制定标准，只是命名不同，支持格式范围有点差别。本文先粗略整理了一下，后续再作完善！</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2017/08/24/计算机编码（二）/" rel="next" title="计算机编码（二）">
+    上一篇：计算机编码（二）
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2017/08/24/计算机编码（六）/" rel="next" title="计算机编码（六）">
+    下一篇：计算机编码（六）
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
