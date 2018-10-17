@@ -1,1 +1,0 @@
-[月尚の技术小屋](http://http://www.youif.cn/)
