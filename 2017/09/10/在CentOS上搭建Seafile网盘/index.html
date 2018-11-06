@@ -7,17 +7,17 @@
 
     
 
-    <title>协程 | 月尚の博客</title>
+    <title>在CentOS上搭建Seafile网盘 | 月尚の博客</title>
     
     
-    <meta name="description" content="协程协程，英文Coroutines，是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。
-最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。
-如何让 if 和 else同时进行？1234567891011# python3i">
+    <meta name="description" content="搭建 Seafile 专属网盘注册域名
+解析域名
+安装依赖环境使用yum安装 Python 及 MySQL：1yum install python python-setuptools python-imaging python-ldap python-memcached MySQL-python m">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="协程"/>
+    <meta property="og:title" content="在CentOS上搭建Seafile网盘"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -259,12 +259,12 @@
             <div class="article-title">
                 
     
-        <h1>协程</h1>
+        <h1>在CentOS上搭建Seafile网盘</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-09-10T16:00:00.000Z"><a href="/2018/09/11/协程/">2018-09-11</a></time>
+            <time class="pink-link-context" datetime="2017-09-09T16:00:00.000Z"><a href="/2017/09/10/在CentOS上搭建Seafile网盘/">2017-09-10</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -274,35 +274,48 @@
             
     <div class="tags-row">
         
-            <a href="/tags/标签/" class="chip pink lighten-1">标签</a>
+            <a href="/tags/个人网盘/" class="chip pink lighten-1">个人网盘</a>
+        
+            <a href="/tags/CentOS/" class="chip pink lighten-1">CentOS</a>
+        
+            <a href="/tags/Seafile/" class="chip pink lighten-1">Seafile</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#协程"><span class="section table-of-contents-text">协程</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#搭建-Seafile-专属网盘"><span class="section table-of-contents-text">搭建 Seafile 专属网盘</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#安装依赖环境"><span class="section table-of-contents-text">安装依赖环境</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#启动-MariaDB-服务："><span class="section table-of-contents-text">启动 MariaDB 服务：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#配置-MySQL"><span class="section table-of-contents-text">配置-MySQL</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#安装-Seafile"><span class="section table-of-contents-text">安装-Seafile</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#下载-Seafile-安装包："><span class="section table-of-contents-text">下载-Seafile-安装包：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#解压-Seafile-安装包："><span class="section table-of-contents-text">解压 Seafile 安装包：</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#安装-Seafile-安装包："><span class="section table-of-contents-text">安装 Seafile 安装包：</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#启动-Seafile-及修改防火墙规则"><span class="section table-of-contents-text">启动 Seafile 及修改防火墙规则</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#启动-Seafile"><span class="section table-of-contents-text">启动 Seafile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#修改防火墙规则"><span class="section table-of-contents-text">修改防火墙规则</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p>协程，英文Coroutines，是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。<br><img src="http://5b0988e595225.cdn.sohucs.com/images/20180622/6765e36cc4604fba897976638af03524.jpeg" alt="协程"></p>
-<p>最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。</p>
-<p><strong>如何让 if 和 else同时进行？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># python3</span><br><span class="line">import os</span><br><span class="line"> </span><br><span class="line">pid = os.fork()</span><br><span class="line">print(pid)</span><br><span class="line">if pid == 0:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;hello&apos;)</span><br><span class="line">else:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;goodbye&apos;)</span><br></pre></td></tr></table></figure></p>
-<p>1.协程是相互协作的，协程在一个线程里面，没有进程的切换，没有竞争资源，所以就不需要加锁，可以让cpu多核特性发挥到最大。<br>2.协程是生成器的消费者，一个生成器，加上一个生成器的消费者，就可以构成一组相互协作的子程序。(协程是一个消费型的生成器)<br>3.两个函数在互不调用的情况下相互协作。</p>
-<p>参考：<a href="https://blog.csdn.net/caoyu1221/article/details/80565008" target="_blank" rel="noopener">https://blog.csdn.net/caoyu1221/article/details/80565008</a></p>
+                <h2 id="搭建-Seafile-专属网盘"><a href="#搭建-Seafile-专属网盘" class="headerlink" title="搭建 Seafile 专属网盘"></a>搭建 Seafile 专属网盘</h2><p><em>注册域名</em></p>
+<p><em>解析域名</em></p>
+<h2 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h2><p>使用<code>yum</code>安装 Python 及 MySQL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install python python-setuptools python-imaging python-ldap python-memcached MySQL-python mariadb mariadb-server</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动-MariaDB-服务："><a href="#启动-MariaDB-服务：" class="headerlink" title="启动 MariaDB 服务："></a>启动 MariaDB 服务：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mariadb.service</span><br><span class="line"> sudo systemctl enable mariadb.service</span><br></pre></td></tr></table></figure>
+<h3 id="配置-MySQL"><a href="#配置-MySQL" class="headerlink" title="配置-MySQL"></a>配置-MySQL</h3><p>/usr/bin/mysql_secure_installation<br>配置过程输入参数如截图所示，其中 <code>New password</code> 和 <code>Re-enter new password</code> 字段都设置为 <code>Password</code>，其他字段一路回车使用默认值：</p>
+<h2 id="安装-Seafile"><a href="#安装-Seafile" class="headerlink" title="安装-Seafile"></a>安装-Seafile</h2><h3 id="下载-Seafile-安装包："><a href="#下载-Seafile-安装包：" class="headerlink" title="下载-Seafile-安装包："></a>下载-Seafile-安装包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mc.qcloudimg.com/static/archive/3d8addbe52be88df4f6139ec7e35b453/seafile-server_5.1.4_x86-64.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="解压-Seafile-安装包："><a href="#解压-Seafile-安装包：" class="headerlink" title="解压 Seafile 安装包："></a>解压 Seafile 安装包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf seafile-server_5.1.4_x86-64.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Seafile-安装包："><a href="#安装-Seafile-安装包：" class="headerlink" title="安装 Seafile 安装包："></a>安装 Seafile 安装包：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /opt/seafile/installed</span><br><span class="line">sudo mv seafile-server_5.1.4_x86-64.tar.gz /opt/seafile/installed</span><br><span class="line">sudo mv seafile-server-5.1.4/ /opt/seafile</span><br><span class="line">cd /opt/seafile/seafile-server-5.1.4</span><br><span class="line">sudo ./setup-seafile-mysql.sh</span><br></pre></td></tr></table></figure>
+<p>执行过程输入参数如截图所示，<code>[server name]</code> 字段输入 <code>Seafile</code>，<code>[ This server&#39;s ip or domain ]</code> 字段输入教程第一步申请的域名，<code>[ 1 or 2</code>] 字段选择 <code>1</code>，mysql 的<code>[ root password ]</code> 字段输入 <code>Password</code>，其他字段一路回车使用默认值</p>
+<h2 id="启动-Seafile-及修改防火墙规则"><a href="#启动-Seafile-及修改防火墙规则" class="headerlink" title="启动 Seafile 及修改防火墙规则"></a>启动 Seafile 及修改防火墙规则</h2><h3 id="启动-Seafile"><a href="#启动-Seafile" class="headerlink" title="启动 Seafile"></a>启动 Seafile</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ./seafile.sh start</span><br><span class="line">sudo ./seahub.sh start</span><br></pre></td></tr></table></figure>
+<p>执行过程输入参数如截图所示，其中<code>[ admin email ]</code> 设置为登录网盘的帐号，如 <a href="mailto:`admin@youif.cn" target="_blank" rel="noopener">`admin@youif.cn</a><code>，</code>[ admin password ]<code>和</code>[ admin password again<code>] 设置为登录网盘的密码，如</code>admin_Password`</p>
+<h3 id="修改防火墙规则"><a href="#修改防火墙规则" class="headerlink" title="修改防火墙规则"></a>修改防火墙规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --permanent --add-port=8082/tcp</span><br><span class="line">sudo firewall-cmd --zone=public --permanent --add-port=8000/tcp</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p><strong>大功告成！</strong></p>
+<p>可以通过 Ip 访问网盘：http://&lt;域名&gt;:8000<br>可以通过域名访问网盘：如 <a href="http://www.yourdomain.com:8000" target="_blank" rel="noopener">http://www.yourdomain.com:8000</a> ，其中 <a href="http://www.yourdomain.com" target="_blank" rel="noopener">www.yourdomain.com</a> 替换为注册的域名</p>
 
                 
 <p class="pink-link-context">
-    <a href="/2018/09/11/同步与异步IO/" rel="next" title="同步与异步I/O">
-    上一篇：同步与异步I/O
+    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
+    上一篇：phpMyAdmin提权
   </a>
 </p>
 
 
 
 <p class="pink-link-context">
-    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
-    下一篇：phpMyAdmin提权
+    <a href="/2017/08/24/计算机编码（一）/" rel="next" title="计算机编码（一）">
+    下一篇：计算机编码（一）
   </a>
 </p>
 

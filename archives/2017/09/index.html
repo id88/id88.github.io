@@ -7,17 +7,13 @@
 
     
 
-    <title>协程 | 月尚の博客</title>
+    <title>归档：2017/9 | 月尚の博客</title>
     
-    
-    <meta name="description" content="协程协程，英文Coroutines，是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。
-最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。
-如何让 if 和 else同时进行？1234567891011# python3i">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="协程"/>
+    
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -235,87 +231,40 @@
 
     <main>
         <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（分类目录）</span>
-        
-            
-    
-    
-    <a class="breadcrumb" href="/categories/未分类/">未分类</a>
-
-
+        <span class="breadcrumb">当前位置（归档）</span>
         
 
         
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
-                
-    
-        <h1>协程</h1>
-    
 
 
-            </div>
-            <time class="pink-link-context" datetime="2018-09-10T16:00:00.000Z"><a href="/2018/09/11/协程/">2018-09-11</a></time>
-
-            <span id="busuanzi_container_page_pv" class="read-times-container">
-    <i class="fa fa-eye"></i>
-    <span id="busuanzi_value_page_pv"></span>
-</span>
-
-            
-    <div class="tags-row">
+    <ul class="collapsible mt-0" data-collapsible="accordion">
         
-            <a href="/tags/标签/" class="chip pink lighten-1">标签</a>
         
-    </div>
-
-
-            <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#协程"><span class="section table-of-contents-text">协程</span></a></li></ol>
-</div>
-
-
-            <div class="entry pink-link-context">
-                <h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p>协程，英文Coroutines，是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。<br><img src="http://5b0988e595225.cdn.sohucs.com/images/20180622/6765e36cc4604fba897976638af03524.jpeg" alt="协程"></p>
-<p>最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。</p>
-<p><strong>如何让 if 和 else同时进行？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># python3</span><br><span class="line">import os</span><br><span class="line"> </span><br><span class="line">pid = os.fork()</span><br><span class="line">print(pid)</span><br><span class="line">if pid == 0:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;hello&apos;)</span><br><span class="line">else:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;goodbye&apos;)</span><br></pre></td></tr></table></figure></p>
-<p>1.协程是相互协作的，协程在一个线程里面，没有进程的切换，没有竞争资源，所以就不需要加锁，可以让cpu多核特性发挥到最大。<br>2.协程是生成器的消费者，一个生成器，加上一个生成器的消费者，就可以构成一组相互协作的子程序。(协程是一个消费型的生成器)<br>3.两个函数在互不调用的情况下相互协作。</p>
-<p>参考：<a href="https://blog.csdn.net/caoyu1221/article/details/80565008" target="_blank" rel="noopener">https://blog.csdn.net/caoyu1221/article/details/80565008</a></p>
-
-                
-<p class="pink-link-context">
-    <a href="/2018/09/11/同步与异步IO/" rel="next" title="同步与异步I/O">
-    上一篇：同步与异步I/O
-  </a>
-</p>
-
-
-
-<p class="pink-link-context">
-    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
-    下一篇：phpMyAdmin提权
-  </a>
-</p>
-
-
-            </div>
-			
-        </div>
-    </div>
-</article>
-
-
-
-
+            <li>
+                <div class="collapsible-header active">
+                    <i class="fa fa-archive"></i>2017
+                </div>
+                <div class="collapsible-body">
+                    <div class="collection">
+                        
+                            <a href="/2017/09/10/在CentOS上搭建Seafile网盘/" class="collection-item grey-text text-darken-1">
+                                <time datetime="2017-09-09T16:00:00.000Z">2017-09-10</time>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                在CentOS上搭建Seafile网盘
+                            </a>
+                        
+                    </div>
+                </div>
+            </li>
+        
+    </ul>
 
 
 </div>

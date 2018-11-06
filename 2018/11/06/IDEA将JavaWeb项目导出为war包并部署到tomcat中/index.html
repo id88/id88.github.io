@@ -7,17 +7,16 @@
 
     
 
-    <title>协程 | 月尚の博客</title>
+    <title>IDEA将JavaWeb项目导出为war包并部署到tomcat中 | 月尚の博客</title>
     
     
-    <meta name="description" content="协程协程，英文Coroutines，是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。
-最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。
-如何让 if 和 else同时进行？1234567891011# python3i">
+    <meta name="description" content="使用IDEA将JavaWeb项目导出为war包并部署到tomcat中参考：使用IDEA创建javaweb项目并配置详细步骤+导出war包详细步骤https://blog.csdn.net/qq_29668759/article/details/74779865
+导出为war包首先，Files–Pro">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="协程"/>
+    <meta property="og:title" content="IDEA将JavaWeb项目导出为war包并部署到tomcat中"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -259,12 +258,12 @@
             <div class="article-title">
                 
     
-        <h1>协程</h1>
+        <h1>IDEA将JavaWeb项目导出为war包并部署到tomcat中</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-09-10T16:00:00.000Z"><a href="/2018/09/11/协程/">2018-09-11</a></time>
+            <time class="pink-link-context" datetime="2018-11-05T16:00:00.000Z"><a href="/2018/11/06/IDEA将JavaWeb项目导出为war包并部署到tomcat中/">2018-11-06</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -280,29 +279,30 @@
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#协程"><span class="section table-of-contents-text">协程</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#使用IDEA将JavaWeb项目导出为war包并部署到tomcat中"><span class="section table-of-contents-text">使用IDEA将JavaWeb项目导出为war包并部署到tomcat中</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#导出为war包"><span class="section table-of-contents-text">导出为war包</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#将war包部署到tomcat中"><span class="section table-of-contents-text">将war包部署到tomcat中</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p>协程，英文Coroutines，是一种比线程更加轻量级的存在。正如一个进程可以拥有多个线程一样，一个线程也可以拥有多个协程。<br><img src="http://5b0988e595225.cdn.sohucs.com/images/20180622/6765e36cc4604fba897976638af03524.jpeg" alt="协程"></p>
-<p>最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。</p>
-<p><strong>如何让 if 和 else同时进行？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># python3</span><br><span class="line">import os</span><br><span class="line"> </span><br><span class="line">pid = os.fork()</span><br><span class="line">print(pid)</span><br><span class="line">if pid == 0:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;hello&apos;)</span><br><span class="line">else:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;goodbye&apos;)</span><br></pre></td></tr></table></figure></p>
-<p>1.协程是相互协作的，协程在一个线程里面，没有进程的切换，没有竞争资源，所以就不需要加锁，可以让cpu多核特性发挥到最大。<br>2.协程是生成器的消费者，一个生成器，加上一个生成器的消费者，就可以构成一组相互协作的子程序。(协程是一个消费型的生成器)<br>3.两个函数在互不调用的情况下相互协作。</p>
-<p>参考：<a href="https://blog.csdn.net/caoyu1221/article/details/80565008" target="_blank" rel="noopener">https://blog.csdn.net/caoyu1221/article/details/80565008</a></p>
+                <h1 id="使用IDEA将JavaWeb项目导出为war包并部署到tomcat中"><a href="#使用IDEA将JavaWeb项目导出为war包并部署到tomcat中" class="headerlink" title="使用IDEA将JavaWeb项目导出为war包并部署到tomcat中"></a>使用IDEA将JavaWeb项目导出为war包并部署到tomcat中</h1><p>参考：<br>使用IDEA创建javaweb项目并配置详细步骤+导出war包详细步骤<br><a href="https://blog.csdn.net/qq_29668759/article/details/74779865" target="_blank" rel="noopener">https://blog.csdn.net/qq_29668759/article/details/74779865</a></p>
+<h2 id="导出为war包"><a href="#导出为war包" class="headerlink" title="导出为war包"></a>导出为war包</h2><p>首先，Files–Project Structure<br>（Project Structure可以点右上角的一个图标）</p>
+<p><img src="https://img-blog.csdn.net/20170728093050891?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjk2Njg3NTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Project Structure"></p>
+<p>选择Artifacts选项卡，添加一个为这个项目的新的打包方式，点击绿色的加号，添加“Web Application Archive”</p>
+<p><img src="https://img-blog.csdn.net/20170728093353990?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjk2Njg3NTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Web Application Archive"></p>
+<p>自己写一下war包的名称、位置、记得勾选“include in project build”。</p>
+<p>接下来的步骤很重要，很多教程上到这就结束了，有点坑啊。<br>点击绿色加号，选择“Directory Contents”选项，然后选到项目中的web根目录。</p>
+<p><img src="https://img-blog.csdn.net/20170728094715369?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjk2Njg3NTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Directory Contents"></p>
+<p>至此，打包方式配置结束。<br>重新运行一下，即可在目录中找到war包。</p>
+<h2 id="将war包部署到tomcat中"><a href="#将war包部署到tomcat中" class="headerlink" title="将war包部署到tomcat中"></a>将war包部署到tomcat中</h2><p>将war包放入到tomcat中的webapps中即可。</p>
+<p>手动启动tomcat：<br>通过cmd进入到tomcat中的bin目录下，执行 startup.bat 即可。</p>
+<p><strong>报错解决方案：</strong><br>提示<code>JRE_HOME</code>或<code>JAVA_HOME</code>环境变量不正确。<br>其实只需要Java运行环境(JRE)即可。<br>解决方案：查看tomcat目录下bin目录下的<code>startup.bat</code>或者<code>setclasspath.bat</code>文件中的内容<br>并检测设置环境变量时是否多了分号还是少了分号，多了斜杠还是多加了bin目录等等<br><strong>有个比较坑的地方是：<code>JAVA_HOME</code> 需要带<code>\bin</code> ,而 <code>JRE_HOME</code> 不需要<code>\bin</code></strong><br>可以设置临时变量，如 <code>set JRE_HOME=D:\jre</code> （<strong>注意等号两边不要有空格！！！</strong>）</p>
 
                 
-<p class="pink-link-context">
-    <a href="/2018/09/11/同步与异步IO/" rel="next" title="同步与异步I/O">
-    上一篇：同步与异步I/O
-  </a>
-</p>
-
 
 
 <p class="pink-link-context">
-    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
-    下一篇：phpMyAdmin提权
+    <a href="/2018/10/26/软件实施工程师何去何从/" rel="next" title="软件实施工程师何去何从">
+    下一篇：软件实施工程师何去何从
   </a>
 </p>
 
