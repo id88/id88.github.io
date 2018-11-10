@@ -191,6 +191,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术花絮/">
                     技术花絮 <span class="right">3 篇</span></a>
                 </a>
@@ -209,14 +217,6 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/生活随笔/">
                     生活随笔 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Java学习笔记/">
-                    Java学习笔记 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -304,7 +304,11 @@
 <h3 id="异步阻塞IO："><a href="#异步阻塞IO：" class="headerlink" title="异步阻塞IO："></a>异步阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“现在设备忙，你别走开，在这里等吧，你看IO什么时候做完，做完了你把数据拿走就是了”<br>发起IO请求的进程说：“哦，您忙吧，我在这里排队等着呢，不过我排队时也无聊，就做做其他的事情吧，我会时不时就看看我的IO做完没有的” </p>
 <h3 id="异步非阻塞IO："><a href="#异步非阻塞IO：" class="headerlink" title="异步非阻塞IO："></a>异步非阻塞IO：</h3><p>设备IO忙时，内核对发起IO请求的进程说：“我已经知道你要IO了，但设备现在有点忙，你回家吧，我会记住你这个事的，我有记录呢，只要设备一空闲我就给你做IO的，做完了给你打电话让你过来拿数据”<br>发起IO请求的进程说：“好吧，您看我事也挺多的，既然现在IO一时半会也完成不了，那我先回家去做做其他的事吧，谢谢啊” </p>
 <h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>阻塞/非阻塞是内核级的，同步/异步是进程级的，同步非阻塞和异步阻塞一般不会采用，异步非阻塞一般效率比较高，他能够把cpu和io并行处理，当然，如果没有cpu和io并行的这种情况，那就用同步阻塞比较好，这样编程比较简单，且不用多次在内核空间和用户空间进行切换。</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>小乐爱喝茶，废话不说，煮开水。<br>出场人物：小乐，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。<br>   1 小乐把水壶放到火上，立等水开。（<strong>同步阻塞</strong>）<br>     ——   小乐觉得自己有点傻<br>   2 小乐把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（<strong>同步非阻塞</strong>）<br>     ——  小乐还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出呜呜~~~~的噪音。<br>   3 小乐把响水壶放到火上，立等水开。（<strong>异步阻塞</strong>）<br>     ——  小乐觉得这样傻等意义不大<br>   4 小乐把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（<strong>异步非阻塞</strong>）<br>     ——  小乐觉得自己聪明了。</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>小乐爱喝茶，废话不说，煮开水。<br>出场人物：小乐，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。</p>
+<p>   1 小乐把水壶放到火上，立等水开。（<strong>同步阻塞</strong>）<br>     ——   小乐觉得自己有点傻</p>
+<p>   2 小乐把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（<strong>同步非阻塞</strong>）<br>     ——  小乐还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出呜呜~~~~的噪音。</p>
+<p>   3 小乐把响水壶放到火上，立等水开。（<strong>异步阻塞</strong>）<br>     ——  小乐觉得这样傻等意义不大</p>
+<p>   4 小乐把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（<strong>异步非阻塞</strong>）<br>     ——  小乐觉得自己聪明了。</p>
 <p>所谓同步异步，只是对于水壶而言。<br>普通水壶，同步；响水壶，异步。<br>虽然都能干活，但响水壶可以在自己完工之后，提示小乐水开了。这是普通水壶所不能及的。<br>同步只能让调用者去轮询自己（情况2中），造成小乐效率的低下。</p>
 <p>所谓阻塞非阻塞，仅仅对于小乐而言。<br>—— 立等的小乐，阻塞；看电视的小乐，非阻塞。</p>
 <p>情况1和情况3中小乐就是阻塞的，媳妇喊他都不知道。</p>
@@ -368,7 +372,7 @@
                     </a>
                 
                 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <div class="site-visitors-container white-text">
         <span>
@@ -381,7 +385,6 @@
             <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
         </span>
     </div>
-
 
             </div>
             
@@ -630,15 +633,6 @@
 
 
 
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 
 
