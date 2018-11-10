@@ -7,13 +7,15 @@
 
     
 
-    <title>java | 月尚の博客</title>
+    <title>windows下安装巡风扫描器 | 月尚の博客</title>
     
+    
+    <meta name="description" content="一款开源的企业内网的漏洞快速应急、巡航扫描系统。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="windows下安装巡风扫描器"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -239,30 +241,103 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/网络安全/">网络安全</a>
+
 
         
-            <a class="breadcrumb" href="/tags/java/">java</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>windows下安装巡风扫描器</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-11-06T16:00:00.000Z"><a href="/2018/11/07/windows下安装巡风扫描器/">2018-11-07</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2018/11/06/总结修改jar文件的打开方式/" class="collection-item grey-text text-darken-1">
-                <time datetime="2018-11-05T16:00:00.000Z">2018-11-06</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                总结修改jar文件的打开方式
-            </a>
+            <a href="/tags/巡风扫描器/" class="chip pink lighten-1">巡风扫描器</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#前言"><span class="section table-of-contents-text">前言</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#安装"><span class="section table-of-contents-text">安装</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#（创建数据库）添加认证"><span class="section table-of-contents-text">（创建数据库）添加认证</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#导入数据库"><span class="section table-of-contents-text">导入数据库</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#修改配置"><span class="section table-of-contents-text">修改配置</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#运行系统"><span class="section table-of-contents-text">运行系统</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>一款开源的企业内网的漏洞快速应急、巡航扫描系统。</p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天看有人在群里发了个图片，像这样的：</p>
+<p><img src="https://raw.githubusercontent.com/id88/id88.github.io/master/images/blog/xunfeng.PNG" alt="巡风"></p>
+<p>得知是一款开源的web扫描器，随即到GitHub上一搜，找到了</p>
+<p>项目地址：<br><a href="https://github.com/ysrc/xunfeng" target="_blank" rel="noopener">https://github.com/ysrc/xunfeng</a></p>
+<p>Windows 安装指南:<br><a href="https://github.com/ysrc/xunfeng/blob/master/docs/install/Windows.md" target="_blank" rel="noopener">https://github.com/ysrc/xunfeng/blob/master/docs/install/Windows.md</a></p>
+<p>之前安装过MongoDB，默认端口是27017，但是这里设定的端口是65521，所以安装了好几遍没安装好，百度也没有找到好的教程，自己对MongoDB也不熟悉，所以又去学习了一下MongoDB，然后自己折腾了两天才把它安装起来，故写篇博客记录一下。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>将下载下来的zip解压到D盘并命名为xunfeng</p>
+<p>首先需要有python2环境，记得添加环境变量，如：<code>D:\python27</code> 和 <code>D:\python27\Scripts</code></p>
+<p><code>cd D:\xunfeng</code></p>
+<p>使用pip安装 python 依赖库, 这里使用了豆瓣的 pypi 源<br><code>pip install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</code></p>
+<p>另外，需要有MongoDB数据库，参考我的另一篇文章。</p>
+<h3 id="（创建数据库）添加认证"><a href="#（创建数据库）添加认证" class="headerlink" title="（创建数据库）添加认证"></a>（创建数据库）添加认证</h3><p>首先需要启动 MongoDB<br><code>mongod --dbpath D:\MongoDB\data\db</code><br>启动后cmd的窗口不要关闭，然后打开一个新的cmd窗口，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">创建并连接本地的xunfeng数据库（如果xunfeng数据存在，就是进入xunfeng数据库）</span><br><span class="line">mongo 127.0.0.1:27017/xunfeng</span><br><span class="line"></span><br><span class="line">创建(设置)用户名密码以及角色等</span><br><span class="line">&gt; db.createUser(&#123;user:&apos;scan&apos;,pwd:&apos;your password&apos;,roles:[&#123;role:&apos;dbOwner&apos;,db:&apos;xunfeng&apos;&#125;]&#125;)</span><br><span class="line">&gt; exit</span><br></pre></td></tr></table></figure></p>
+<p>注意：这里我将your password 修改为 123456</p>
+<h3 id="导入数据库"><a href="#导入数据库" class="headerlink" title="导入数据库"></a>导入数据库</h3><p>将D:\xunfeng\db 中的数据文件导入到MongoDB中的xunfeng数据库中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd D:\xunfeng</span><br><span class="line">mongorestore.exe -h 127.0.0.1 --port 27017 -d xunfeng db</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>1、修改系统数据库配置脚本 D:\xunfeng\Config.py:<br>修改 PASSWORD 字段内的密码, 设置成你的密码。修改后内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 安装好后登陆系统的用户名和密码</span><br><span class="line">class Config(object):</span><br><span class="line">    ACCOUNT = &apos;admin&apos;</span><br><span class="line">    PASSWORD = &apos;xunfeng321&apos;</span><br><span class="line"></span><br><span class="line"># 数据的地址端口号和用户名密码以及数据库名称</span><br><span class="line">class ProductionConfig(Config):</span><br><span class="line">    DB = &apos;127.0.0.1&apos;</span><br><span class="line">    PORT = 27017</span><br><span class="line">    DBUSERNAME = &apos;scan&apos;</span><br><span class="line">    DBPASSWORD = &apos;123456&apos;</span><br><span class="line">    DBNAME = &apos;xunfeng&apos;</span><br></pre></td></tr></table></figure></p>
+<p>2、修改Run.bat<br>修改端口号然后指定数据库位置，修改后内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">start mongod.exe --port 27017 --dbpath D:\MongoDB\data\db --auth</span><br><span class="line"></span><br><span class="line">start python Run.py</span><br><span class="line">start python aider/Aider.py</span><br><span class="line">start python nascan/NAScan.py</span><br><span class="line">start python vulscan/VulScan.py</span><br></pre></td></tr></table></figure></p>
+<p>3、检查 D:\xunfeng\run.py 修改host为: 127.0.0.1 </p>
+<p>4、根据实际情况修改 Run.py 文件</p>
+<h2 id="运行系统"><a href="#运行系统" class="headerlink" title="运行系统"></a>运行系统</h2><p>使用cmd在 D:\xunfeng 目录下执行：<code>Run.bat</code></p>
+<p>然后浏览器访问：<a href="http://localhost/login" target="_blank" rel="noopener">http://localhost/login</a></p>
+<p>用户名：admin<br>密码：xunfeng321</p>
+<blockquote>
+<p>这里的用户名密码是 D:\xunfeng\Config.py文件中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;class Config(object):</span><br><span class="line">&gt;    ACCOUNT = &apos;admin&apos;</span><br><span class="line">&gt;    PASSWORD = &apos;xunfeng321&apos;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>注意：要用MASSCAN的话需要安装WinPcap</p>
+
+                
+
+
+<p class="pink-link-context">
+    <a href="/2018/11/06/IDEA将JavaWeb项目导出为war包并部署到tomcat中/" rel="next" title="IDEA将JavaWeb项目导出为war包并部署到tomcat中">
+    下一篇：IDEA将JavaWeb项目导出为war包并部署到tomcat中
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
