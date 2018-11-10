@@ -187,6 +187,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/技术花絮/">
                     技术花絮 <span class="right">3 篇</span></a>
                 </a>
@@ -197,14 +205,6 @@
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/技术花絮/计算机编码/">
                     计算机编码 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Java学习笔记/">
-                    Java学习笔记 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -295,7 +295,7 @@
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天看有人在群里发了个图片，像这样的：</p>
 <p><img src="https://raw.githubusercontent.com/id88/id88.github.io/master/images/blog/xunfeng.PNG" alt="巡风"></p>
-<p>得知是一款开源的web扫描器，随即到GitHub上一搜，找到了</p>
+<p>得知是一款叫巡风的开源web扫描器，随即到GitHub上一搜，找到了</p>
 <p>项目地址：<br><a href="https://github.com/ysrc/xunfeng" target="_blank" rel="noopener">https://github.com/ysrc/xunfeng</a></p>
 <p>Windows 安装指南:<br><a href="https://github.com/ysrc/xunfeng/blob/master/docs/install/Windows.md" target="_blank" rel="noopener">https://github.com/ysrc/xunfeng/blob/master/docs/install/Windows.md</a></p>
 <p>之前安装过MongoDB，默认端口是27017，但是这里设定的端口是65521，所以安装了好几遍没安装好，百度也没有找到好的教程，自己对MongoDB也不熟悉，所以又去学习了一下MongoDB，然后自己折腾了两天才把它安装起来，故写篇博客记录一下。</p>
@@ -303,7 +303,7 @@
 <p>首先需要有python2环境，记得添加环境变量，如：<code>D:\python27</code> 和 <code>D:\python27\Scripts</code></p>
 <p><code>cd D:\xunfeng</code></p>
 <p>使用pip安装 python 依赖库, 这里使用了豆瓣的 pypi 源<br><code>pip install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</code></p>
-<p>另外，需要有MongoDB数据库，参考我的另一篇文章。</p>
+<p>另外，需要有MongoDB数据库，我把MongoDB安装在D盘（D:\MongoDB）<br>然后在其安装目录的data目录下建立了一个db目录。<br>具体如何安装及使用，可以参考我的另一篇文章。</p>
 <h3 id="（创建数据库）添加认证"><a href="#（创建数据库）添加认证" class="headerlink" title="（创建数据库）添加认证"></a>（创建数据库）添加认证</h3><p>首先需要启动 MongoDB<br><code>mongod --dbpath D:\MongoDB\data\db</code><br>启动后cmd的窗口不要关闭，然后打开一个新的cmd窗口，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">创建并连接本地的xunfeng数据库（如果xunfeng数据存在，就是进入xunfeng数据库）</span><br><span class="line">mongo 127.0.0.1:27017/xunfeng</span><br><span class="line"></span><br><span class="line">创建(设置)用户名密码以及角色等</span><br><span class="line">&gt; db.createUser(&#123;user:&apos;scan&apos;,pwd:&apos;your password&apos;,roles:[&#123;role:&apos;dbOwner&apos;,db:&apos;xunfeng&apos;&#125;]&#125;)</span><br><span class="line">&gt; exit</span><br></pre></td></tr></table></figure></p>
 <p>注意：这里我将your password 修改为 123456</p>
 <h3 id="导入数据库"><a href="#导入数据库" class="headerlink" title="导入数据库"></a>导入数据库</h3><p>将D:\xunfeng\db 中的数据文件导入到MongoDB中的xunfeng数据库中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd D:\xunfeng</span><br><span class="line">mongorestore.exe -h 127.0.0.1 --port 27017 -d xunfeng db</span><br></pre></td></tr></table></figure></p>
