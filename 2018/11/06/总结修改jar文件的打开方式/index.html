@@ -7,13 +7,20 @@
 
     
 
-    <title>CentOS | 月尚の博客</title>
+    <title>总结修改jar文件的打开方式 | 月尚の博客</title>
     
+    
+    <meta name="description" content="场景：
+前两天重装，jar类型被关联到rar上去了，很多以前双击打开的jar包打不开。头晕了半天。
+右键选择jre里面的javam打开也不行。
+很奇怪，记得以前是可以的。每次输java -jar命令打开明显很烦。
+后来无意中google到了可以在文件夹菜单里面修改各种文件的打开方式。
+在jar文件的">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="总结修改jar文件的打开方式"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -239,30 +246,106 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Java学习笔记/">Java学习笔记</a>
+
 
         
-            <a class="breadcrumb" href="/tags/CentOS/">CentOS</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>总结修改jar文件的打开方式</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-11-05T16:00:00.000Z"><a href="/2018/11/06/总结修改jar文件的打开方式/">2018-11-06</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/09/10/在CentOS上搭建Seafile网盘/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-09-09T16:00:00.000Z">2017-09-10</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                在CentOS上搭建Seafile网盘
-            </a>
+            <a href="/tags/java/" class="chip pink lighten-1">java</a>
+        
+            <a href="/tags/jar/" class="chip pink lighten-1">jar</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p><strong>场景：</strong></p>
+<p>前两天重装，jar类型被关联到rar上去了，很多以前双击打开的jar包打不开。头晕了半天。</p>
+<p>右键选择jre里面的javam打开也不行。</p>
+<p>很奇怪，记得以前是可以的。每次输java -jar命令打开明显很烦。</p>
+<p>后来无意中google到了可以在文件夹菜单里面修改各种文件的打开方式。</p>
+<p>在jar文件的高级那里 修改open属性</p>
+<p>“D:\Java\jre1.5.0_06\bin\javaw.exe” -jar “%1”</p>
+<p>就是添加个 -jar命令 就可以了。 汗😓</p>
+<hr>
+<p><strong>分析：</strong></p>
+<p>jar文件是java程序导出之后的打包文件，在一些Linux系统或者手机系统中可以直接运行。</p>
+<p>如果你打包正确，jar是可以双击运行的，前提，你的机器上一定有合适的JRE版本装过jre后jar文件会被关联到用javaw.exe打开，直接双击jar文件就能运行的</p>
+<p>用命令提示符.开始–运行–输入java -jar path(jar所在路径)也可运行. </p>
+<hr>
+<p><strong>方法一：</strong></p>
+<p>步骤一：<br>新建一个文本文档，输入内容”<code>javaw -jar %1</code> “，并保存为批处理文件，例如”run.bat “。</p>
+<p>步骤二：<br>右键点击.jar格式的文件 ，选择其打开方式 为上面建的run.bat 。 此时jar就能运行了….</p>
+<p><strong>方法二：</strong></p>
+<p>通过修改注册表来解决该问题。</p>
+<p>步骤一：<br>打开注册表，开始-&gt;运行（或者用快捷键WIN+R），输入regedit，确定；</p>
+<p>步骤二：<br>找到 <code>HKEY_CLASSES_ROOT/Applications /javaw.exe</code>，一开始没有的话，就在资源管理器中找到javaw.exe文 件，如我的电脑中为 <code>D:\Program Files\Java\jdk1.8.0_102\jre\bin\javaw.exe</code>，运行下，或找个Jar文件，选择打开方式，输入<code>D:\Program Files\Java\jdk1.8.0_102\jre\binjavaw.exe</code>，再选择打开就行了；</p>
+<p>步骤三：<br>进入 <code>HKEY_CLASSES_ROOT/Applications/javaw.exe/shell/open/command</code>，修改默认的键值为 “<code>D:\Program Files\Java\jdk1.8.0_102\jre\bin\javaw.exe&quot; -jar &quot;%1&quot;</code> 。Java环境安装在其他地方也类似，只要改一下文件地址就行了。</p>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/11/06/IDEA将JavaWeb项目导出为war包并部署到tomcat中/" rel="next" title="IDEA将JavaWeb项目导出为war包并部署到tomcat中">
+    上一篇：IDEA将JavaWeb项目导出为war包并部署到tomcat中
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2018/10/26/软件实施工程师何去何从/" rel="next" title="软件实施工程师何去何从">
+    下一篇：软件实施工程师何去何从
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
