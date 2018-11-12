@@ -7,13 +7,15 @@
 
     
 
-    <title>phpMyAdmin | 月尚の博客</title>
+    <title>jetty简介 | 月尚の博客</title>
     
+    
+    <meta name="description" content="在学习使用maven手动创建部署一个Javaweb项目时，发现了有个web容器叫 jetty，之前知道的web容器只有tomcat、apache、nginx、webloigc、IIS、jboss等，jetty还是第一次听说，随即百度了一下。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="jetty简介"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -239,30 +241,91 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Java学习笔记/">Java学习笔记</a>
+
 
         
-            <a class="breadcrumb" href="/tags/phpMyAdmin/">phpMyAdmin</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>jetty简介</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-11-11T16:00:00.000Z"><a href="/2018/11/12/jetty简介/">2018-11-12</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2018/07/16/phpMyAdmin提权/" class="collection-item grey-text text-darken-1">
-                <time datetime="2018-07-15T16:00:00.000Z">2018-07-16</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                phpMyAdmin提权
-            </a>
+            <a href="/tags/java/" class="chip pink lighten-1">java</a>
+        
+            <a href="/tags/maven/" class="chip pink lighten-1">maven</a>
+        
+            <a href="/tags/jetty/" class="chip pink lighten-1">jetty</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#用jetty跑maven项目"><span class="section table-of-contents-text">用jetty跑maven项目</span></a></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>在学习使用maven手动创建部署一个Javaweb项目时，发现了有个web容器叫 jetty，之前知道的web容器只有tomcat、apache、nginx、webloigc、IIS、jboss等，jetty还是第一次听说，随即百度了一下。</p>
+<a id="more"></a>
+<blockquote>
+<p>　Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。</p>
+</blockquote>
+<p>##Jetty和Tomcat比较<br>首先Jetty和Tomcat都是Apache 软件基金会（Apache Software Foundation）的产品。</p>
+<p>1）Jetty更轻量级。这是相对Tomcat而言的。<br>　　由于Tomcat除了遵循Java Servlet规范之外，自身还扩展了大量JEE特性以满足企业级应用的需求，所以Tomcat是较重量级的，而且配置较Jetty亦复杂许多。但对于大量普通互联网应用而言，并不需要用到Tomcat其他高级特性，所以在这种情况下，使用Tomcat是很浪费资源的。这种劣势放在分布式环境下，更是明显。换成Jetty，每个应用服务器省下那几兆内存，对于大的分布式环境则是节省大量资源。而且，Jetty的轻量级也使其在处理高并发细粒度请求的场景下显得更快速高效。<br>　　<br>2）Jetty更灵活。<br>　　体现在其可插拔性和可扩展性，更易于开发者对Jetty本身进行二次开发，定制一个适合自身需求的Web Server。<br>　　相比之下，重量级的Tomcat原本便支持过多特性，要对其瘦身的成本远大于丰富Jetty的成本。用自己的理解，即增肥容易减肥难。<br>　　<br>3）然而，当支持大规模企业级应用时，Jetty也许便需要扩展，在这场景下Tomcat便是更优的。</p>
+<p>总结：Jetty更满足公有云的分布式环境的需求，而Tomcat更符合企业级环境。</p>
+<h2 id="用jetty跑maven项目"><a href="#用jetty跑maven项目" class="headerlink" title="用jetty跑maven项目"></a>用jetty跑maven项目</h2><p>IDEA好像集成了jetty，在IDEA安装目录下的plugins目录里面可以找到jetty文件夹。</p>
+<p>项目创建好之后，在pom.xml文件中添加如下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugins&gt;</span><br><span class="line">    &lt;plugin&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;9.3.10.v20160621&lt;/version&gt;</span><br><span class="line">    &lt;/plugin&gt;</span><br><span class="line">&lt;/plugins&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后在终端下进入到pom.xml存在的目录<br>输入：<code>mvn jetty:run</code><br>浏览器访问：<code>http://localhost:8080/</code> 即可。</p>
+
+                
+
+
+<p class="pink-link-context">
+    <a href="/2018/11/11/使用Nexus搭建Maven私服/" rel="next" title="使用Nexus搭建Maven私服">
+    下一篇：使用Nexus搭建Maven私服
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
