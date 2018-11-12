@@ -10,8 +10,8 @@
     <title>使用Nexus搭建Maven私服 | 月尚の博客</title>
     
     
-    <meta name="description" content="百度了好几篇教程，发现差别有点大，参考了好几篇教程才把maven搭建起来。
-一、搭建nexus私服的目的　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发">
+    <meta name="description" content="百度了好几篇教程，发现差别有点大，参考了好几篇教程才搭建起来。
+一、搭建nexus私服的目的　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发人员连到这台">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -281,11 +281,11 @@
             
     <div class="tags-row">
         
-            <a href="/tags/java/" class="chip pink lighten-1">java</a>
-        
             <a href="/tags/Nexus/" class="chip pink lighten-1">Nexus</a>
         
             <a href="/tags/maven/" class="chip pink lighten-1">maven</a>
+        
+            <a href="/tags/java/" class="chip pink lighten-1">java</a>
         
     </div>
 
@@ -296,10 +296,9 @@
 
 
             <div class="entry pink-link-context">
-                <p>百度了好几篇教程，发现差别有点大，参考了好几篇教程才把maven搭建起来。</p>
+                <p>百度了好几篇教程，发现差别有点大，参考了好几篇教程才搭建起来。</p>
 <h2 id="一、搭建nexus私服的目的"><a href="#一、搭建nexus私服的目的" class="headerlink" title="一、搭建nexus私服的目的"></a>一、搭建nexus私服的目的</h2><p>　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发人员连到这台私服上，这样的话就可以通过这台搭建了nexus私服的电脑访问maven的远程仓库。</p>
-<h3 id="1-1、Nexus架构"><a href="#1-1、Nexus架构" class="headerlink" title="1.1、Nexus架构"></a>1.1、Nexus架构</h3><p><img src="https://images0.cnblogs.com/blog/289233/201411/031025286427911.jpg" alt=""></p>
-<p> <img src="https://images0.cnblogs.com/i/293735/201406/162359096298261.png" alt=""></p>
+<h3 id="1-1、Nexus架构"><a href="#1-1、Nexus架构" class="headerlink" title="1.1、Nexus架构"></a>1.1、Nexus架构</h3><p> <img src="https://raw.githubusercontent.com/id88/id88.github.io/master/images/nexus.jpg" alt="Nexus架构"></p>
 <h2 id="二、nexus私服的下载和安装"><a href="#二、nexus私服的下载和安装" class="headerlink" title="二、nexus私服的下载和安装"></a>二、nexus私服的下载和安装</h2><h3 id="2-1、nexus下载"><a href="#2-1、nexus下载" class="headerlink" title="2.1、nexus下载"></a>2.1、nexus下载</h3><p>　　Nexus 专业版是需要付费的，这里我们下载开源版 Nexus OSS。<br>　　下载地址：<a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="noopener">https://www.sonatype.com/download-oss-sonatype</a>，下载nginx-1.14.0的压缩包</p>
 <p>  版本区别：</p>
 <ul>
@@ -336,16 +335,16 @@
 <p>system　　应用所有的插件和组件</p>
 <p>LICENSE.txt 和 NOTICE.txt　　　　版权声明和法律细则</p>
 <hr>
-<p>sonatype-work\nexus3　　　　数据文档</p>
-<p>blobs/　　　　　　创建blob的默认路径，如果你指定了绝对路径，那就不在这里了</p>
-<p>cache/　　　　　　当前缓存的karaf包的信息</p>
-<p>db/　　　　　　　　OrientDB数据库的数据，用于存储nexus的元数据的数据库</p>
-<p>elasticsearch /　　　　当前配置的Elasticsearch状态</p>
-<p>etc/　　　　　　　　　　大概是运行时配置状态和关于资源库的自定义的相关的东西</p>
-<p>health-check/　　　　　　看目录，健康检查的相关报告的存储目录吧</p>
-<p>keystores/　　　　　　　　自动生成的关于资源库的ID主键</p>
-<p>log/　　　　　　　　　　　　运行实例生成的日志文件，也有日志文件的压缩包，貌似是每天都会生成日志文件，你可以定期删除老的日志文件</p>
-<p>tmp/　　　　　　　　　　　　用于存储临时文件的目录</p>
+<p>sonatype-work\nexus3　　　数据文档</p>
+<p>blobs/　　　创建blob的默认路径，如果你指定了绝对路径，那就不在这里了</p>
+<p>cache/　　当前缓存的karaf包的信息</p>
+<p>db/　　　OrientDB数据库的数据，用于存储nexus的元数据的数据库</p>
+<p>elasticsearch /　　当前配置的Elasticsearch状态</p>
+<p>etc/　　　　大概是运行时配置状态和关于资源库的自定义的相关的东西</p>
+<p>health-check/　　看目录，健康检查的相关报告的存储目录吧</p>
+<p>keystores/　　　自动生成的关于资源库的ID主键</p>
+<p>log/　　运行实例生成的日志文件，也有日志文件的压缩包，貌似是每天都会生成日志文件，你可以定期删除老的日志文件</p>
+<p>tmp/　　用于存储临时文件的目录</p>
 
                 
 
