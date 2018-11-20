@@ -10,8 +10,7 @@
     <title>python在文件每行末尾加字符 | 月尚の博客</title>
     
     
-    <meta name="description" content="现有一个文本文件 A.txt，字符编码格式为 UTF-8 with BOM （坑爹！），内容如下：12345678910111213信息科学与技术文学与传媒理艺术会计外国语土木工程与城市建筑化学与环境工程电子工程机械与材料工程旅游与国土资源电子商务经济与管理
-现需在 A.txt 文件中的每行字符后面">
+    <meta name="description" content="主要是编码问题">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -172,8 +171,8 @@
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Python学习笔记/">
-                    Python学习笔记 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/网络安全/">
+                    网络安全 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -188,16 +187,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Java学习笔记/">
-                    Java学习笔记 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/Python学习笔记/">
+                    Python学习笔记 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/网络安全/">
-                    网络安全 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/Java学习笔记/">
+                    Java学习笔记 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -300,7 +299,9 @@
 
 
             <div class="entry pink-link-context">
-                <p>现有一个文本文件 A.txt，字符编码格式为 UTF-8 with BOM （坑爹！），内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">信息科学与技术</span><br><span class="line">文学与传媒</span><br><span class="line">理</span><br><span class="line">艺术</span><br><span class="line">会计</span><br><span class="line">外国语</span><br><span class="line">土木工程与城市建筑</span><br><span class="line">化学与环境工程</span><br><span class="line">电子工程</span><br><span class="line">机械与材料工程</span><br><span class="line">旅游与国土资源</span><br><span class="line">电子商务</span><br><span class="line">经济与管理</span><br></pre></td></tr></table></figure></p>
+                <p>主要是编码问题</p>
+<a id="more"></a>
+<p>现有一个文本文件 A.txt，字符编码格式为 UTF-8 with BOM （坑爹！），内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">信息科学与技术</span><br><span class="line">文学与传媒</span><br><span class="line">理</span><br><span class="line">艺术</span><br><span class="line">会计</span><br><span class="line">外国语</span><br><span class="line">土木工程与城市建筑</span><br><span class="line">化学与环境工程</span><br><span class="line">电子工程</span><br><span class="line">机械与材料工程</span><br><span class="line">旅游与国土资源</span><br><span class="line">电子商务</span><br><span class="line">经济与管理</span><br></pre></td></tr></table></figure></p>
 <p>现需在 A.txt 文件中的每行字符后面添加字符 ”学院“ ，再将其内容写入到 B.txt 文件中。<br>得到如下结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">信息科学与技术学院</span><br><span class="line">文学与传媒学院</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
 <p><strong>思路分析：</strong><br>        使用 readline() 逐行读取 A.txt 文件的内容，由于该返回得到的是字符串，故可直接加上字符串”学院“，再将其追加到一个空字符串 data 中，最后将 data 写入到 B.txt 文件中。</p>
 <p>看似非常简单，但是我写代码时却遇到不少问题。</p>

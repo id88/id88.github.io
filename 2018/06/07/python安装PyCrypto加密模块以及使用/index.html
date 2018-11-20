@@ -7,13 +7,18 @@
 
     
 
-    <title>java | 月尚の博客</title>
+    <title>python安装PyCrypto加密模块以及使用 | 月尚の博客</title>
     
+    
+    <meta name="description" content="crypto是一个很好用的加密算法包，可惜在windows上安装时有许多坑。
+&amp;lt;–! more –&amp;gt;
+方法一https://blog.csdn.net/yyd19921214/article/details/54576801
+在导入crypto时需要注意：1from Crypto.Cip">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="python安装PyCrypto加密模块以及使用"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -247,42 +252,103 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Python学习笔记/">Python学习笔记</a>
+
 
         
-            <a class="breadcrumb" href="/tags/java/">java</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>python安装PyCrypto加密模块以及使用</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-06-06T16:00:00.000Z"><a href="/2018/06/07/python安装PyCrypto加密模块以及使用/">2018-06-07</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2018/11/12/jetty简介/" class="collection-item grey-text text-darken-1">
-                <time datetime="2018-11-11T16:00:00.000Z">2018-11-12</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                jetty简介
-            </a>
-        
-            <a href="/2018/11/11/使用Nexus搭建Maven私服/" class="collection-item grey-text text-darken-1">
-                <time datetime="2018-11-10T16:00:00.000Z">2018-11-11</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                使用Nexus搭建Maven私服
-            </a>
-        
-            <a href="/2018/11/06/总结修改jar文件的打开方式/" class="collection-item grey-text text-darken-1">
-                <time datetime="2018-11-05T16:00:00.000Z">2018-11-06</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                总结修改jar文件的打开方式
-            </a>
+            <a href="/tags/python/" class="chip pink lighten-1">python</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#方法一"><span class="section table-of-contents-text">方法一</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#方法二"><span class="section table-of-contents-text">方法二</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#三"><span class="section table-of-contents-text">三</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#四"><span class="section table-of-contents-text">四</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#1-下载pycrypto源码"><span class="section table-of-contents-text">1.下载pycrypto源码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#2-安装过程中显示unable-to-find-vcvarsall-bat"><span class="section table-of-contents-text">2.安装过程中显示unable to find vcvarsall.bat</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#终极解决方案"><span class="section table-of-contents-text">终极解决方案</span></a>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>crypto是一个很好用的加密算法包，可惜在windows上安装时有许多坑。</p>
+<p>&lt;–! more –&gt;</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><a href="https://blog.csdn.net/yyd19921214/article/details/54576801" target="_blank" rel="noopener">https://blog.csdn.net/yyd19921214/article/details/54576801</a></p>
+<p>在导入crypto时需要注意：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Cipher import AES</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p><a href="https://blog.csdn.net/snail_zhan/article/details/53542567" target="_blank" rel="noopener">https://blog.csdn.net/snail_zhan/article/details/53542567</a></p>
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p><a href="https://blog.csdn.net/snail_zhan/article/details/53542567" target="_blank" rel="noopener">https://blog.csdn.net/snail_zhan/article/details/53542567</a></p>
+<p>步骤一：首先下载PyCryto</p>
+<p><a href="https://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/pycrypto-2.6.1.tar.gz" target="_blank" rel="noopener">PyCrypto点击下载</a>—下载完解压</p>
+<p>假设我解压到H盘，打开cmd，cd到pycrypto-2.6.1文件夹下<br>执行如下命令：</p>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p><a href="https://blog.csdn.net/a624806998/article/details/78596543" target="_blank" rel="noopener">https://blog.csdn.net/a624806998/article/details/78596543</a></p>
+<p>pycrypto在PyCharm中跟其他的模块不一样，pip install pycrypto安装的是1.4.1版本，然后虽然模块能够install成功，但实际上代码还是无法关联起来，运行会报异常。<br>百度解决方案：下载pycrypto源码安装<br>不过安装pycrypto源码可不是这么简单的事情，这里把这几天踩过的坑都记录一下。</p>
+<h2 id="1-下载pycrypto源码"><a href="#1-下载pycrypto源码" class="headerlink" title="1.下载pycrypto源码"></a>1.下载pycrypto源码</h2><p>官网：<a href="https://www.dlitz.net/software/pycrypto/" target="_blank" rel="noopener">https://www.dlitz.net/software/pycrypto/</a><br>github：<a href="https://github.com/dlitz/pycrypto" target="_blank" rel="noopener">https://github.com/dlitz/pycrypto</a><br>下载源码解压，win+R运行cmd，进入解压文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install1</span><br></pre></td></tr></table></figure>
+<p>如果没有报错误，看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">running install_egg_info1</span><br></pre></td></tr></table></figure>
+<p>恭喜你，不用踩坑，直接可以关闭这篇文章去愉快地写代码了</p>
+<h2 id="2-安装过程中显示unable-to-find-vcvarsall-bat"><a href="#2-安装过程中显示unable-to-find-vcvarsall-bat" class="headerlink" title="2.安装过程中显示unable to find vcvarsall.bat"></a>2.安装过程中显示unable to find vcvarsall.bat</h2><p>这是window环境下安装模块比较常见的问题，这时候你百度的话大部分文章就会告诉你下载vs，python2的话安装vs2010，python3的话安装vs2013<br>重点！<br>不要着急去安装vs，这东西一安装就是好几个小时，在这里我对vs装了卸，卸了装浪费了一天半的时间。<br>python有个深坑！不同的python版本对应不同的vs版本，具体对应的版本在python所在的路径下<code>\Lib\distutils_msvccompiler.py</code></p>
+<h1 id="终极解决方案"><a href="#终极解决方案" class="headerlink" title="终极解决方案"></a>终极解决方案</h1><p><a href="https://blog.csdn.net/s740556472/article/details/78778522" target="_blank" rel="noopener">https://blog.csdn.net/s740556472/article/details/78778522</a></p>
+<p>2.后经继续查阅，发现pyCyrpto库的后续分支，有一个叫pyCryptodome的库，是前代的延伸版，下面给出一个全面的地址，如果有pip安装不了的库可以通过此网站进行对应的下载。<br><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">点我啦</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.lfd.uci.edu/~gohlke/pythonlibs/</span><br></pre></td></tr></table></figure>
+<p>当然我也是通过官方推荐，使用下面命令去下载安装的，pip就是好用。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pycryptodome</span><br></pre></td></tr></table></figure>
+                
+<p class="pink-link-context">
+    <a href="/2018/07/16/phpMyAdmin提权/" rel="next" title="phpMyAdmin提权">
+    上一篇：phpMyAdmin提权
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2018/05/20/python中的encode与decode/" rel="next" title="python中的encode与decode">
+    下一篇：python中的encode与decode
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
