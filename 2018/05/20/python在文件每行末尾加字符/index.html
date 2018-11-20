@@ -7,16 +7,16 @@
 
     
 
-    <title>使用Nexus搭建Maven私服 | 月尚の博客</title>
+    <title>python在文件每行末尾加字符 | 月尚の博客</title>
     
     
-    <meta name="description" content="百度了好几篇教程，发现差别有点大，参考了好几篇教程才搭建起来。
-一、搭建nexus私服的目的　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发人员连到这台">
+    <meta name="description" content="现有一个文本文件 A.txt，字符编码格式为 UTF-8 with BOM （坑爹！），内容如下：12345678910111213信息科学与技术文学与传媒理艺术会计外国语土木工程与城市建筑化学与环境工程电子工程机械与材料工程旅游与国土资源电子商务经济与管理
+现需在 A.txt 文件中的每行字符后面">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="使用Nexus搭建Maven私服"/>
+    <meta property="og:title" content="python在文件每行末尾加字符"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -257,7 +257,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/Java学习笔记/">Java学习笔记</a>
+    <a class="breadcrumb" href="/categories/Python学习笔记/">Python学习笔记</a>
 
 
         
@@ -274,12 +274,12 @@
             <div class="article-title">
                 
     
-        <h1>使用Nexus搭建Maven私服</h1>
+        <h1>python在文件每行末尾加字符</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-11-10T16:00:00.000Z"><a href="/2018/11/11/使用Nexus搭建Maven私服/">2018-11-11</a></time>
+            <time class="pink-link-context" datetime="2018-05-19T16:00:00.000Z"><a href="/2018/05/20/python在文件每行末尾加字符/">2018-05-20</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -289,83 +289,58 @@
             
     <div class="tags-row">
         
-            <a href="/tags/java/" class="chip pink lighten-1">java</a>
-        
-            <a href="/tags/maven/" class="chip pink lighten-1">maven</a>
-        
-            <a href="/tags/Nexus/" class="chip pink lighten-1">Nexus</a>
+            <a href="/tags/python/" class="chip pink lighten-1">python</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、搭建nexus私服的目的"><span class="section table-of-contents-text">一、搭建nexus私服的目的</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-1、Nexus架构"><span class="section table-of-contents-text">1.1、Nexus架构</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、nexus私服的下载和安装"><span class="section table-of-contents-text">二、nexus私服的下载和安装</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-1、nexus下载"><span class="section table-of-contents-text">2.1、nexus下载</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-2、nexus安装"><span class="section table-of-contents-text">2.2、nexus安装</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#将nexus配置为系统服务"><span class="section table-of-contents-text">将nexus配置为系统服务</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#基本使用"><span class="section table-of-contents-text">基本使用</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#nexus目录和文件"><span class="section table-of-contents-text">nexus目录和文件</span></a></li></ol>
+    
 </div>
 
 
             <div class="entry pink-link-context">
-                <p>百度了好几篇教程，发现差别有点大，参考了好几篇教程才搭建起来。</p>
-<h2 id="一、搭建nexus私服的目的"><a href="#一、搭建nexus私服的目的" class="headerlink" title="一、搭建nexus私服的目的"></a>一、搭建nexus私服的目的</h2><p>　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发人员连到这台私服上，这样的话就可以通过这台搭建了nexus私服的电脑访问maven的远程仓库。</p>
-<h3 id="1-1、Nexus架构"><a href="#1-1、Nexus架构" class="headerlink" title="1.1、Nexus架构"></a>1.1、Nexus架构</h3><p> <img src="https://raw.githubusercontent.com/id88/id88.github.io/master/images/nexus.jpg" alt="Nexus架构"></p>
-<h2 id="二、nexus私服的下载和安装"><a href="#二、nexus私服的下载和安装" class="headerlink" title="二、nexus私服的下载和安装"></a>二、nexus私服的下载和安装</h2><h3 id="2-1、nexus下载"><a href="#2-1、nexus下载" class="headerlink" title="2.1、nexus下载"></a>2.1、nexus下载</h3><p>　　Nexus 专业版是需要付费的，这里我们下载开源版 Nexus OSS。<br>　　下载地址：<a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="noopener">https://www.sonatype.com/download-oss-sonatype</a>，下载nginx-1.14.0的压缩包</p>
-<p>  版本区别：</p>
-<ul>
-<li>Nexus OSS （ OSS = Open Source Software）这个版本包含基于Sonatype 开源软件代码的基本功能和以包形式发布为开源的其他功能，免费试用许可证请查看下载后的二进制包。</li>
-<li>Nexus Professional Nexus Professional CLM Edition<br>这个是旗舰版，包含了专业版本的所有功能。需要购买许可证。</li>
-<li>Nexus Professional Trial<br>试用版，不包含Nexus Professional Nexus Professional CLM Edition所有的功能，官方目前((2015年03月31日))提供14天的试用期，同时安装包是以二进制的实行发布的(<a href="https://support.sonatype.com/entries/27807808-Nexus-Trial-Edition-vs-Nexus-Professional-Edition" target="_blank" rel="noopener">查看更多差异信息</a>)：</li>
-</ul>
-<h3 id="2-2、nexus安装"><a href="#2-2、nexus安装" class="headerlink" title="2.2、nexus安装"></a>2.2、nexus安装</h3><p>1、解压zip压缩包（这里我将其解压到 D:\nexus）<br>解压后有两个目录：</p>
-<ul>
-<li>nexus-3.14.0-04</li>
-<li>sonatype-work</li>
-</ul>
-<p>2、修改数据存储路径<br><code>D:\nexus\nexus-3.14.0-04\bin\nexus.vmoptions</code></p>
-<p>当然，可以直接使用默认的，支持相对和绝对路径。</p>
-<p>3、修改IP、端口、访问根目录<br><code>D:\nexus\nexus-3.14.0-04\etc\nexus-default.properties</code></p>
-<p>4、启动<br>cmd进入到：<code>cd D:\nexus\nexus-3.14.0-04\bin</code><br>然后执行：<code>nexus.exe  /run</code><br>这个启动需要点时间，耐心等待。</p>
-<p>5、打开浏览器，访问：<a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a><br>（没有登录时，打开 <a href="http://localhost:8081/nexus" target="_blank" rel="noopener">http://localhost:8081/nexus</a> 会出现404Error）</p>
-<p>点击右上角 Log In，使用用户名：admin ，密码：admin123 登录</p>
-<h2 id="将nexus配置为系统服务"><a href="#将nexus配置为系统服务" class="headerlink" title="将nexus配置为系统服务"></a>将nexus配置为系统服务</h2><p>根据官方文档说明，将nexus配置为系统服务是一个很好的选择。因为</p>
-<p>第一：上面的安装和启动过程并没有默认的把nexus作为服务加入系统服务中；</p>
-<p>第二：这样下次服务器重启，服务也会重启。</p>
-<p>但是这个有个前提，就是已经确保安装了Java运行时环境。</p>
-<p>接下来，我们重新打开一个窗口，去将nexus加入系统服务  </p>
-<p>最后的<optional-service-name>，咱们直接命名成nexus就好。【当然，最后这个不指定的话，默认就是创建成nexus服务名】</optional-service-name></p>
-<p>使用管理员身份打开cmd，进入到：<code>cd D:\nexus\nexus-3.14.0-04\bin</code><br>然后执行：<code>nexus.exe  /install nexus</code></p>
-<p>以后就可以<code>nexus /start nexus</code> 来启动了</p>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>参考：<a href="http://www.cnblogs.com/kongweifeng/p/9369936.html" target="_blank" rel="noopener">http://www.cnblogs.com/kongweifeng/p/9369936.html</a></p>
-<h2 id="nexus目录和文件"><a href="#nexus目录和文件" class="headerlink" title="nexus目录和文件"></a>nexus目录和文件</h2><p>nexus-3.14.0-04　　　　安装目录</p>
-<p>bin　　　　包含nexus的启动脚本和相关配置　　　　　　</p>
-<p>etc　　　　jetty、karaf等配置文件</p>
-<p>jre　　　　jre环境</p>
-<p>lib　　　　java架包库</p>
-<p>public　　关于nexus应用在本地跑起来所需要的资源</p>
-<p>system　　应用所有的插件和组件</p>
-<p>LICENSE.txt 和 NOTICE.txt　　　　版权声明和法律细则</p>
+                <p>现有一个文本文件 A.txt，字符编码格式为 UTF-8 with BOM （坑爹！），内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">信息科学与技术</span><br><span class="line">文学与传媒</span><br><span class="line">理</span><br><span class="line">艺术</span><br><span class="line">会计</span><br><span class="line">外国语</span><br><span class="line">土木工程与城市建筑</span><br><span class="line">化学与环境工程</span><br><span class="line">电子工程</span><br><span class="line">机械与材料工程</span><br><span class="line">旅游与国土资源</span><br><span class="line">电子商务</span><br><span class="line">经济与管理</span><br></pre></td></tr></table></figure></p>
+<p>现需在 A.txt 文件中的每行字符后面添加字符 ”学院“ ，再将其内容写入到 B.txt 文件中。<br>得到如下结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">信息科学与技术学院</span><br><span class="line">文学与传媒学院</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
+<p><strong>思路分析：</strong><br>        使用 readline() 逐行读取 A.txt 文件的内容，由于该返回得到的是字符串，故可直接加上字符串”学院“，再将其追加到一个空字符串 data 中，最后将 data 写入到 B.txt 文件中。</p>
+<p>看似非常简单，但是我写代码时却遇到不少问题。</p>
+<p>首先，readline() 默认每次读取一行，到底要读取多少行才算结束？<br>还有就是处理字符编码。。。</p>
+<p>在python中读取文件的方法有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fromFile = open(&apos;./school.txt&apos;,&apos;rb&apos;)</span><br><span class="line"></span><br><span class="line"># 默认读取全部，把内容赋给一个字符串变量</span><br><span class="line">content = fromFile.read().decode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line"># 读取一行，把内容赋给一个字符串变量</span><br><span class="line">line = fromFile.readline().decode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line"># 读取全部，返回一个列表，每行是列表中的一个元素</span><br><span class="line">lines = fromFile.readlines()</span><br></pre></td></tr></table></figure>
+<p>最后，我决定使用 readlines()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 读取全部，返回一个列表，每行是列表中的一个元素</span><br><span class="line">lines = fromFile.readlines()</span><br><span class="line">print(lines[0])</span><br><span class="line">print(type(lines[0]))</span><br><span class="line"># &lt;class &apos;bytes&apos;&gt;</span><br><span class="line">print(lines[0].decode(&quot;utf-8&quot;))</span><br><span class="line"></span><br><span class="line">ss = []</span><br><span class="line">ss.append(lines[0].decode(&quot;utf-8&quot;))</span><br><span class="line">print(ss)</span><br><span class="line">print(str(ss[0]).strip(&quot;\r\n&quot;) + &quot;学院&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>最终代码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">fromFile = open(&apos;./school.txt&apos;,&apos;rb&apos;)</span><br><span class="line">outFile = open(&apos;./schoolx.txt&apos;,&apos;a+&apos;)</span><br><span class="line"></span><br><span class="line">lines = fromFile.readlines()</span><br><span class="line">ss = []</span><br><span class="line">data = &apos;&apos;</span><br><span class="line"># for line in lines:</span><br><span class="line">#     ss.append(line.decode(&quot;utf-8&quot;))</span><br><span class="line">#     for item in ss:</span><br><span class="line">#         items = str(item).strip(&quot;\n\r&quot;) + &quot;学院\n&quot;</span><br><span class="line">#         print(items)</span><br><span class="line"></span><br><span class="line">for line in lines:</span><br><span class="line">    item = str(line.decode(&quot;utf-8&quot;)).strip(&quot;\n\r&quot;) + &quot;学院\n&quot;</span><br><span class="line">    # print(item)</span><br><span class="line">    data += item</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line">outFile.write(data.strip(&quot;\ufeff&quot;))</span><br><span class="line"></span><br><span class="line">fromFile.close()</span><br><span class="line">outFile.close()</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>sonatype-work\nexus3　　　数据文档</p>
-<p>blobs/　　　创建blob的默认路径，如果你指定了绝对路径，那就不在这里了</p>
-<p>cache/　　当前缓存的karaf包的信息</p>
-<p>db/　　　OrientDB数据库的数据，用于存储nexus的元数据的数据库</p>
-<p>elasticsearch /　　当前配置的Elasticsearch状态</p>
-<p>etc/　　　　大概是运行时配置状态和关于资源库的自定义的相关的东西</p>
-<p>health-check/　　看目录，健康检查的相关报告的存储目录吧</p>
-<p>keystores/　　　自动生成的关于资源库的ID主键</p>
-<p>log/　　运行实例生成的日志文件，也有日志文件的压缩包，貌似是每天都会生成日志文件，你可以定期删除老的日志文件</p>
-<p>tmp/　　用于存储临时文件的目录</p>
+<p><strong>补充</strong></p>
+<ul>
+<li><p>如果文件字符编码是 UTF-8 with BOM 则在文件内容前面会有不可见字符 <code>\ufeff</code>， 而编码是 UTF-8 无 BOM 的文件则没有。（可用 Notepad++ 将 utf-8带bom 的转换成无bom 的）</p>
+</li>
+<li><p>什么是 <a href="https://en.wikipedia.org/wiki/Byte_order_mark" target="_blank" rel="noopener">BOM</a>（byte order mark）</p>
+</li>
+<li><p>在Windows操作系统中 <code>\r\n</code> 表示换行。</p>
+</li>
+</ul>
+<p>r 是读取文本文件，并且是 ASCII 编码的文本文件<br>要读取非 ASCII 编码的文本文件，就必须以二进制模式打开，参数为 <code>rb</code></p>
+<p><code>r</code>：读</p>
+<p><code>w</code>：写</p>
+<p><code>a</code>：追加</p>
+<p><code>r+</code> 等价于 <code>r+w</code>（可读可写，文件若不存在就报错(IOError)）</p>
+<p><code>w+</code> 等价于 <code>w+r</code>（可读可写，文件若不存在就创建）</p>
+<p><code>a+</code> 等价于 <code>a+r</code>（可追加可写，文件若不存在就创建）</p>
+<p>对应的，如果是二进制文件，就都加一个 b 就好啦：</p>
+<p><code>rb</code>　　<code>wb</code>　　<code>ab</code>　　<code>rb+</code>　　<code>wb+</code>　　<code>ab+</code></p>
 
                 
 <p class="pink-link-context">
-    <a href="/2018/11/12/jetty简介/" rel="next" title="jetty简介">
-    上一篇：jetty简介
+    <a href="/2018/05/20/python中的encode与decode/" rel="next" title="python中的encode与decode">
+    上一篇：python中的encode与decode
   </a>
 </p>
 
 
 
 <p class="pink-link-context">
-    <a href="/2018/11/07/windows下安装巡风扫描器/" rel="next" title="windows下安装巡风扫描器">
-    下一篇：windows下安装巡风扫描器
+    <a href="/2017/09/10/在CentOS上搭建Seafile网盘/" rel="next" title="在CentOS上搭建Seafile网盘">
+    下一篇：在CentOS上搭建Seafile网盘
   </a>
 </p>
 

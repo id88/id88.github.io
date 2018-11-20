@@ -7,16 +7,16 @@
 
     
 
-    <title>使用Nexus搭建Maven私服 | 月尚の博客</title>
+    <title>Python命令行参数 | 月尚の博客</title>
     
     
-    <meta name="description" content="百度了好几篇教程，发现差别有点大，参考了好几篇教程才搭建起来。
-一、搭建nexus私服的目的　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发人员连到这台">
+    <meta name="description" content="12345# -*- coding: utf-8 -*-import sysprint(&amp;quot;参数个数为:&amp;quot;, len(sys.argv), &amp;apos;个&amp;apos;)print(&amp;apos;参数列表:&amp;apos;, str(sys.argv))
+结果：123&amp;gt;&amp;gt;&amp;gt">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="使用Nexus搭建Maven私服"/>
+    <meta property="og:title" content="Python命令行参数"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -257,7 +257,7 @@
             
     
     
-    <a class="breadcrumb" href="/categories/Java学习笔记/">Java学习笔记</a>
+    <a class="breadcrumb" href="/categories/Python学习笔记/">Python学习笔记</a>
 
 
         
@@ -274,12 +274,12 @@
             <div class="article-title">
                 
     
-        <h1>使用Nexus搭建Maven私服</h1>
+        <h1>Python命令行参数</h1>
     
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-11-10T16:00:00.000Z"><a href="/2018/11/11/使用Nexus搭建Maven私服/">2018-11-11</a></time>
+            <time class="pink-link-context" datetime="2018-09-16T16:00:00.000Z"><a href="/2018/09/17/Python命令行参数/">2018-09-17</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -289,83 +289,62 @@
             
     <div class="tags-row">
         
-            <a href="/tags/java/" class="chip pink lighten-1">java</a>
-        
-            <a href="/tags/maven/" class="chip pink lighten-1">maven</a>
-        
-            <a href="/tags/Nexus/" class="chip pink lighten-1">Nexus</a>
+            <a href="/tags/标签/" class="chip pink lighten-1">标签</a>
         
     </div>
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、搭建nexus私服的目的"><span class="section table-of-contents-text">一、搭建nexus私服的目的</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-1、Nexus架构"><span class="section table-of-contents-text">1.1、Nexus架构</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、nexus私服的下载和安装"><span class="section table-of-contents-text">二、nexus私服的下载和安装</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-1、nexus下载"><span class="section table-of-contents-text">2.1、nexus下载</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-2、nexus安装"><span class="section table-of-contents-text">2.2、nexus安装</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#将nexus配置为系统服务"><span class="section table-of-contents-text">将nexus配置为系统服务</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#基本使用"><span class="section table-of-contents-text">基本使用</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#nexus目录和文件"><span class="section table-of-contents-text">nexus目录和文件</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#getopt模块"><span class="section table-of-contents-text">getopt模块</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#getopt-getopt-方法"><span class="section table-of-contents-text">getopt.getopt 方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Exception-getopt-GetoptError"><span class="section table-of-contents-text">Exception getopt.GetoptError</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <p>百度了好几篇教程，发现差别有点大，参考了好几篇教程才搭建起来。</p>
-<h2 id="一、搭建nexus私服的目的"><a href="#一、搭建nexus私服的目的" class="headerlink" title="一、搭建nexus私服的目的"></a>一、搭建nexus私服的目的</h2><p>　　为什么要搭建nexus私服，原因很简单，有些公司都不提供外网给项目组人员，因此就不能使用maven访问远程的仓库地址，所以很有必要在局域网里找一台有外网权限的机器，搭建nexus私服，然后开发人员连到这台私服上，这样的话就可以通过这台搭建了nexus私服的电脑访问maven的远程仓库。</p>
-<h3 id="1-1、Nexus架构"><a href="#1-1、Nexus架构" class="headerlink" title="1.1、Nexus架构"></a>1.1、Nexus架构</h3><p> <img src="https://raw.githubusercontent.com/id88/id88.github.io/master/images/nexus.jpg" alt="Nexus架构"></p>
-<h2 id="二、nexus私服的下载和安装"><a href="#二、nexus私服的下载和安装" class="headerlink" title="二、nexus私服的下载和安装"></a>二、nexus私服的下载和安装</h2><h3 id="2-1、nexus下载"><a href="#2-1、nexus下载" class="headerlink" title="2.1、nexus下载"></a>2.1、nexus下载</h3><p>　　Nexus 专业版是需要付费的，这里我们下载开源版 Nexus OSS。<br>　　下载地址：<a href="https://www.sonatype.com/download-oss-sonatype" target="_blank" rel="noopener">https://www.sonatype.com/download-oss-sonatype</a>，下载nginx-1.14.0的压缩包</p>
-<p>  版本区别：</p>
+                <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">print(&quot;参数个数为:&quot;, len(sys.argv), &apos;个&apos;)</span><br><span class="line">print(&apos;参数列表:&apos;, str(sys.argv))</span><br></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;python command.py test1 test2 test3</span><br><span class="line">参数个数为: 4 个</span><br><span class="line">参数列表: [&apos;command.py&apos;, &apos;test1&apos;, &apos;test2&apos;, &apos;test3&apos;]</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>Nexus OSS （ OSS = Open Source Software）这个版本包含基于Sonatype 开源软件代码的基本功能和以包形式发布为开源的其他功能，免费试用许可证请查看下载后的二进制包。</li>
-<li>Nexus Professional Nexus Professional CLM Edition<br>这个是旗舰版，包含了专业版本的所有功能。需要购买许可证。</li>
-<li>Nexus Professional Trial<br>试用版，不包含Nexus Professional Nexus Professional CLM Edition所有的功能，官方目前((2015年03月31日))提供14天的试用期，同时安装包是以二进制的实行发布的(<a href="https://support.sonatype.com/entries/27807808-Nexus-Trial-Edition-vs-Nexus-Professional-Edition" target="_blank" rel="noopener">查看更多差异信息</a>)：</li>
+<li><p>sys.argv 是命令行参数列表。</p>
+</li>
+<li><p>len(sys.argv) 是命令行参数个数。</p>
+</li>
+<li><p>sys.argv[0] 表示脚本名。</p>
+</li>
 </ul>
-<h3 id="2-2、nexus安装"><a href="#2-2、nexus安装" class="headerlink" title="2.2、nexus安装"></a>2.2、nexus安装</h3><p>1、解压zip压缩包（这里我将其解压到 D:\nexus）<br>解压后有两个目录：</p>
+<h2 id="getopt模块"><a href="#getopt模块" class="headerlink" title="getopt模块"></a>getopt模块</h2><p>getopt模块是专门处理命令行参数的模块，用于获取命令行选项和参数，也就是sys.argv。命令行选项使得程序的参数更加灵活。支持短选项模式（-）和长选项模式（–）。</p>
+<p>该模块提供了两个方法及一个异常处理来解析命令行参数。</p>
+<h3 id="getopt-getopt-方法"><a href="#getopt-getopt-方法" class="headerlink" title="getopt.getopt 方法"></a>getopt.getopt 方法</h3><p>getopt.getopt 方法用于解析命令行参数列表，语法格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getopt.getopt(args, options[, long_options])</span><br></pre></td></tr></table></figure></p>
+<p>方法参数说明：</p>
 <ul>
-<li>nexus-3.14.0-04</li>
-<li>sonatype-work</li>
+<li><p>args: 要解析的命令行参数列表。</p>
+</li>
+<li><p>options: 以字符串的格式定义，options后的冒号(:)表示该选项必须有附加的参数，不带冒号表示该选项不附加参数。</p>
+</li>
+<li><p>long_options: 以列表的格式定义，long_options 后的等号(=)表示如果设置该选项，必须有附加的参数，否则就不附加参数。</p>
+</li>
+<li><p>该方法返回值由两个元素组成: 第一个是 (option, value) 元组的列表。 第二个是参数列表，包含那些没有’-‘或’–’的参数。</p>
+</li>
 </ul>
-<p>2、修改数据存储路径<br><code>D:\nexus\nexus-3.14.0-04\bin\nexus.vmoptions</code></p>
-<p>当然，可以直接使用默认的，支持相对和绝对路径。</p>
-<p>3、修改IP、端口、访问根目录<br><code>D:\nexus\nexus-3.14.0-04\etc\nexus-default.properties</code></p>
-<p>4、启动<br>cmd进入到：<code>cd D:\nexus\nexus-3.14.0-04\bin</code><br>然后执行：<code>nexus.exe  /run</code><br>这个启动需要点时间，耐心等待。</p>
-<p>5、打开浏览器，访问：<a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a><br>（没有登录时，打开 <a href="http://localhost:8081/nexus" target="_blank" rel="noopener">http://localhost:8081/nexus</a> 会出现404Error）</p>
-<p>点击右上角 Log In，使用用户名：admin ，密码：admin123 登录</p>
-<h2 id="将nexus配置为系统服务"><a href="#将nexus配置为系统服务" class="headerlink" title="将nexus配置为系统服务"></a>将nexus配置为系统服务</h2><p>根据官方文档说明，将nexus配置为系统服务是一个很好的选择。因为</p>
-<p>第一：上面的安装和启动过程并没有默认的把nexus作为服务加入系统服务中；</p>
-<p>第二：这样下次服务器重启，服务也会重启。</p>
-<p>但是这个有个前提，就是已经确保安装了Java运行时环境。</p>
-<p>接下来，我们重新打开一个窗口，去将nexus加入系统服务  </p>
-<p>最后的<optional-service-name>，咱们直接命名成nexus就好。【当然，最后这个不指定的话，默认就是创建成nexus服务名】</optional-service-name></p>
-<p>使用管理员身份打开cmd，进入到：<code>cd D:\nexus\nexus-3.14.0-04\bin</code><br>然后执行：<code>nexus.exe  /install nexus</code></p>
-<p>以后就可以<code>nexus /start nexus</code> 来启动了</p>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>参考：<a href="http://www.cnblogs.com/kongweifeng/p/9369936.html" target="_blank" rel="noopener">http://www.cnblogs.com/kongweifeng/p/9369936.html</a></p>
-<h2 id="nexus目录和文件"><a href="#nexus目录和文件" class="headerlink" title="nexus目录和文件"></a>nexus目录和文件</h2><p>nexus-3.14.0-04　　　　安装目录</p>
-<p>bin　　　　包含nexus的启动脚本和相关配置　　　　　　</p>
-<p>etc　　　　jetty、karaf等配置文件</p>
-<p>jre　　　　jre环境</p>
-<p>lib　　　　java架包库</p>
-<p>public　　关于nexus应用在本地跑起来所需要的资源</p>
-<p>system　　应用所有的插件和组件</p>
-<p>LICENSE.txt 和 NOTICE.txt　　　　版权声明和法律细则</p>
-<hr>
-<p>sonatype-work\nexus3　　　数据文档</p>
-<p>blobs/　　　创建blob的默认路径，如果你指定了绝对路径，那就不在这里了</p>
-<p>cache/　　当前缓存的karaf包的信息</p>
-<p>db/　　　OrientDB数据库的数据，用于存储nexus的元数据的数据库</p>
-<p>elasticsearch /　　当前配置的Elasticsearch状态</p>
-<p>etc/　　　　大概是运行时配置状态和关于资源库的自定义的相关的东西</p>
-<p>health-check/　　看目录，健康检查的相关报告的存储目录吧</p>
-<p>keystores/　　　自动生成的关于资源库的ID主键</p>
-<p>log/　　运行实例生成的日志文件，也有日志文件的压缩包，貌似是每天都会生成日志文件，你可以定期删除老的日志文件</p>
-<p>tmp/　　用于存储临时文件的目录</p>
+<p>另外一个方法是 getopt.gnu_getopt，这里不多做介绍。</p>
+<h3 id="Exception-getopt-GetoptError"><a href="#Exception-getopt-GetoptError" class="headerlink" title="Exception getopt.GetoptError"></a>Exception getopt.GetoptError</h3><p>在没有找到参数列表，或选项的需要的参数为空时会触发该异常。</p>
+<p>异常的参数是一个字符串，表示错误的原因。属性 msg 和 opt 为相关选项的错误信息。</p>
+<p><strong>实例</strong><br>创建这样一个脚本，可以通过命令行向脚本文件传递两个文件名，通过另外一个选项查看脚本的使用。脚本使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usage: test.py -i &lt;inputfile&gt; -o &lt;outputfile&gt;</span><br></pre></td></tr></table></figure></p>
+<p>test.py 文件代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python3</span><br><span class="line"></span><br><span class="line">import sys, getopt</span><br><span class="line"></span><br><span class="line">def main(argv):</span><br><span class="line">   inputfile = &apos;&apos;</span><br><span class="line">   outputfile = &apos;&apos;</span><br><span class="line">   try:</span><br><span class="line">      opts, args = getopt.getopt(argv,&quot;hi:o:&quot;,[&quot;ifile=&quot;,&quot;ofile=&quot;])</span><br><span class="line">   except getopt.GetoptError:</span><br><span class="line">      print (&apos;test.py -i &lt;inputfile&gt; -o &lt;outputfile&gt;&apos;)</span><br><span class="line">      sys.exit(2)</span><br><span class="line">   for opt, arg in opts:</span><br><span class="line">      if opt == &apos;-h&apos;:</span><br><span class="line">         print (&apos;test.py -i &lt;inputfile&gt; -o &lt;outputfile&gt;&apos;)</span><br><span class="line">         sys.exit()</span><br><span class="line">      elif opt in (&quot;-i&quot;, &quot;--ifile&quot;):</span><br><span class="line">         inputfile = arg</span><br><span class="line">      elif opt in (&quot;-o&quot;, &quot;--ofile&quot;):</span><br><span class="line">         outputfile = arg</span><br><span class="line">   print (&apos;输入的文件为：&apos;, inputfile)</span><br><span class="line">   print (&apos;输出的文件为：&apos;, outputfile)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">   main(sys.argv[1:])</span><br><span class="line">```   </span><br><span class="line">执行以上代码，输出结果为：</span><br></pre></td></tr></table></figure></p>
+<p>$ python3 test.py<br>输入的文件为：<br>输出的文件为：</p>
+<p>$ python3 test.py -h<br>usage: test.py -i <inputfile> -o <outputfile></outputfile></inputfile></p>
+<p>$ python3 test.py -i inputfile -o outputfile<br>输入的文件为： inputfile<br>输出的文件为： outputfile<br><code>`</code></p>
 
                 
 <p class="pink-link-context">
-    <a href="/2018/11/12/jetty简介/" rel="next" title="jetty简介">
-    上一篇：jetty简介
+    <a href="/2018/09/25/Nmap进阶使用脚本/" rel="next" title="Nmap进阶使用脚本">
+    上一篇：Nmap进阶使用脚本
   </a>
 </p>
 
 
 
 <p class="pink-link-context">
-    <a href="/2018/11/07/windows下安装巡风扫描器/" rel="next" title="windows下安装巡风扫描器">
-    下一篇：windows下安装巡风扫描器
+    <a href="/2018/09/11/协程/" rel="next" title="协程">
+    下一篇：协程
   </a>
 </p>
 
