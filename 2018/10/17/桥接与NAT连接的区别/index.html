@@ -7,13 +7,24 @@
 
     
 
-    <title>Nexus | 月尚の博客</title>
+    <title>桥接与NAT连接的区别 | 月尚の博客</title>
     
+    
+    <meta name="description" content="桥接与NAT连接的区别
+Bridged
+Nat
+Host-only
+
+一、虚拟设备首先说一下VMware的几个虚拟设备
+VMnet0：用于虚拟桥接网络下的虚拟交换机
+VMnet1：用于虚拟Host-Only网络下的虚拟交换机
+VMnet8：用于虚拟NAT网络下的虚拟交换机
+安装了VMware虚拟机后">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="桥接与NAT连接的区别"/>
     <meta property="og:site_name" content="月尚の技术小屋"/>
 
     
@@ -255,30 +266,133 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/计算机网络/">计算机网络</a>
+
 
         
-            <a class="breadcrumb" href="/tags/Nexus/">Nexus</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>桥接与NAT连接的区别</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="pink-link-context" datetime="2018-10-16T16:00:00.000Z"><a href="/2018/10/17/桥接与NAT连接的区别/">2018-10-17</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2018/11/11/使用Nexus搭建Maven私服/" class="collection-item grey-text text-darken-1">
-                <time datetime="2018-11-10T16:00:00.000Z">2018-11-11</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                使用Nexus搭建Maven私服
-            </a>
+            <a href="/tags/虚拟机/" class="chip pink lighten-1">虚拟机</a>
         
     </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#桥接与NAT连接的区别"><span class="section table-of-contents-text">桥接与NAT连接的区别</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、虚拟设备"><span class="section table-of-contents-text">一、虚拟设备</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、网络模式"><span class="section table-of-contents-text">二、网络模式</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Bridged-networking（桥接模式）"><span class="section table-of-contents-text">Bridged networking（桥接模式）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Network-Address-Translation（NAT模式）"><span class="section table-of-contents-text">Network Address Translation（NAT模式）</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#VMware-主机和虚拟机相互ping通的解决办法"><span class="section table-of-contents-text">VMware 主机和虚拟机相互ping通的解决办法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#补充"><span class="section table-of-contents-text">补充</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#Host-only"><span class="section table-of-contents-text">Host-only</span></a></li></ol></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <h1 id="桥接与NAT连接的区别"><a href="#桥接与NAT连接的区别" class="headerlink" title="桥接与NAT连接的区别"></a>桥接与NAT连接的区别</h1><ul>
+<li>Bridged</li>
+<li>Nat</li>
+<li>Host-only</li>
+</ul>
+<h2 id="一、虚拟设备"><a href="#一、虚拟设备" class="headerlink" title="一、虚拟设备"></a>一、虚拟设备</h2><p>首先说一下VMware的几个虚拟设备</p>
+<p><strong>VMnet0</strong>：用于虚拟桥接网络下的虚拟交换机</p>
+<p><strong>VMnet1</strong>：用于虚拟Host-Only网络下的虚拟交换机</p>
+<p><strong>VMnet8</strong>：用于虚拟NAT网络下的虚拟交换机</p>
+<p>安装了VMware虚拟机后，会在网络连接对话框中多出两个虚拟网卡:</p>
+<p><strong>VMware NetworkAdepter VMnet1</strong>：Host用于与Host-Only虚拟网络进行通信的虚拟网卡</p>
+<p><strong>VMware NetworkAdepter VMnet8</strong>：Host用于与NAT虚拟网络进行通信的虚拟网卡</p>
+<h2 id="二、网络模式"><a href="#二、网络模式" class="headerlink" title="二、网络模式"></a>二、网络模式</h2><h3 id="Bridged-networking（桥接模式）"><a href="#Bridged-networking（桥接模式）" class="headerlink" title="Bridged networking（桥接模式）"></a>Bridged networking（桥接模式）</h3><p>在这样的模式下，VMWare虚拟出来的操作系统就像是局域网中的一台独立的主机。它可以访问该类网段内任何一台机器。</p>
+<p><strong>桥接网络环境下需要做到：</strong></p>
+<p>1、手动为虚拟机系统配置IP地址、子网掩码。</p>
+<p>2、在桥接的模式下虚拟机必须与物理机处于同一网段，(例如：物理机IP:192.168.1.2，虚拟机IP:192.168.1.3)这样虚拟系统才能和真实主机进行通信。</p>
+<p><strong>tip:</strong><br>当你想利用VMware在局域网内新建一个虚拟服务器，为局域网用户提供网络服务，就应该选择桥接模式。便可将虚拟机模拟接入主机所在的局域网。桥接网络，相当于，虚拟机与主机同接在一台交换机上，同时上网，虚拟机对物理机网络的直接影响较小。</p>
+<p><img src="https://img-blog.csdn.net/20141009114659965?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWluZ2Zlbmd0c2luZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="Bridged桥接模式"></p>
+<h3 id="Network-Address-Translation（NAT模式）"><a href="#Network-Address-Translation（NAT模式）" class="headerlink" title="Network Address Translation（NAT模式）"></a>Network Address Translation（NAT模式）</h3><p>在NAT网络中，会使用到 VMnet8 虚拟交换机。<br>物理机上的 VMware Network Adapter VMnet8 虚拟网卡将会和 VMnet8 交换机相连接，来实现物理机与虚拟机之间的通信。</p>
+<p><strong>注意：</strong><br><code>VMware Network Adapter VMnet8 虚拟网卡</code>仅仅是用于和 <code>VMnet8网段</code>通信用的，它并不为 <code>VMnet8网段</code>提供路由功能，处于虚拟NAT网络下的Guest是使用虚拟的NAT服务器连接的Internet的。<br><code>VMware Network Adapter VMnet8 虚拟网卡</code>它仅仅是为 Host 和 NAT 虚拟网络下的Guest通信提供一个接口，所以，即便去掉这块虚拟网卡，虚拟机仍然是可以上网的，只是物理机将无法再访问 <code>VMnet8网段</code>而已。</p>
+<p><strong>NAT网络环境下需要做到：</strong></p>
+<p>1.主机需要开启vmdhcp和vmnat服务。（服务的开启，在我的电脑当中右键“管理”可以设置）</p>
+<p>2.NAT模式下的虚拟机的TCP/IP配置信息将由VMnet8(NAT)虚拟网络的DHCP服务器自动分配，需要开启DHCP功能。</p>
+<p><strong>tip:</strong><br>使用NAT模式，就是让虚拟系统借助NAT(网络地址转换)功能，通过物理机所在的网络来访问外网。也就是说，使用NAT模式可以实现在虚拟机里访问到互联网。NAT模式下的虚拟机的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP服务器（也就是自动分配，无需手动分配）提供的，无法进行手工修改，因此虚拟系统也就无法和本局域网中的其他真实主机进行通讯。<br>采用NAT模式最大的优势是虚拟系统接入互联网非常简单，你不需要进行任何其他的配置，只需要宿主机器能访问互联网即可。 </p>
+<p><img src="https://img-blog.csdn.net/20141009114908697?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWluZ2Zlbmd0c2luZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="NAT网络地址转换模式"><br>注意：<br>红色的方框是nat服务器，nat服务器有两个网卡一个是虚拟内网网卡，一个是宿主机的物理网卡。禁用VmNet8，虚拟机仍然可以上网，ping通主机，但是主机ping不通虚拟机的网卡。</p>
+<p>vmNet8存在的意义在于实现主机和虚拟机的通信。弥补了NAT协议中外网不能访问局域网的缺点。</p>
+<h3 id="VMware-主机和虚拟机相互ping通的解决办法"><a href="#VMware-主机和虚拟机相互ping通的解决办法" class="headerlink" title="VMware 主机和虚拟机相互ping通的解决办法"></a>VMware 主机和虚拟机相互ping通的解决办法</h3><blockquote>
+<p>参考：<a href="https://blog.csdn.net/wangacmilan/article/details/79427183" target="_blank" rel="noopener">https://blog.csdn.net/wangacmilan/article/details/79427183</a></p>
+</blockquote>
+<p>1.首先，主机与虚拟机相互ping通，一定是在桥接模式下；</p>
+<p>2.在 控制面板 -&gt; 网络和 Internet -&gt; 网络连接 中配置网卡VMnet1，配置的信息要和虚拟机”ifconfig”展示的信息展示一样</p>
+<p>如果还是不能互相ping通，则执行以下操作：</p>
+<p>3.打开 控制面板–系统和安全–高级设置–入站规则</p>
+<hr>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>NAT 模式下的网络，相当于说虚拟机是通过接入物理机连接上的网络，等于物理机是个路由器，申请到一个上网名额，带着隐藏在它下面的虚拟机上网。自然所有虚拟机使用的网络总和都限制在实机一个网络通道内。虚拟机会抢占物理机的网络~对物理机上网会有很大的影响！</p>
+<p>NAT模式下的虚拟系统的TCP/IP配置信息是由 VMnet8(NAT) 虚拟网络的 DHCPserver 提供的，无法进行手工改动，因此虚拟系统也就无法和本局域网中的其它真实主机进行通讯。采用NAT模式最大的优势是虚拟系统接入互联网很简单。仅仅须要宿主机器能访问互联网。你不须要配置IP地址，子网掩码，网关。可是DNS地址还是要依据实际情况填的。</p>
+<p>加入DNS地址除了在网卡属性中填写。还能够在虚拟机中的“虚拟网络编辑器”中的NAT选项卡中点击“编辑”按钮中来加入。</p>
+<p>假设不让虚拟机能上网。两种模式都能够做到，用桥接的话只要在局域网内有合法的地址，比如ADSL猫是带路由功能的，假设是在单位。那就要网管给你合法IP才行（如今公司都是mac和ip绑定的）。</p>
+<p>如今是主机和虚拟机互通，假设你的ADSL猫带路由功能。那关闭虚拟机的DHCP，选桥接，检查主机和虚拟机是否分配同网段的IP，关闭防火墙。</p>
+<h3 id="Host-only"><a href="#Host-only" class="headerlink" title="Host-only"></a>Host-only</h3><p>在Host-Only模式下，虚拟网络是一个全封闭的网络，它唯一能够访问的就是主机。其实Host-Only网络和NAT网络很相似，不同的地方就是Host-Only网络没有NAT服务，所以虚拟网络不能连接到Internet。主机和虚拟机之间的通信是通过<code>VMware NetworkAdepter VMnet1虚拟网卡</code>来实现的。</p>
+<p>同NAT一样，<code>VMware Network AdepterVMnet1虚拟网卡</code>的IP地址也是VMware系统指定的，同时生成的虚拟DHCP服务器和虚拟网卡的IP地址位于同一网段，但和物理网卡的IP地址不在同一网段。</p>
+<p>Host-Only的宗旨就是建立一个与外界隔绝的内部网络，来提高内网的安全性。这个功能或许对普通用户来说没有多大意义，但大型服务商会常常利用这个功能。如果你想为VMnet1网段提供路由功能，那就需要使用RRAS，而不能使用XP或2000的ICS，因为ICS会把内网的IP地址改为192.168.0.1，但虚拟机是不会给VMnet1虚拟网卡分配这个地址的，那么主机和虚拟机之间就不能通信了。</p>
+<p><img src="https://img-blog.csdn.net/20141009115302234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWluZ2Zlbmd0c2luZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="Host-Only方式"></p>
+<p>注意：<br>上图中的VmNet8应该为VmNet1。其实跟nat模式的图片是类似的，只是少了nat服务。<br>所以host-only上不了外网，只能实现主机的VmNet1网卡和虚拟机的虚拟网卡通信。</p>
+<blockquote>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.csdn.net/tanhao199406/article/details/45603177" target="_blank" rel="noopener">https://blog.csdn.net/tanhao199406/article/details/45603177</a></li>
+<li><a href="https://blog.csdn.net/qingfengtsing/article/details/39928283" target="_blank" rel="noopener">https://blog.csdn.net/qingfengtsing/article/details/39928283</a></li>
+</ul>
+</blockquote>
+
+                
+<p class="pink-link-context">
+    <a href="/2018/10/26/软件实施工程师何去何从/" rel="next" title="软件实施工程师何去何从">
+    上一篇：软件实施工程师何去何从
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/2018/09/25/Nmap进阶使用脚本/" rel="next" title="Nmap进阶使用脚本">
+    下一篇：Nmap进阶使用脚本
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
 
 
 </div>
